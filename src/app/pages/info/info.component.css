@@ -28,6 +28,8 @@ html, body {
     color: #fff;
     letter-spacing: 2px;
     font-family: 'Montserrat', sans-serif; 
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .right-button {
