@@ -6,7 +6,7 @@
   
       <div class="right-button">
         <li class="menu-container">
-          <a class="menu-trigger">{{ student.firstName | titlecase }}</a>
+          <a class="menu-trigger" routerLink="/student-page">{{ student.firstName | titlecase }}</a>
           <div class="menu">
             <a routerLink="/profile">Profile</a>
             <a (click)="logout()">Logout</a>
