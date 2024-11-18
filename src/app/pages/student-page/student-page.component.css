@@ -1,23 +1,23 @@
 html, body {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif; 
+    font-family: 'Roboto', sans-serif;
 }
 
 .navbar {
-    background-color: #f4623a; 
+    background-color: #f4623a; /* Main Navbar color */
     color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
-    transition: background-color 0.3s ease; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
 }
 
 .app-name {
@@ -25,7 +25,7 @@ html, body {
     font-weight: 700;
     color: #fff;
     letter-spacing: 2px;
-    font-family: 'Montserrat', sans-serif; 
+    font-family: 'Montserrat', sans-serif;
     cursor: pointer;
     text-decoration: none;
 }
@@ -33,17 +33,27 @@ html, body {
 .right-button {
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 
 .menu-container {
     position: relative;
+    list-style: none;
 }
 
-.menu-container a {
+.student-name {
+    font-size: 1.2em;
     color: #fff;
-    text-decoration: none;
-    font-size: 1.1em;
-    padding: 10px;
+    font-weight: 600;
+    text-transform: capitalize;
+    cursor: pointer;
+    letter-spacing: 1px;
+    padding-right: 20px;
+}
+
+.student-name:hover {
+    color: #f2f2f2;
+    transition: color 0.3s ease;
 }
 
 .menu {
@@ -51,46 +61,34 @@ html, body {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: #f4623a;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
-    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
     border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.menu a {
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 500;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.menu a:hover {
+    background-color: #f4623a;
+    color: #fff;
 }
 
 .menu-container:hover .menu {
     display: block;
 }
 
-.menu a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1em;
-    padding: 8px;
-    display: block;
-}
-
-.menu a:hover {
-    background-color: #d94e2a;
-}
-
-button {
-    background-color: #FFFFFF; 
-    color: #333;
-    font-size: 1em;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
-button:hover {
-    background-color: #F2F2F2; 
-    transform: scale(1.05); 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+.navbar-spacer {
+    height: 100px;
 }
 
 @media (max-width: 768px) {
@@ -109,39 +107,4 @@ button:hover {
         width: 100%;
         justify-content: space-between;
     }
-
-    button {
-        width: 100%;
-        padding: 14px;
-        font-size: 1.1em;
-    }
-}
-
-.navbar-spacer {
-    height: 100px; 
-}
-
-/* Student Page Section Styling */
-.student-page {
-    font-family: Arial, sans-serif;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.right-button li {
-    list-style: none;
-}
-
-.right-button a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.1em;
-    padding: 10px;
-}
-
-.right-button a:hover {
-    background-color: #d94e2a;
-    border-radius: 5px;
 }

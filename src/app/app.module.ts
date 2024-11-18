@@ -17,7 +17,7 @@ import { StudentPageComponent } from './pages/student-page/student-page.componen
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './pages/header/header.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,6 @@ import { HeaderComponent } from './pages/header/header.component';
     RegisterAdminComponent,
     StudentPageComponent,
     AdminPageComponent,
-    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +40,7 @@ import { HeaderComponent } from './pages/header/header.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 3000,

@@ -5,15 +5,14 @@
     </div>
 
     <div class="right-button">
-      
       <li class="menu-container">
-        <a> {{ student.firstName }} </a>
+        <a class="student-name">{{ capitalizeFirstLetter(student.firstName) }}</a>
         <div class="menu">
-            <a routerLink="/profile">profile</a>
-            <a (click)="logout()">Logout</a>                    
+          <a routerLink="/profile">Profile</a>
+          <a (click)="logout()">Logout</a>                    
         </div>
-      
-      </div>
+      </li>
+    </div>
   </header>
 
   <div class="navbar-spacer"></div>

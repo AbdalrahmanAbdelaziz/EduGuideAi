@@ -12,9 +12,12 @@ export class StudentPageComponent implements OnInit{
 
 
   student!: Student;
+   capitalizeFirstLetter(name: string): string {
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  }
 
   constructor(private authService: AuthService, private router: Router) {
-    
+
     this.authService.studentObservable.subscribe((newStudent) => {
       if (newStudent) {
         this.student = newStudent; 
