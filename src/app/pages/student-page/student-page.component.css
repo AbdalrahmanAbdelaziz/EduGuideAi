@@ -45,9 +45,10 @@
     text-decoration: none;
     padding: 10px 15px;
     display: block;
-    width: 100%;  /* Ensures the menu button spans full width */
+    width: 200px;  /* Set the fixed width for the button */
     text-align: left;
     transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    box-sizing: border-box; /* Ensure padding doesn't affect the width */
   }
   
   .menu-trigger:hover {
@@ -58,7 +59,7 @@
     display: none;
     position: absolute;
     background-color: #d94e2a; /* A darker shade that fits with the header color */
-    width: 100%;  /* Match width of the parent element */
+    width: 200px;  /* Match width of the parent element */
     z-index: 1;
     border-radius: 5px;
     top: 100%;  /* Positions the menu directly below the name */
@@ -66,6 +67,7 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Smooth fade-in effect */
+    box-sizing: border-box; /* Ensure padding doesn't affect the width */
   }
   
   .menu-container:hover .menu {
@@ -81,6 +83,7 @@
     text-decoration: none;
     display: block;
     width: 100%;  /* Ensures the links are also the same width */
+    box-sizing: border-box; /* Ensures no extra width is added by padding */
   }
   
   .menu a:hover {
