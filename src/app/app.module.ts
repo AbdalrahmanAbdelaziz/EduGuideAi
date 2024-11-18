@@ -18,6 +18,7 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CommonModule } from '@angular/common';
     RegisterAdminComponent,
     StudentPageComponent,
     AdminPageComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
