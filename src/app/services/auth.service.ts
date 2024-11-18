@@ -56,7 +56,6 @@ export class AuthService {
         this.adminSubject.next(null);
         localStorage.removeItem(STUDENT_KEY);
         localStorage.removeItem(ADMIN_KEY);
-        window.location.reload();
     }
 
     private setStudentToLocalStorage(student: Student) {
