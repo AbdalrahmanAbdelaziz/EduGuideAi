@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { NgForm } from '@angular/forms';
 import { Student } from '../../shared/interfaces/Student';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-student',
@@ -11,7 +12,7 @@ import { Student } from '../../shared/interfaces/Student';
 export class RegisterStudentComponent implements OnInit{
 
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService, private router: Router){}
 
   ngOnInit(): void {
       
@@ -23,15 +24,11 @@ export class RegisterStudentComponent implements OnInit{
 
         if (password === confirmPassword) {
             const student: Student = { firstName, lastName, email, password };
-            this.authService.register(student).subscribe({
-                next: () => {
-                    alert('Registration successful');
-                },
-                error: (err) => {
-                    console.error(err);
-                    alert('An error occurred during registration');
+            this.authService.register(student).subscribe(
+                response => {
+                    this.router.navigateByUrl('/login')
                 }
-            });
+            );
         } else {
             alert('Passwords do not match');
         }

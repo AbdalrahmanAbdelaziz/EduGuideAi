@@ -46,13 +46,9 @@ export class ResetPasswordComponent implements OnInit{
     this.authService.resetPassword(this.token, this.fc['newPassword'].value)
     .subscribe({
       next: () => {
-        this.toastr.success('Password reset successful');
         this.router.navigate(['/login']);
       },
 
-      error: () => {
-        this.toastr.error('Password reset failed', 'Error');
-      }
     });
   }
 

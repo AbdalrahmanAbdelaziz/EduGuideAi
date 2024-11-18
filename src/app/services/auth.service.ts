@@ -113,10 +113,10 @@ export class AuthService {
             next: (student) => {
                 this.setStudentToLocalStorage(student);
                 this.studentSubject.next(student);
-                this.toastrService.success(`Welcome ${student.firstName}!`, 'Registration Successful');
+                this.toastrService.success('Registration Successful');
             },
             error: (errorResponse) => {
-                this.toastrService.error(errorResponse.error, 'Registration Failed');
+                this.toastrService.error('Registration Failed');
               }
         })
     );
@@ -129,10 +129,10 @@ export class AuthService {
         next: (admin) => {
           this.setAdminToLocalStorage(admin);
           this.adminSubject.next(admin);
-          this.toastrService.success(`Welcome ${admin.firstName}!`, 'Registration Successful');
+          this.toastrService.success( 'Registration Successful');
         },
         error: (errorResponse) => {
-          this.toastrService.error(errorResponse.error, 'Registration Failed');
+          this.toastrService.error('Registration Failed');
         }
       })
     );
