@@ -1,0 +1,28 @@
+<div class="bg-img" style="background-image: url('bg.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>Welcome to EduGuideAI!</h1>
+
+        <p class="sign-up-text">I want to sign up as...</p>
+
+        <div class="options">
+            <div class="option" (click)="signUp('student')">
+                <div class="icon-container">
+                    <img src="icon1.webp" alt="Student Icon" />
+                </div>
+                <p>Student</p>
+            </div>
+            <div class="option" (click)="signUp('coach')">
+                <div class="icon-container">
+                    <img src="icon1.webp" alt="Coach Icon" />
+                </div>
+                <p>Admin</p>
+            </div>
+        </div>
+
+        <p class="login-text">
+            Already have an account?
+            <a routerLink="/login">Log In</a>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="bg-img" style="background-image: url('bg.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <h2>Admin Registration</h2>
+        
+        <form (ngSubmit)="onSubmit(adminForm)" #adminForm="ngForm">
+            <div class="input-group">
+                <input type="text" placeholder="Fist Name" name="name" ngModel required />
+            </div>
+
+            <div class="input-group">
+                <input type="text" placeholder="Last Name" name="name" ngModel required />
+            </div>
+            
+            <div class="input-group">
+                <input type="email" placeholder="Email" name="email" ngModel required />
+            </div>
+            
+            <div class="input-group">
+                <input type="password" placeholder="Password" name="password" ngModel required />
+            </div>
+            
+            <div class="input-group">
+                <input type="password" placeholder="Confirm Password" name="confirmPassword" ngModel required />
+            </div>
+            
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</div>

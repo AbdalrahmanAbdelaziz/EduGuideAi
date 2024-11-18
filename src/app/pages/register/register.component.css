@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 40px;
+    width: 500px; 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #f4623a;
+}
+
+p {
+    font-size: 16px;
+    color: #333;
+}
+
+.sign-up-text {
+    margin: 25px 0 15px;
+    font-weight: bold;
+    color: #444;
+}
+
+.options {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: wheat;
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    width: 120px; 
+    transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.option:hover {
+    transform: scale(1.1);
+    background-color: #e2e6ea;
+}
+
+.icon-container {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4623a; 
+}
+
+.option img {
+    width: 40px;
+    height: 40px;
+}
+
+.option p {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+}
+
+.login-text {
+    margin-top: 25px;
+    color: #333;
+}
+
+.login-text a {
+    color: #f4623a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-text a:hover {
+    text-decoration: underline;
+}

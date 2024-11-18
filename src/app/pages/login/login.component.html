@@ -1,0 +1,41 @@
+<div class="bg-img" style="background-image: url('bk.webp');">
+  <div class="overlay"></div>
+  <div class="content">
+    <header>Hey, welcome back!</header>
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <div class="field">
+        <span class="fa fa-user"></span>
+        <input type="email" formControlName="email" placeholder="Email" required />
+        <div *ngIf="isSubmitted && fc['email'].invalid" class="error">
+          Email is required and should be valid.
+        </div>
+      </div>
+
+      <div class="field space">
+        <span class="fa fa-lock"></span>
+        <input
+          type="password"
+          formControlName="password"
+          class="pass-key"
+          placeholder="Password"
+          required
+        />
+        <div *ngIf="isSubmitted && fc['password'].invalid" class="error">
+          Password is required.
+        </div>
+      </div>
+
+      <div class="field">
+        <input type="submit" value="LOGIN" />
+      </div>
+
+      <div class="forgot-password">
+        <a routerLink="/forget">Forgot Password?</a>
+      </div>
+    </form>
+
+    <div class="signup">
+      Don't have an account? <a routerLink="/register">SignUp Now</a>
+    </div>
+  </div>
+</div>
