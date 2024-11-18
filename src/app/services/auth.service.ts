@@ -31,12 +31,12 @@ export class AuthService {
         return this.http.post<any>(LOGIN_URL, userLogin).pipe(
             tap({
                 next: (response) => {
-                    if(response.role === 'student') {
+                    if(response.role === 'Student') {
                         const student = response as Student;
                         this.setStudentToLocalStorage(student);
                         this.studentSubject.next(student);
                         this.toastrService.success(`Welcome ${student.firstName}!`, 'Login Successful');
-                    } else if(response.role === 'admin') {
+                    } else if(response.role === 'Admin') {
                         const admin = response as Admin;
                         this.setAdminToLocalStorage(admin);
                         this.adminSubject.next(admin);

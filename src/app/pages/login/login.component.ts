@@ -49,9 +49,9 @@ export class LoginComponent implements OnInit {
     }).subscribe({
       next: (response) => {
         const userRole = response.role;
-        if (userRole === 'student') {
+        if (userRole === 'Student') {
           this.router.navigateByUrl('/student-page');
-        } else if (userRole === 'admin') {
+        } else if (userRole === 'Admin') {
           this.router.navigateByUrl('/admin-page');
         } 
       },
