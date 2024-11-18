@@ -28,12 +28,14 @@
     display: flex;
     gap: 20px;
     align-items: center;
+    position: relative;
   }
   
   .menu-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    position: relative;  /* Ensure it's relative for absolute positioning of the menu */
   }
   
   .menu-container a {
@@ -43,7 +45,7 @@
     text-decoration: none;
     padding: 10px 15px;
     display: block;
-    width: 100%;  /* Make sure the link spans the full width */
+    width: 100%;
     text-align: left;
   }
   
@@ -54,10 +56,18 @@
     width: 100%;  /* Match width of the parent element */
     z-index: 1;
     border-radius: 5px;
+    top: 100%;  /* Position it below the name */
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Smooth fade-in effect */
   }
   
   .menu-container:hover .menu {
     display: block;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s linear 0s; /* Fade-in and show instantly */
   }
   
   .menu a {
@@ -65,7 +75,7 @@
     padding: 10px 20px;
     text-decoration: none;
     display: block;
-    width: 100%;  /* Ensure the links are also the same width */
+    width: 100%;
   }
   
   .menu a:hover {
@@ -74,14 +84,5 @@
   
   .navbar-spacer {
     height: 100px;
-  }
-  
-  /* Ensure that the right button container takes up the same width as the student name */
-  .right-button {
-    width: 200px;  /* Adjust the width to match the student name container */
-  }
-  
-  .right-button .menu-container {
-    width: 100%; /* Ensures that menu-container takes up full width of the right-button */
   }
   
