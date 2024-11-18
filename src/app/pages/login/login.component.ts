@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService, 
     private activatedRoute: ActivatedRoute, 
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService  // Add toastr service here
   ) {}
 
   ngOnInit(): void {
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   submit(): void {
     this.isSubmitted = true;
 
-    if(this.loginForm.invalid) {
+    if (this.loginForm.invalid) {
       return;
     }
 
@@ -51,12 +51,21 @@ export class LoginComponent implements OnInit {
         const userRole = response.role;
         if (userRole === 'Student') {
           this.router.navigateByUrl('/student-page');
+          this.toastr.success('Login successful!', 'Welcome Back!', {
+            timeOut: 3000,  // To show it for 3 seconds
+          });
         } else if (userRole === 'Admin') {
           this.router.navigateByUrl('/admin-page');
-        } 
+          this.toastr.success('Login successful!', 'Welcome Admin!', {
+            timeOut: 3000,
+          });
+        }
       },
       error: (error) => {
         console.error('Login error:', error);
+        this.toastr.error('Login failed. Please check your credentials.', 'Error', {
+          timeOut: 3000,
+        });
       }
     });
   }

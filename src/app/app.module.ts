@@ -32,7 +32,6 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
     RegisterAdminComponent,
     StudentPageComponent,
     AdminPageComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -42,12 +41,15 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut:5000,
-      positionClass:'toast-bottom-right',
-      newestOnTop:false
-    })
+      timeOut: 5000,
+      positionClass: 'toast-bottom-right', // Position set to bottom-right
+      newestOnTop: false,
+      preventDuplicates: true,  // Prevents duplicate toastrs from showing
+      closeButton: true,  // Adds a close button
+      progressBar: true,  // Shows a progress bar
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
