@@ -28,14 +28,16 @@
     display: flex;
     gap: 20px;
     align-items: center;
-    position: relative; /* This makes sure the menu can be positioned relative to the right button */
+    position: relative; 
+    cursor: pointer;
   }
   
   .menu-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    position: relative; /* Allows positioning of the dropdown */
+    position: relative; 
+    cursor: pointer;
   }
   
   .menu-trigger {
@@ -49,10 +51,12 @@
     text-align: left;
     transition: background-color 0.3s ease; /* Smooth transition for hover effect */
     box-sizing: border-box; /* Ensure padding doesn't affect the width */
+    cursor: pointer;
   }
   
   .menu-trigger:hover {
     background-color: #d94e2a; /* Change button color when hovered */
+    cursor: pointer;
   }
   
   .menu {
@@ -68,6 +72,7 @@
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Smooth fade-in effect */
     box-sizing: border-box; /* Ensure padding doesn't affect the width */
+    cursor: pointer;
   }
   
   .menu-container:hover .menu {
@@ -75,6 +80,7 @@
     opacity: 1;
     visibility: visible;
     transition: opacity 0.3s ease, visibility 0s linear 0s; /* Fade-in and show instantly */
+    cursor: pointer;
   }
   
   .menu a {
@@ -84,6 +90,7 @@
     display: block;
     width: 100%;  /* Ensures the links are also the same width */
     box-sizing: border-box; /* Ensures no extra width is added by padding */
+    cursor: pointer;
   }
   
   .menu a:hover {
