@@ -1,1 +1,20 @@
-<p>profile works!</p>
+<div class="profile-page">
+    <header class="navbar">
+      <div class="app-name" routerLink="/">
+        EduGuideAI
+      </div>
+  
+      <div class="right-button">
+        <li class="menu-container">
+          <a class="menu-trigger">{{ student.firstName | titlecase }}</a>
+          <div class="menu">
+            <a routerLink="/profile">Profile</a>
+            <a (click)="logout()">Logout</a>
+          </div>
+        </li>
+      </div>
+    </header>
+  
+    <div class="navbar-spacer"></div>
+  </div>
+  

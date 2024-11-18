@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #f4623a; /* Header color */
+    background-color: #f4623a; 
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -47,31 +47,31 @@
     text-decoration: none;
     padding: 10px 15px;
     display: block;
-    width: 200px;  /* Set the fixed width for the button */
+    width: 200px; 
     text-align: left;
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-    box-sizing: border-box; /* Ensure padding doesn't affect the width */
+    transition: background-color 0.3s ease; 
+    box-sizing: border-box; 
     cursor: pointer;
   }
   
   .menu-trigger:hover {
-    background-color: #d94e2a; /* Change button color when hovered */
+    background-color: #d94e2a; 
     cursor: pointer;
   }
   
   .menu {
     display: none;
     position: absolute;
-    background-color: #d94e2a; /* A darker shade that fits with the header color */
-    width: 200px;  /* Match width of the parent element */
+    background-color: #d94e2a; 
+    width: 200px; 
     z-index: 1;
     border-radius: 5px;
-    top: 100%;  /* Positions the menu directly below the name */
+    top: 100%;  
     left: 0;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Smooth fade-in effect */
-    box-sizing: border-box; /* Ensure padding doesn't affect the width */
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s; 
+    box-sizing: border-box;
     cursor: pointer;
   }
   
@@ -79,7 +79,7 @@
     display: block;
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.3s ease, visibility 0s linear 0s; /* Fade-in and show instantly */
+    transition: opacity 0.3s ease, visibility 0s linear 0s; 
     cursor: pointer;
   }
   
@@ -88,25 +88,24 @@
     padding: 10px 20px;
     text-decoration: none;
     display: block;
-    width: 100%;  /* Ensures the links are also the same width */
-    box-sizing: border-box; /* Ensures no extra width is added by padding */
+    width: 100%;  
+    box-sizing: border-box; 
     cursor: pointer;
   }
   
   .menu a:hover {
-    background-color: #b53e1d; /* Darker shade on hover */
+    background-color: #b53e1d; 
   }
   
   .navbar-spacer {
     height: 100px;
   }
   
-  /* Ensure that the right button container takes up the same width as the student name */
   .right-button {
-    width: 200px;  /* Adjust the width to match the student name container */
+    width: 200px;  
   }
   
   .right-button .menu-container {
-    width: 100%; /* Ensures that menu-container takes up full width of the right-button */
+    width: 100%; 
   }
   
