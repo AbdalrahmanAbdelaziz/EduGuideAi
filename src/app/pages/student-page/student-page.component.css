@@ -38,7 +38,7 @@
     position: relative; /* Allows positioning of the dropdown */
   }
   
-  .menu-container a {
+  .menu-trigger {
     font-size: 1.2em;
     font-weight: 500;
     color: white;
@@ -47,6 +47,11 @@
     display: block;
     width: 100%;  /* Ensures the menu button spans full width */
     text-align: left;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .menu-trigger:hover {
+    background-color: #d94e2a; /* Change button color when hovered */
   }
   
   .menu {
