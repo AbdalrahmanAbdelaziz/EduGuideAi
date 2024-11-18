@@ -17,6 +17,7 @@ import { StudentPageComponent } from './pages/student-page/student-page.componen
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './pages/header/header.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RegisterAdminComponent,
     StudentPageComponent,
     AdminPageComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

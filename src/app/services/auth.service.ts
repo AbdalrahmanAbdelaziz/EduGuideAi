@@ -36,7 +36,8 @@ export class AuthService {
                         this.setStudentToLocalStorage(student);
                         this.studentSubject.next(student);
                         this.toastrService.success(`Welcome ${student.firstName}!`);
-                    } else if(response.role === 'Admin') {
+                    } 
+                    else if(response.role === 'Admin') {
                         const admin = response as Admin;
                         this.setAdminToLocalStorage(admin);
                         this.adminSubject.next(admin);
