@@ -6,7 +6,7 @@ html, body {
 
 
 .navbar {
-    background-color: #2C3E50; 
+    background-color: #f4623a; 
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -38,8 +38,8 @@ html, body {
 }
 
 button {
-    background-color: #f4623a; 
-    color: #fff;
+    background-color: #FFFFFF; 
+    color: #333;
     font-size: 1em;
     padding: 12px 25px;
     border: none;
@@ -52,7 +52,7 @@ button {
 }
 
 button:hover {
-    background-color: #d94e2a; 
+    background-color: #F2F2F2; 
     transform: scale(1.05); 
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
 }
@@ -126,7 +126,7 @@ button:hover {
 }
 
 .text-section h3 {
-    color: #00c7b1;
+    color: #d94e2a;
     font-size: 1.1em;
     margin-bottom: 10px;
 }
@@ -138,7 +138,7 @@ button:hover {
 }
 
 .help-button {
-    background-color: #f4623a;
+    background-color: #f4623a; 
     color: #fff;
     padding: 15px 35px; 
     border: none;
@@ -149,7 +149,7 @@ button:hover {
 }
 
 .help-button:hover {
-    background-color: #d94e2a;
+    background-color: #d94e2a; /* Same hover effect as navbar button */
     transform: scale(1.05);
 }
 
@@ -206,7 +206,7 @@ button:hover {
 }
 
 .explore-link {
-    color: #29b6f6;
+    color: #2C3E50;
     font-size: 1.2em;
     text-decoration: none;
     font-weight: bold;
@@ -231,7 +231,3 @@ button:hover {
     margin: 0 auto;
     padding: 0 20px;
 }
-
-
-
-

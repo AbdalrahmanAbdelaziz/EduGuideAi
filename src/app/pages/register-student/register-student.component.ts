@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { NgForm } from '@angular/forms';
 import { Student } from '../../shared/interfaces/Student';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register-student',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 export class RegisterStudentComponent implements OnInit{
 
 
-  constructor(private authService: AuthService, private router: Router){}
+  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService){}
 
   ngOnInit(): void {
       
@@ -30,10 +31,10 @@ export class RegisterStudentComponent implements OnInit{
                 }
             );
         } else {
-            alert('Passwords do not match');
+            this.toastr.error("Passwords don't match")
         }
     } else {
-        alert('Please fill in all required fields');
+        this.toastr.info("Please fill in all required fields")
     }
 }
 
