@@ -19,11 +19,11 @@ export class AuthService {
     private studentSubject = new BehaviorSubject<Student | null>(this.getStudentFromLocalStorage());
     private adminSubject = new BehaviorSubject<Admin | null>(this.getAdminFromLocalStorage());
 
-    public userObservable: Observable<Student | null>;
+    public studentObservable: Observable<Student | null>;
     public adminObservable: Observable<Admin | null>;
 
     constructor(private http: HttpClient, private toastrService: ToastrService) {
-        this.userObservable = this.studentSubject.asObservable();
+        this.studentObservable = this.studentSubject.asObservable();
         this.adminObservable = this.adminSubject.asObservable();
     }
 
