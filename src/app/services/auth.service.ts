@@ -35,16 +35,16 @@ export class AuthService {
                         const student = response as Student;
                         this.setStudentToLocalStorage(student);
                         this.studentSubject.next(student);
-                        this.toastrService.success(`Welcome ${student.firstName}!`, 'Login Successful');
+                        this.toastrService.success(`Welcome ${student.firstName}!`);
                     } else if(response.role === 'Admin') {
                         const admin = response as Admin;
                         this.setAdminToLocalStorage(admin);
                         this.adminSubject.next(admin);
-                        this.toastrService.success(`Welcome ${admin.firstName}!`, 'Login Successful');
+                        this.toastrService.success(`Welcome ${admin.firstName}!`);
                     }
                 },
                 error: (errorResponse) => {
-                    this.toastrService.error(errorResponse.error, 'Login Failed');
+                    this.toastrService.error('Login Failed');
                 }
             })
         );
