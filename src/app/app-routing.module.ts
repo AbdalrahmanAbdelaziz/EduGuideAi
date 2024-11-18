@@ -10,6 +10,7 @@ import { RegisterStudentComponent } from './pages/register-student/register-stud
 import { RegisterAdminComponent } from './pages/register-admin/register-admin.component';
 import { StudentPageComponent } from './pages/student-page/student-page.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component:LandComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'registerAdmin', component: RegisterAdminComponent},
   { path: 'student-page', component: StudentPageComponent},
   { path: 'admin-page', component: AdminPageComponent},
+  { path: 'profile', component: ProfileComponent},
 ];
 
 @NgModule({
