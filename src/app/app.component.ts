@@ -25,7 +25,7 @@ export class AppComponent {
       this.isLoginPage = event.urlAfterRedirects === '/login'; 
       this.isRegisterPage = event.urlAfterRedirects ==='/register'
       this.isForgetPage = event.urlAfterRedirects ==='/forget-password'
-      this.isResetPage = event.urlAfterRedirects ==='/reset-password'
+      this.isResetPage = event.urlAfterRedirects ==='/reset'
       this.isRegisterStudentPage = event.urlAfterRedirects ==='/registerStudent'
       this.isRegisterAdminPage = event.urlAfterRedirects ==='/registerAdmin'
 
