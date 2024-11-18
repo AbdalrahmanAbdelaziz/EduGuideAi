@@ -6,7 +6,7 @@ export const LOGOUT_URL = BASE_URL + '/api/auth/logout';
 
 
 export const FORGET_PASSWORD_URL = BASE_URL + '/api/auth/forget-password'
-export const RESET_PASSWORD_URL = BASE_URL + '/api/auth/reset-password'
+export const RESET_PASSWORD_URL = BASE_URL + '/api/auth/reset'
 
 
 export const STUDENT_REGISTER_URL = BASE_URL + '/api/student/register';
