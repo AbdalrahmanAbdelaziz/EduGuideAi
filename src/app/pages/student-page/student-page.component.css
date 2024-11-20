@@ -1,4 +1,3 @@
-/* Main Navbar */
 .navbar {
   background-color: #333;
   color: #fff;
@@ -97,13 +96,12 @@
   background-color: #d94e2a;
 }
 
-/* Content Layout */
+
 .content {
   display: flex;
-  margin-top: 80px; /* Adjusted to make space for the navbar */
+  margin-top: 80px; 
 }
 
-/* Side Navbar */
 .side-navbar {
   width: 200px;
   background-color: #2f2f2f;
@@ -112,7 +110,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   position: fixed;
-  top: 55px; /* Starts right after the main navbar */
+  top: 55px; 
   left: 0;
   bottom: 0;
   z-index: 999;
@@ -163,23 +161,21 @@
 }
 
 .side-navbar-link i {
-  margin-right: 10px; /* Space between icon and text */
+  margin-right: 10px; 
 }
 
-/* Main Content Section */
-/* Main Content Section */
+
 .features-section {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 35px;
   padding: 20px;
-  margin-left: 450px; /* Adjust to make space for the side navbar */
+  margin-left: 450px; 
   max-width: calc(100% - 400px);
-  justify-items: center; /* Center the cards horizontally */
+  justify-items: center; 
   padding-right: 20px;
 }
 
-/* Card */
 .card {
   background-color: #333;
   color: white;
@@ -192,10 +188,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 100%; /* Ensure full width within grid cell */
-  max-width: 385px; /* Increased width for the cards */
-  height: 400px; /* Set a fixed height for the cards */
-  min-height: 400px; /* Ensure cards remain consistent height */
+  width: 100%; 
+  max-width: 385px; 
+  height: 400px; 
+  min-height: 400px; 
 }
 
 .card:hover {
@@ -213,7 +209,7 @@
 .card-content {
   padding: 20px;
   text-align: center;
-  flex-grow: 1; /* Ensure content stretches to fill available space */
+  flex-grow: 1; 
 }
 
 .card-title {
