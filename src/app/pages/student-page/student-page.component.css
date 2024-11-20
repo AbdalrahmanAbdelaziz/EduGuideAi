@@ -171,7 +171,7 @@
 .features-section {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
-  gap: 30px;
+  gap: 35px;
   padding: 20px;
   margin-left: 450px; /* Adjust to make space for the side navbar */
   max-width: calc(100% - 400px);
