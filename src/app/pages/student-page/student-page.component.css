@@ -112,7 +112,7 @@
   .features-section {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+    gap: 45px;
     padding: 20px;
     margin: 0 auto;
     max-width: 1200px;
