@@ -1,19 +1,17 @@
 <div class="profile-page">
-    <header class="navbar">
-      <div class="app-name" routerLink="/">
-        EduGuideAI
-      </div>
-  
-      <div class="right-button">
-        <li class="menu-container">
-          <a class="menu-trigger" routerLink="/student-page">{{ student.firstName | titlecase }}</a>
-          <div class="menu">
-            <a routerLink="/profile">Profile</a>
-            <a (click)="logout()">Logout</a>
-          </div>
-        </li>
-      </div>
-    </header>
+  <header class="navbar">
+    <div class="app-name" routerLink="/">
+      EduGuideAI
+    </div>
+
+    <div class="right-button">
+      <li class="menu-container">
+        <a routerLink="/profile" class="menu-trigger">
+          <i class="fas fa-user-circle"></i> {{ student.firstName | titlecase }}
+        </a>
+      </li>
+    </div>
+  </header>
   
     <div class="navbar-spacer"></div>
   </div>
