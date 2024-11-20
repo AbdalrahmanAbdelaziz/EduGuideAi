@@ -30,10 +30,16 @@ export class StudentPageComponent implements OnInit {
       link: '/learning-resources'
     },
     {
-      name: 'Assignments',
-      caption: 'Submit and track your assignments online.',
-      image: 'bk.jpg',
-      link: '/assignments'
+      name: 'Learning Resources',
+      caption: 'Access a library of curated educational resources.',
+      image: 'aa.webp',
+      link: '/learning-resources'
+    },
+    {
+      name: 'Learning Resources',
+      caption: 'Access a library of curated educational resources.',
+      image: 'aa.webp',
+      link: '/learning-resources'
     },
   ];
 
