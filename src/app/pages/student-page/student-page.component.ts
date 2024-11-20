@@ -41,6 +41,18 @@ export class StudentPageComponent implements OnInit {
       image: 'aa.webp',
       link: '/learning-resources'
     },
+    {
+      name: 'Learning Resources',
+      caption: 'Access a library of curated educational resources.',
+      image: 'aa.webp',
+      link: '/learning-resources'
+    },
+    {
+      name: 'Learning Resources',
+      caption: 'Access a library of curated educational resources.',
+      image: 'aa.webp',
+      link: '/learning-resources'
+    },
   ];
 
   constructor(private authService: AuthService, private router: Router) {
