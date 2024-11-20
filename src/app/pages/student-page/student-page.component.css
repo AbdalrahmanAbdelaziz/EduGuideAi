@@ -173,7 +173,7 @@
   grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
   gap: 20px;
   padding: 20px;
-  margin-left: 400px; /* Adjust to make space for the side navbar */
+  margin-left: 450px; /* Adjust to make space for the side navbar */
   max-width: calc(100% - 400px);
   justify-items: center; /* Center the cards horizontally */
   padding-right: 20px;
@@ -193,7 +193,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%; /* Ensure full width within grid cell */
-  max-width: 375px; /* Increased width for the cards */
+  max-width: 385px; /* Increased width for the cards */
   height: 400px; /* Set a fixed height for the cards */
   min-height: 400px; /* Ensure cards remain consistent height */
 }
