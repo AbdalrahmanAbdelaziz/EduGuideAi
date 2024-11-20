@@ -13,37 +13,37 @@ export class StudentPageComponent implements OnInit {
   features = [
     {
       name: 'Talk To Lexi',
-      caption: 'Lexi: Your intelligent assistant, always ready to help.',
+      caption: 'Lexi: Your intelligent assistant, always here to help.',
       image: 'chatbot.jpg',
       link: '/'
     },
     {
       name: 'My Courses',
-      caption: 'Your Path to Knowledge Starts Here.',
+      caption: 'Your path to knowledge begins right here with us.',
       image: 'about.jpg',
       link: '/progress-tracker'
     },
     {
       name: 'Transcript',
-      caption: 'A Snapshot of Your Achievements.',
+      caption: 'A snapshot of your progress and great achievements.',
       image: 't.jpg',
       link: '/learning-resources'
     },
     {
       name: 'Interactive Roadmap',
-      caption: 'Track Your Progress and Stay on Course with Our Interactive Roadmap.',
+      caption: 'Monitor your progress and stay on track effortlessly.',
       image: 'v.jpg',
       link: '/learning-resources'
     },
     {
       name: 'Search For Internships',
-      caption: 'Explore Opportunities, Gain Experience, and Build Your Future.',
+      caption: 'Explore new opportunities, gain experience, and build.',
       image: 'i.webp',
       link: '/learning-resources'
     },
     {
       name: 'Stress Managment',
-      caption: 'Your Guide to Finding Calm in the Chaos.',
+      caption: 'Your guide to finding peace amidst the chaos.',
       image: 'st.jpg',
       link: '/learning-resources'
     },
