@@ -1,47 +1,45 @@
 <div class="student-page">
-  <!-- Side Navbar -->
-  <div class="side-navbar">
-    <div class="profile">
-      <img [src]="student.profilePic || 'default-profile.jpg'" alt="User Profile" class="profile-pic" />
+  <!-- Main Navbar -->
+  <header class="navbar">
+    <div class="app-name" routerLink="/">
+      EduGuideAI
+    </div>
+
+    <div class="right-button">
+      <li class="menu-container">
+        <a class="menu-trigger">{{ student.firstName | titlecase }}</a>
+      </li>
+    </div>
+  </header>
+
+  <div class="navbar-spacer"></div>
+
+  <div class="content">
+    <!-- Side Navbar -->
+    <div class="side-navbar">
       <div class="user-info">
-        <p class="name">{{ student.firstName | titlecase }} {{ student.lastName | titlecase }}</p>
-        <p class="level">{{ student.level }}</p>
-        <p class="department">{{ student.department }}</p>
-        <p class="gpa">GPA: {{ student.gpa }}</p>
+        <img [src]="student.profilePic || 'default-avatar.jpg'" alt="User Image" class="user-img" />
+        <div class="user-details">
+          <h3>{{ student.firstName }} {{ student.lastName }}</h3>
+          <p>{{ student.level }} | {{ student.department }}</p>
+          <p>GPA: {{ student.gpa | number: '1.1-2' }}</p>
+        </div>
+      </div>
+
+      <div class="side-navbar-links">
+        <a routerLink="/profile" class="side-navbar-link">Profile</a>
+        <a routerLink="/settings" class="side-navbar-link">Settings</a>
+        <a (click)="logout()" class="side-navbar-link">Logout</a>
       </div>
     </div>
-    <div class="nav-buttons">
-      <button class="nav-btn" (click)="navigateTo('/profile')">Profile</button>
-      <button class="nav-btn" (click)="navigateTo('/settings')">Settings</button>
-      <button class="nav-btn" (click)="logout()">Logout</button>
-    </div>
-  </div>
 
-  <!-- Main Content -->
-  <div class="main-content">
-    <header class="navbar">
-      <div class="app-name" routerLink="/">
-        EduGuideAI
-      </div>
-      <div class="right-button">
-        <li class="menu-container">
-          <a class="menu-trigger">{{ student.firstName | titlecase }}</a>
-          <div class="menu">
-            <a routerLink="/profile">Profile</a>
-            <a (click)="logout()">Logout</a>
-          </div>
-        </li>
-      </div>
-    </header>
-
-    <div class="navbar-spacer"></div>
-
+    <!-- Main Content Section -->
     <div class="features-section">
       <div class="card" *ngFor="let feature of features" (click)="navigateTo(feature.link)">
         <img [src]="feature.image" alt="Feature Image" class="card-image" />
         <div class="card-content">
-          <h3 class="card-title">{{ feature.name }}</h3>
-          <p class="card-caption">{{ feature.caption }}</p>
+          <h3 class="card-title"> {{ feature.name }} </h3>
+          <p class="card-caption"> {{ feature.caption }} </p>
         </div>
       </div>
     </div>

@@ -9,11 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./student-page.component.css']
 })
 export class StudentPageComponent implements OnInit {
-
   student!: Student;
   features = [
     {
-      name: 'AI Tutor',
+      name: 'Ai tutor',
       caption: 'Get personalized tutoring sessions powered by AI.',
       image: 'aa.webp',
       link: '/'
@@ -29,7 +28,13 @@ export class StudentPageComponent implements OnInit {
       caption: 'Access a library of curated educational resources.',
       image: 'aa.webp',
       link: '/learning-resources'
-    }
+    },
+    {
+      name: 'Assignments',
+      caption: 'Submit and track your assignments online.',
+      image: 'assignments.jpg',
+      link: '/assignments'
+    },
   ];
 
   constructor(private authService: AuthService, private router: Router) {
@@ -42,12 +47,12 @@ export class StudentPageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  navigateTo(link: string): void {
-    this.router.navigate([link]);
-  }
-
-  logout(): void {
+  logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  navigateTo(link: string) {
+    this.router.navigate([link]);
   }
 }
