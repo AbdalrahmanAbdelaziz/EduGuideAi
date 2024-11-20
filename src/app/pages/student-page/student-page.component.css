@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  position: absolute;
+  position: flex;
   top: 0;
   left: 0;
   right: 0;
@@ -105,7 +105,7 @@
 
 /* Side Navbar */
 .side-navbar {
-  width: 250px;
+  width: 200px;
   background-color: #2f2f2f;
   color: white;
   padding: 20px;
@@ -191,6 +191,7 @@
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  color: #d94e2a;
 }
 
 .card-image {
