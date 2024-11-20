@@ -193,7 +193,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%; /* Ensure full width within grid cell */
-  max-width: 350px; /* Increased width for the cards */
+  max-width: 400px; /* Increased width for the cards */
   height: 400px; /* Set a fixed height for the cards */
   min-height: 400px; /* Ensure cards remain consistent height */
 }
