@@ -38,13 +38,13 @@ export class StudentPageComponent implements OnInit {
     {
       name: 'Learning Resources',
       caption: 'Access a library of curated educational resources.',
-      image: 's.jpg',
+      image: 'i.webp',
       link: '/learning-resources'
     },
     {
       name: 'Learning Resources',
       caption: 'Access a library of curated educational resources.',
-      image: 'i.webp',
+      image: 'st.jpg',
       link: '/learning-resources'
     },
 
