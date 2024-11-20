@@ -112,7 +112,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   position: fixed;
-  top: 55px;
+  top: 80px; /* Starts right after the main navbar */
   left: 0;
   bottom: 0;
   z-index: 999;
@@ -165,11 +165,12 @@
 /* Main Content Section */
 .features-section {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
   gap: 20px;
   padding: 20px;
   margin-left: 270px; /* Adjust to make space for the side navbar */
   max-width: calc(100% - 270px); /* Ensure the content section is full width minus the sidebar */
+  justify-items: center; /* Center the cards horizontally */
 }
 
 .card {
@@ -180,12 +181,15 @@
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  color: #d94e2a;
 }
 
 .card-image {

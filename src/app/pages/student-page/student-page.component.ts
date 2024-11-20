@@ -32,7 +32,7 @@ export class StudentPageComponent implements OnInit {
     {
       name: 'Assignments',
       caption: 'Submit and track your assignments online.',
-      image: 'assignments.jpg',
+      image: 'bk.jpg',
       link: '/assignments'
     },
   ];

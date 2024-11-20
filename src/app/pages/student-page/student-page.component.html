@@ -40,8 +40,8 @@
       <div class="card" *ngFor="let feature of features" (click)="navigateTo(feature.link)">
         <img [src]="feature.image" alt="Feature Image" class="card-image" />
         <div class="card-content">
-          <h3 class="card-title"> {{ feature.name }} </h3>
-          <p class="card-caption"> {{ feature.caption }} </p>
+          <h3 class="card-title">{{ feature.name }}</h3>
+          <p class="card-caption">{{ feature.caption }}</p>
         </div>
       </div>
     </div>
