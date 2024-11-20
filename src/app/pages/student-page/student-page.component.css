@@ -171,6 +171,7 @@
   margin-left: 270px; /* Adjust to make space for the side navbar */
   max-width: calc(100% - 270px); /* Ensure the content section is full width minus the sidebar */
   justify-items: center; /* Center the cards horizontally */
+  padding-right: 20px; /* To avoid content overflowing */
 }
 
 .card {
