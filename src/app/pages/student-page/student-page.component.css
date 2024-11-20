@@ -169,6 +169,7 @@
 }
 
 /* Main Content Section */
+/* Main Content Section */
 .features-section {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
@@ -178,6 +179,7 @@
   justify-items: center; /* Center the cards horizontally */
 }
 
+/* Card Styling */
 .card {
   background-color: #333;
   color: white;
@@ -193,6 +195,7 @@
   height: 350px; /* Set a fixed height for all cards */
 }
 
+/* Card Hover Effect */
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -205,13 +208,14 @@
   object-fit: cover;
 }
 
+/* Ensure content inside cards doesn’t overflow */
 .card-content {
   padding: 20px;
   text-align: center;
-  flex-grow: 1; 
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
+  justify-content: space-between; /* This ensures the text doesn't overlap */
+  height: 100%; /* Make sure the content fills the card */
 }
 
 .card-title {
@@ -219,6 +223,7 @@
   font-weight: 700;
   margin: 10px 0;
   font-family: 'Montserrat', sans-serif;
+  flex-grow: 1; /* Ensures the title expands to fill space if necessary */
 }
 
 .card-caption {
@@ -226,5 +231,5 @@
   font-weight: 300;
   font-family: 'Open Sans', sans-serif;
   color: #ffdbcc;
-  margin-top: auto; 
+  margin-top: auto; /* Pushes caption to the bottom if there’s extra space */
 }
