@@ -20,7 +20,7 @@ export class StudentPageComponent implements OnInit {
     {
       name: 'Progress Tracker',
       caption: 'Track your learning journey with detailed analytics.',
-      image: '2.jpg',
+      image: 'about.jpg',
       link: '/progress-tracker'
     },
     {
