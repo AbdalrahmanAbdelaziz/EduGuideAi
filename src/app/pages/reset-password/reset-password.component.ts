@@ -14,6 +14,7 @@ export class ResetPasswordComponent implements OnInit {
   resetPasswordForm!: FormGroup;
   isSubmitted = false;
   token = '';
+  email = '';
 
   constructor(
     private authService: AuthService,
@@ -25,12 +26,15 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = this.activatedRoute.snapshot.queryParams['token'];
+    this.email = this.activatedRoute.snapshot.queryParams['email'] || '';
+  
     this.resetPasswordForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: [{ value: this.email, disabled: true }], 
       newPassword: ['', Validators.required],
       confirmPassword: ['', Validators.required]
     }, { validator: this.passwordMatchValidator });
   }
+  
 
   passwordMatchValidator(formGroup: FormGroup): null | { notMatching: true } {
     return formGroup.get('newPassword')?.value === formGroup.get('confirmPassword')?.value
@@ -45,19 +49,18 @@ export class ResetPasswordComponent implements OnInit {
   submit(): void {
     this.isSubmitted = true;
 
-    if (this.resetPasswordForm.invalid)
-      return;
+    if (this.resetPasswordForm.invalid) return;
 
-    const email = this.fc['email'].value;
     const newPassword = this.fc['newPassword'].value;
 
-    this.authService.resetPasswordWithEmail(this.token, email, newPassword).subscribe({
+    this.authService.resetPassword(this.token, newPassword).subscribe({
       next: () => {
-        this.toastr.success('Password reset successfully.');
+        this.toastr.success('Password has been reset successfully');
         this.router.navigate(['/login']);
       },
       error: (err) => {
-        this.toastr.error('Error resetting password: ' + err.message);
+        this.toastr.error('Error resetting password');
+        console.error(err);
       }
     });
   }

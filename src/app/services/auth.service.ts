@@ -91,11 +91,7 @@ export class AuthService {
     );
    }
 
-   resetPasswordWithEmail(token: string, email: string, newPassword: string) {
-    const payload = { email, newPassword, token };
-    return this.http.post('/api/auth/reset-password', payload);
-  }
-  
+   
 
    resetPassword(token: string, newPassword: string): Observable<any> {
     return this.http.post<any>(RESET_PASSWORD_URL, {token, newPassword}).pipe(
