@@ -10,22 +10,47 @@ import { Router } from '@angular/router';
 })
 export class StudentPageComponent implements OnInit{
 
-
   student!: Student;
-   capitalizeFirstLetter(name: string): string {
-    return name.charAt(0).toUpperCase() + name.slice(1);
-  }
+  features = [
+    {
+      name: 'Ai tutor',
+      caption: 'Get personalized tutoring sessions powered by AI.',
+      image: 'aa.webp',
+      link: '/'
+    },
+
+    {
+      name: 'Progress Tracker',
+      caption: 'Track your learning journey with detailed analytics.',
+      image: 'assets/images/progress-tracker.jpg',
+      link: '/progress-tracker',
+    },
+
+
+    {
+      name: 'Learning Resources',
+      caption: 'Access a library of curated educational resources.',
+      image: 'assets/images/learning-resources.jpg',
+      link: '/learning-resources',
+    },
+
+  ];
+  
 
   constructor(private authService: AuthService, private router: Router) {
 
     this.authService.studentObservable.subscribe((newStudent) => {
-      if (newStudent) {
+      if (newStudent) { 
         this.student = newStudent; 
       } 
     });
   }
 
   ngOnInit(): void {
+  }
+
+  navigateTo(link: string){
+    this.router.navigate([link]);
   }
 
   logout() {
