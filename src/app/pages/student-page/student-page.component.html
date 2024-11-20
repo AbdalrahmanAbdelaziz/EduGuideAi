@@ -7,14 +7,14 @@
 
     <div class="right-button">
       <li class="menu-container">
-        <a class="menu-trigger">{{ student.firstName | titlecase }}</a>
-     
+        <a class="menu-trigger">
+          <i class="fas fa-user-circle"></i> {{ student.firstName | titlecase }}
+        </a>
       </li>
     </div>
   </header>
 
   <div class="navbar-spacer"></div>
-
 
   <div class="content">
     <!-- Side Navbar -->
@@ -29,9 +29,15 @@
       </div>
 
       <div class="side-navbar-links">
-        <a routerLink="/profile" class="side-navbar-link">Profile</a>
-        <a routerLink="/settings" class="side-navbar-link">Settings</a>
-        <a (click)="logout()" class="side-navbar-link">Logout</a>
+        <a routerLink="/profile" class="side-navbar-link">
+          <i class="fas fa-user"></i> Profile
+        </a>
+        <a routerLink="/settings" class="side-navbar-link">
+          <i class="fas fa-cogs"></i> Settings
+        </a>
+        <a (click)="logout()" class="side-navbar-link">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
       </div>
     </div>
 

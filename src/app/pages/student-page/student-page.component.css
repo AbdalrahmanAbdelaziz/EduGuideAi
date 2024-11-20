@@ -162,6 +162,10 @@
   background-color: #d94e2a;
 }
 
+.side-navbar-link i {
+  margin-right: 10px; /* Space between icon and text */
+}
+
 /* Main Content Section */
 .features-section {
   display: grid;
