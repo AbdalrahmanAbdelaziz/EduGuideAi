@@ -1,28 +1,27 @@
 <div class="bg-img" style="background-image: url('bg.jpg');">
     <div class="overlay"></div>
 
-    <div class="container">
-        <h2>Student Registration</h2>
+    <div class="content">
+        <h1>Student Registration</h1>
 
         <form (ngSubmit)="onSubmit(studentForm)" #studentForm="ngForm">
-            <div class="input-group">
-                
+            <div class="field">
                 <input type="text" placeholder="First Name" name="firstName" ngModel required/>
             </div>
 
-            <div class="input-group">
+            <div class="field">
                 <input type="text" placeholder="Last Name" name="lastName" ngModel required/>
             </div>
 
-            <div class="input-group">
+            <div class="field">
                 <input type="email" placeholder="Email" name="email" ngModel required />
             </div>
 
-            <div class="input-group">
+            <div class="field">
                 <input type="password" placeholder="Password" name="password" ngModel required />
             </div>
             
-            <div class="input-group">
+            <div class="field">
                 <input type="password" placeholder="Confirm Password" name="confirmPassword" ngModel required />
             </div>
 

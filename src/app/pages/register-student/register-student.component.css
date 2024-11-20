@@ -1,4 +1,18 @@
-.bg-img {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', Arial, sans-serif;
+    overflow: hidden;
+    background-color: #f5f5f5; 
+  }
+  
+  .bg-img {
     position: absolute;
     top: 0;
     left: 0;
@@ -9,69 +23,106 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.overlay {
+  }
+  
+  .overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.4); 
     z-index: 1;
-}
-
-.container {
+  }
+  
+  .content {
     position: relative;
-    z-index: 2;
     background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    padding: 40px;
-    width: 400px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    padding: 40px 40px 50px 40px;
+    border-radius: 15px; 
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     text-align: center;
-}
-
-h2 {
-    font-size: 24px;
-    color: #f4623a;
-    margin-bottom: 20px;
-}
-
-.input-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+    z-index: 2;
+    animation: fadeIn 0.8s ease-out; 
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  h1 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  
+  .field {
     position: relative;
-}
-
-.icon {
-    position: absolute;
-    left: 15px;
-    color: #888;
-    font-size: 20px;
-}
-
-input {
+    margin-bottom: 25px;
+  }
+  
+  .field input {
     width: 100%;
-    padding: 10px 15px 10px 40px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    padding: 16px 14px 16px 45px;
     font-size: 16px;
-}
-
-button {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .field input:focus {
+    border-color: #f4623a; 
+    background-color: #fff; 
+  }
+  
+  .field input:focus + .error {
+    color: #f4623a;
+  }
+  
+  button {
     width: 100%;
-    padding: 10px;
-    background-color: #f4623a;
+    padding: 16px;
+    background-color: #333;
     color: white;
-    font-size: 18px;
     border: none;
-    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #d94a29;
-}
+    font-size: 16px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #e14b24;
+  }
+  
+  .error {
+    color: #d93f3f;
+    font-size: 13px;
+    margin-top: 5px;
+    text-align: left;
+  }
+  
+ 
+  /* Add responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .content {
+      padding: 30px;
+      max-width: 350px;
+    }
+  
+    h1 {
+      font-size: 26px;
+    }
+  
+    .field input {
+      font-size: 14px;
+    }
+  }
+  

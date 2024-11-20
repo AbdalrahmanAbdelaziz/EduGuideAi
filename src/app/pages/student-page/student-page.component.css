@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #f4623a; 
+    background-color: #333; 
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -112,14 +112,14 @@
   .features-section {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 60px;
+    gap: 20px;
     padding: 20px;
     margin: 0 auto;
     max-width: 1200px;
   }
   
   .card {
-    background-color: #f4623a;
+    background-color: #333;
     color: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -131,6 +131,7 @@
   .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    color: #d94e2a;
   }
   
   .card-image {
