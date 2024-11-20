@@ -62,7 +62,7 @@
   .menu {
     display: none;
     position: absolute;
-    background-color: #d94e2a; 
+    background-color: #555; 
     width: 200px; 
     z-index: 1;
     border-radius: 5px;
@@ -94,7 +94,7 @@
   }
   
   .menu a:hover {
-    background-color: #b53e1d; 
+    background-color: #d94e2a; 
   }
   
   .navbar-spacer {
