@@ -168,8 +168,8 @@
   grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
   gap: 20px;
   padding: 20px;
-  margin-left: 270px; /* Adjust to make space for the side navbar */
-  max-width: calc(100% - 270px); /* Ensure the content section is full width minus the sidebar */
+  margin-left: 370px; /* Adjust to make space for the side navbar */
+  /* max-width: calc(100% - 270px); */
   justify-items: center; /* Center the cards horizontally */
   padding-right: 20px; /* To avoid content overflowing */
 }
