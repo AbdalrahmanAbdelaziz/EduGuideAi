@@ -14,7 +14,7 @@ export class StudentPageComponent implements OnInit {
     {
       name: 'Ai tutor',
       caption: 'Get personalized tutoring sessions powered by AI.',
-      image: 'aa.webp',
+      image: 'chatbot.jpg',
       link: '/'
     },
     {
