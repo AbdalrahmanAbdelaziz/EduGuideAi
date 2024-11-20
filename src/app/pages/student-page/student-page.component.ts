@@ -22,15 +22,15 @@ export class StudentPageComponent implements OnInit{
     {
       name: 'Progress Tracker',
       caption: 'Track your learning journey with detailed analytics.',
-      image: 'assets/images/progress-tracker.jpg',
-      link: '/progress-tracker',
+      image: '2.jpg',
+      link: '/progress-tracke',
     },
 
 
     {
       name: 'Learning Resources',
       caption: 'Access a library of curated educational resources.',
-      image: 'assets/images/learning-resources.jpg',
+      image: 'aa.webp',
       link: '/learning-resources',
     },
 
