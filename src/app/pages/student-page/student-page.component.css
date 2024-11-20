@@ -1,163 +1,140 @@
-.navbar {
-    background-color: #333; 
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-  }
-  
-  .app-name {
-    font-size: 1.8em;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 2px;
-    font-family: 'Montserrat', sans-serif;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  
-  .right-button {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    position: relative; 
-    cursor: pointer;
-  }
-  
-  .menu-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative; 
-    cursor: pointer;
-  }
-  
-  .menu-trigger {
-    font-size: 1.2em;
-    font-weight: 500;
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    display: block;
-    width: 200px; 
-    text-align: left;
-    transition: background-color 0.3s ease; 
-    box-sizing: border-box; 
-    cursor: pointer;
-  }
-  
-  .menu-trigger:hover {
-    background-color: #d94e2a; 
-    cursor: pointer;
-  }
-  
-  .menu {
-    display: none;
-    position: absolute;
-    background-color: #555; 
-    width: 200px; 
-    z-index: 1;
-    border-radius: 5px;
-    top: 100%;  
-    left: 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0s linear 0.3s; 
-    box-sizing: border-box;
-    cursor: pointer;
-  }
-  
-  .menu-container:hover .menu {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.3s ease, visibility 0s linear 0s; 
-    cursor: pointer;
-  }
-  
-  .menu a {
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    display: block;
-    width: 100%;  
-    box-sizing: border-box; 
-    cursor: pointer;
-  }
-  
-  .menu a:hover {
-    background-color: #d94e2a; 
-  }
-  
-  .navbar-spacer {
-    height: 100px;
-  }
-  
-  .right-button {
-    width: 200px;  
-  }
-  
-  .right-button .menu-container {
-    width: 100%; 
-  }
+/* Layout for the entire page */
+.student-page {
+  display: flex;
+}
 
-  .features-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 1200px;
-  }
-  
-  .card {
-    background-color: #333;
-    color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    color: #d94e2a;
-  }
-  
-  .card-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .card-content {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .card-title {
-    font-size: 1.5em;
-    font-weight: 700;
-    margin: 10px 0;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  .card-caption {
-    font-size: 1em;
-    font-weight: 300;
-    font-family: 'Open Sans', sans-serif;
-    color: #ffdbcc;
-  }
-  
-  
-  
+.side-navbar {
+  width: 250px;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.user-info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.name {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.level, .department, .gpa {
+  font-size: 1em;
+  margin: 5px 0;
+}
+
+.nav-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-btn {
+  width: 80%;
+  padding: 10px 0;
+  margin: 10px 0;
+  background-color: #d94e2a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: #ff7a46;
+}
+
+.main-content {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  padding: 20px;
+}
+
+.navbar {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  position: relative;
+  z-index: 1000;
+}
+
+.app-name {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 2px;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.card {
+  background-color: #333;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.card-caption {
+  font-size: 1em;
+  font-weight: 300;
+  color: #ffdbcc;
+}

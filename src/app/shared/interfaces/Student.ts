@@ -5,5 +5,9 @@ export class Student{
     email!: string;
     password!: string;
     confirmPassword?: string;
+    profilePic?: string;  
+    level?: string;  
+    department?: string; 
+    gpa?: number;  
     token?: string;
 }

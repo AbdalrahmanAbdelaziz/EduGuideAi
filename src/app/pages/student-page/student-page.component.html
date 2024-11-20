@@ -1,30 +1,49 @@
 <div class="student-page">
-  <header class="navbar">
-    <div class="app-name" routerLink="/">
-      EduGuideAI
-    </div>
-
-    <div class="right-button">
-      <li class="menu-container">
-        <a class="menu-trigger">{{ student.firstName | titlecase }}</a>
-        <div class="menu">
-          <a routerLink="/profile">Profile</a>
-          <a (click)="logout()">Logout</a>
-        </div>
-      </li>
-    </div>
-  </header>
-
-  <div class="navbar-spacer"></div>
-
-  <div class="features-section">
-    <div class="card" *ngFor="let feature of features" (click)="navigateTo(feature.link)">
-      <img [src]="feature.image" alt="Feature Image" class="card-image" />
-      <div class="card-content">
-        <h3 class="card-title"> {{feature.name}} </h3>
-        <p class="card-caption"> {{feature.caption}} </p>
+  <!-- Side Navbar -->
+  <div class="side-navbar">
+    <div class="profile">
+      <img [src]="student.profilePic || 'default-profile.jpg'" alt="User Profile" class="profile-pic" />
+      <div class="user-info">
+        <p class="name">{{ student.firstName | titlecase }} {{ student.lastName | titlecase }}</p>
+        <p class="level">{{ student.level }}</p>
+        <p class="department">{{ student.department }}</p>
+        <p class="gpa">GPA: {{ student.gpa }}</p>
       </div>
+    </div>
+    <div class="nav-buttons">
+      <button class="nav-btn" (click)="navigateTo('/profile')">Profile</button>
+      <button class="nav-btn" (click)="navigateTo('/settings')">Settings</button>
+      <button class="nav-btn" (click)="logout()">Logout</button>
     </div>
   </div>
 
+  <!-- Main Content -->
+  <div class="main-content">
+    <header class="navbar">
+      <div class="app-name" routerLink="/">
+        EduGuideAI
+      </div>
+      <div class="right-button">
+        <li class="menu-container">
+          <a class="menu-trigger">{{ student.firstName | titlecase }}</a>
+          <div class="menu">
+            <a routerLink="/profile">Profile</a>
+            <a (click)="logout()">Logout</a>
+          </div>
+        </li>
+      </div>
+    </header>
+
+    <div class="navbar-spacer"></div>
+
+    <div class="features-section">
+      <div class="card" *ngFor="let feature of features" (click)="navigateTo(feature.link)">
+        <img [src]="feature.image" alt="Feature Image" class="card-image" />
+        <div class="card-content">
+          <h3 class="card-title">{{ feature.name }}</h3>
+          <p class="card-caption">{{ feature.caption }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
