@@ -12,38 +12,38 @@ export class StudentPageComponent implements OnInit {
   student!: Student;
   features = [
     {
-      name: 'Ai tutor',
-      caption: 'Get personalized tutoring sessions powered by AI.',
+      name: 'Talk To Lexi',
+      caption: 'Lexi: Your intelligent assistant, always ready to help.',
       image: 'chatbot.jpg',
       link: '/'
     },
     {
-      name: 'Progress Tracker',
-      caption: 'Track your learning journey with detailed analytics.',
+      name: 'My Courses',
+      caption: 'Your Path to Knowledge Starts Here.',
       image: 'about.jpg',
       link: '/progress-tracker'
     },
     {
-      name: 'Learning Resources',
-      caption: 'Access a library of curated educational resources.',
+      name: 'Transcript',
+      caption: 'A Snapshot of Your Achievements.',
       image: 't.jpg',
       link: '/learning-resources'
     },
     {
-      name: 'Learning Resources',
-      caption: 'Access a library of curated educational resources.',
+      name: 'Interactive Roadmap',
+      caption: 'Track Your Progress and Stay on Course with Our Interactive Roadmap.',
       image: 'v.jpg',
       link: '/learning-resources'
     },
     {
-      name: 'Learning Resources',
-      caption: 'Access a library of curated educational resources.',
+      name: 'Search For Internships',
+      caption: 'Explore Opportunities, Gain Experience, and Build Your Future.',
       image: 'i.webp',
       link: '/learning-resources'
     },
     {
-      name: 'Learning Resources',
-      caption: 'Access a library of curated educational resources.',
+      name: 'Stress Managment',
+      caption: 'Your Guide to Finding Calm in the Chaos.',
       image: 'st.jpg',
       link: '/learning-resources'
     },
