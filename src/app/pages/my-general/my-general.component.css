@@ -92,13 +92,13 @@
   
   .course-table th,
   .course-table td {
-    border: 1px solid #d94e2a;
+    border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
   }
   
   .course-table th {
-    background-color: #f4f4f4;
+    background-color: #d94e2a;
     color: #333;
     font-weight: bold;
   }
