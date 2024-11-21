@@ -1,16 +1,108 @@
 <div class="courses-page">
-    <header class="navbar">
-      <div class="app-name" routerLink="/student-page">
-        EduGuideAI
+  <header class="navbar">
+    <div class="app-name" routerLink="/student-page">
+      EduGuideAI
+    </div>
+    <div class="right-button">
+      <li class="menu-container">
+        <a routerLink="/profile" class="menu-trigger">
+          <i class="fas fa-user-circle"></i> {{ student.firstName | titlecase }}
+        </a>
+      </li>
+    </div>
+  </header>
+
+  <div class="navbar-spacer"></div>
+
+  <div class="course-manager">
+    <h2>Available Courses</h2>
+    <div class="tables-container">
+      <div class="table-container">
+        <h3>Core Courses</h3>
+        <table class="course-table">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Course Name</th>
+              <th>Hours</th>
+              <th>PreRequest</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let course of coreCourses" [class.disabled]="!canTakeCourse(course)">
+              <td>{{ course.code }}</td>
+              <td>{{ course.name }}</td>
+              <td>{{ course.hours }}</td>
+              <td>{{ course.preRequest || 'None' }}</td>
+              <td>
+                <select
+                  [(ngModel)]="course.grade"
+                  [disabled]="!canTakeCourse(course)"
+                  title="Select grade for {{ course.name }}"
+                >
+                  <option value="none">None</option>
+                  <option value="A+">A+</option>
+                  <option value="A">A</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="F">F</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-  
-      <div class="right-button">
-        <li class="menu-container">
-          <a routerLink="/profile" class="menu-trigger">
-            <i class="fas fa-user-circle"></i> {{ student.firstName | titlecase }}
-          </a>
-        </li>
+
+      <div class="table-container">
+        <h3>Elective Courses</h3>
+        <table class="course-table">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Course Name</th>
+              <th>Hours</th>
+              <th>PreRequest</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let course of electiveCourses" [class.disabled]="!canTakeCourse(course)">
+              <td>{{ course.code }}</td>
+              <td>{{ course.name }}</td>
+              <td>{{ course.hours }}</td>
+              <td>{{ course.preRequest || 'None' }}</td>
+              <td>
+                <select
+                  [(ngModel)]="course.grade"
+                  [disabled]="!canTakeCourse(course)"
+                  title="Select grade for {{ course.name }}"
+                >
+                  <option value="none">None</option>
+                  <option value="A+">A+</option>
+                  <option value="A">A</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="F">F</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </header>
-    
-      <div class="navbar-spacer"></div>
+    </div>
+
+    <div class="summary">
+      <p>Total Hours: {{ calculateTotalHours() }}</p>
+      <button (click)="submitCourses()">Submit</button>
+    </div>
+  </div>
+</div>
