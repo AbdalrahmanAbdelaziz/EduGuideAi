@@ -1,10 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Student } from '../../shared/interfaces/Student';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-faculty',
   templateUrl: './my-faculty.component.html',
   styleUrl: './my-faculty.component.css'
 })
-export class MyFacultyComponent {
+export class MyFacultyComponent implements OnInit{
+
+  student!: Student;
+
+  constructor(private authService: AuthService, private router: Router) {
+    this.authService.studentObservable.subscribe((newStudent) => {
+      if (newStudent) {
+        this.student = newStudent;
+      }
+    });
+  }
+
+
+  ngOnInit(): void {
+      
+  }
 
 }

@@ -1,1 +1,83 @@
-<p>my-general works!</p>
+<div class="courses-page">
+    <header class="navbar">
+      <div class="app-name" routerLink="/student-page">
+        EduGuideAI
+      </div>
+  
+      <div class="right-button">
+        <li class="menu-container">
+          <a routerLink="/profile" class="menu-trigger">
+            <i class="fas fa-user-circle"></i> {{ student.firstName | titlecase }}
+          </a>
+        </li>
+      </div>
+    </header>
+    
+      <div class="navbar-spacer"></div>
+
+
+      <div class="tables-container">
+        <div class="table-section">
+            <h2 class="table-title"> Compulsory Subjects 6 hours</h2>
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Course Name</th>
+                        <th>Hours</th>
+                        <th>Pre-Request</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let course of coursesTable1">
+                        <td>{{ course.code }}</td>
+                        <td>{{ course.name }}</td>
+                        <td>{{ course.hours }}</td>
+                        <td>{{ course.preRequest }}</td>
+                        <td>
+                            <div class="grade-select-container">
+                                <label for="grade-{{course.code}}">Grade</label>
+                                <select [(ngModel)]="course.grade" class="grade-select" id="grade-{{course.code}}">
+                                  <option *ngFor="let grade of grades" [value]="grade">{{ grade }}</option>
+                                </select>
+                              </div>
+                        </td>
+                      </tr>
+                    </tbody>
+            </table>
+        </div>
+
+        <div class="table-section">
+            <h2 class="table-title"> Electives Subjects 6 hours</h2>
+            <table class="course-table">
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Course Name</th>
+                  <th>Hours</th>
+                  <th>Pre-Request</th>
+                  <th>Grade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let course of coursesTable2">
+                  <td>{{ course.code }}</td>
+                  <td>{{ course.name }}</td>
+                  <td>{{ course.hours }}</td>
+                  <td>{{ course.preRequest }}</td>
+                  <td>
+                    <div class="grade-select-container">
+                        <label for="grade-{{course.code}}">Grade</label>
+                        <select [(ngModel)]="course.grade" class="grade-select" id="grade-{{course.code}}">
+                          <option *ngFor="let grade of grades" [value]="grade">{{ grade }}</option>
+                        </select>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
