@@ -25,19 +25,19 @@
     </select>
   </div>
 
-  <div class="department-manager">
-    <h2>Available Departments</h2>
+  <div class="course-manager">
+    <h2>Available Courses</h2>
     <div class="tables-container">
       <div class="table-container">
-        <h3>Core Departments</h3>
-        <table class="department-table">
+        <h3>Core Courses</h3>
+        <table class="course-table">
           <thead>
             <tr>
               <th>Code</th>
-              <th>Department Name</th>
-              <th>Head</th>
-              <th>Location</th>
-              <th>Status</th>
+              <th>Course Name</th>
+              <th>Hours</th>
+              <th>PreRequest</th>
+              <th>Grade</th>
             </tr>
           </thead>
           <tbody>
@@ -47,9 +47,7 @@
               <td>{{ course.hours }}</td>
               <td>{{ course.preRequest || 'None' }}</td>
               <td>
-                <label for="core-course-grade-{{course.code}}">Grade for {{ course.name }}</label>
                 <select
-                  id="core-course-grade-{{course.code}}"
                   [(ngModel)]="course.grade"
                   [disabled]="!canTakeCourse(course)"
                   title="Select grade for {{ course.name }}"
@@ -72,15 +70,15 @@
       </div>
 
       <div class="table-container">
-        <h3>Elective Departments</h3>
-        <table class="department-table">
+        <h3>Elective Courses</h3>
+        <table class="course-table">
           <thead>
             <tr>
               <th>Code</th>
-              <th>Department Name</th>
-              <th>Head</th>
-              <th>Location</th>
-              <th>Status</th>
+              <th>Course Name</th>
+              <th>Hours</th>
+              <th>PreRequest</th>
+              <th>Grade</th>
             </tr>
           </thead>
           <tbody>
@@ -90,9 +88,7 @@
               <td>{{ course.hours }}</td>
               <td>{{ course.preRequest || 'None' }}</td>
               <td>
-                <label for="elective-course-grade-{{course.code}}">Grade for {{ course.name }}</label>
                 <select
-                  id="elective-course-grade-{{course.code}}"
                   [(ngModel)]="course.grade"
                   [disabled]="!canTakeCourse(course)"
                   title="Select grade for {{ course.name }}"
