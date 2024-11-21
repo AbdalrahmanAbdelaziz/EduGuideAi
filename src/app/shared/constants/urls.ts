@@ -13,5 +13,11 @@ export const STUDENT_REGISTER_URL = BASE_URL + '/api/student/register';
 export const ADMIN_REGISTER_URL = BASE_URL + '/api/admin/register';
 
 
-export const  GET_GENERAL_COURSE_URL = BASE_URL + '/api/general_courses'; // Endpoint to fetch courses
-export const UPDATE_GENERAL_COURSES_URL = BASE_URL + '/api/courses/general_update'; // Endpoint to update courses
+export const  GET_COURSE_URL = BASE_URL + '/api/general_courses'; // Endpoint to fetch General & Faculty courses
+export const GET_DEPARTMENT_COURSES_URL = BASE_URL + '/api/courses/department';
+
+
+
+export const UPDATE_GENERAL_COURSES_URL = BASE_URL + '/api/courses/general_update'; 
+export const UPDATE_FACULTY_COURSES_URL = BASE_URL + '/api/courses/faculty_update'; 
+export const UPDATE_DEPARTMENT_COURSES_URL = BASE_URL + '/api/courses/department_update';
