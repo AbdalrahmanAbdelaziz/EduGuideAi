@@ -30,6 +30,9 @@
         <ng-container *ngIf="feature.name === 'Faculty Requirements'">
           <p>Calculated Hours: {{ facultyHours }}/72</p>
         </ng-container>
+        <ng-container *ngIf="feature.name === 'Department Requirements'">
+          <p>Calculated Hours: {{ facultyHours }}/60</p>
+        </ng-container>
       </div>
     </div>
   </div>

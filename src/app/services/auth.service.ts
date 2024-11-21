@@ -164,6 +164,30 @@ export class AuthService {
   }
 
 
+  fetchDepartmentCourses(department: string): Observable<Course[]> {
+    let departmentUrl = '';
+
+    switch(department) {
+      case 'CS':
+        departmentUrl = '/api/courses/cs'; // Example URL
+        break;
+      case 'IS':
+        departmentUrl = '/api/courses/is'; // Example URL
+        break;
+      case 'AI':
+        departmentUrl = '/api/courses/ai'; // Example URL
+        break;
+      case 'IT':
+         departmentUrl = '/api/courses/it'; // Example URL
+         break;
+      default:
+        throw new Error('Invalid department');
+    }
+
+    return this.http.get<Course[]>(departmentUrl);
+  }
+
+
 
 
   }

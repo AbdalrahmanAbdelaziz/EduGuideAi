@@ -1,64 +1,121 @@
+/* Navbar styles */
 .navbar {
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-  }
-  
-  .app-name {
-    font-size: 1.8em;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 2px;
-    font-family: 'Montserrat', sans-serif;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  
-  .right-button {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .menu-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .menu-trigger {
-    font-size: 1.2em;
-    font-weight: 500;
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    display: block;
-    width: 200px;
-    text-align: left;
-    transition: background-color 0.3s ease;
-    box-sizing: border-box;
-    cursor: pointer;
-  }
-  
-  .menu-trigger:hover {
-    background-color: #d94e2a;
-  }
-  
-  .navbar-spacer {
-    margin-top: 70px;
-  }
-  
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.app-name {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 2px;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.right-button {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  cursor: pointer;
+}
+
+.menu-trigger {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+  width: 200px;
+  text-align: left;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.menu-trigger:hover {
+  background-color: #d94e2a;
+}
+
+/* Spacing for navbar */
+.navbar-spacer {
+  margin-top: 70px;
+}
+
+/* Course Manager styles */
+.course-manager {
+  margin: 20px;
+}
+
+.tables-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.table-container {
+  width: 48%;
+}
+
+.course-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.course-table th,
+.course-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.course-table th {
+  background-color: #f2f2f2;
+}
+
+.disabled {
+  background-color: #f9c6c6;
+}
+
+.summary {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

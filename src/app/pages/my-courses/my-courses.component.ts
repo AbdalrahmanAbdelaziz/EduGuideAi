@@ -12,6 +12,7 @@ export class MyCoursesComponent implements OnInit {
   student!: Student;
   generalHours: number = 0;
   facultyHours: number = 0;
+  departmentHours: number = 0;
 
   features = [
     {
@@ -57,6 +58,11 @@ export class MyCoursesComponent implements OnInit {
   updateFacultyHours(hours: number) {
     this.facultyHours = hours;
   }
+
+  updateDepartmentHours(hours: number) {
+    this.departmentHours = hours;
+  }
+
 
   
 
