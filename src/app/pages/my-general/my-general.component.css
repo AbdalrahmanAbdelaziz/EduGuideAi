@@ -12,9 +12,9 @@
     z-index: 1000;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
-  }
-  
-  .app-name {
+}
+
+.app-name {
     font-size: 1.8em;
     font-weight: 700;
     color: #fff;
@@ -22,25 +22,25 @@
     font-family: 'Montserrat', sans-serif;
     cursor: pointer;
     text-decoration: none;
-  }
-  
-  .right-button {
+}
+
+.right-button {
     display: flex;
     gap: 20px;
     align-items: center;
     position: relative;
     cursor: pointer;
-  }
-  
-  .menu-container {
+}
+
+.menu-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     position: relative;
     cursor: pointer;
-  }
-  
-  .menu-trigger {
+}
+
+.menu-trigger {
     font-size: 1.2em;
     font-weight: 500;
     color: white;
@@ -52,76 +52,74 @@
     transition: background-color 0.3s ease;
     box-sizing: border-box;
     cursor: pointer;
-  }
-  
-  .menu-trigger:hover {
-    background-color: #d94e2a;
-  }
-  
-  .navbar-spacer {
-    margin-top: 70px;
-  }
-  
+}
 
-  .tables-container {
+.menu-trigger:hover {
+    background-color: #d94e2a;
+}
+
+.navbar-spacer {
+    margin-top: 70px;
+}
+
+.tables-container {
     display: flex;
     justify-content: space-between;
     padding: 20px;
     gap: 20px;
-  }
-  
-  .table-section {
+}
+
+.table-section {
     width: 48%;
     background-color: #fff;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .table-title {
+}
+
+.table-title {
     font-size: 24px;
     margin-bottom: 15px;
     color: #333;
     text-align: center;
-  }
-  
-  .course-table {
+}
+
+.course-table {
     width: 100%;
     border-collapse: collapse;
-  }
-  
-  .course-table th,
-  .course-table td {
+}
+
+.course-table th,
+.course-table td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
-  }
-  
-  .course-table th {
+}
+
+.course-table th {
     background-color: #333;
     color: #fff;
     font-weight: bold;
-  }
-  
-  .grade-select {
+}
+
+.grade-select {
     width: 100%;
     padding: 5px;
     border-radius: 4px;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     font-size: 14px;
-  }
-  
-  .grade-select:focus {
+}
+
+.grade-select:focus {
     outline: none;
     border-color: #007bff;
-  }
-  
-  .course-table tr:nth-child(even) {
+}
+
+.course-table tr:nth-child(even) {
     background-color: #f9f9f9;
-  }
-  
-  .course-table tr:hover {
+}
+
+.course-table tr:hover {
     background-color: #d94e2a;
-  }
-  
+}
