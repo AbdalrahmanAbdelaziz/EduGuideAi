@@ -20,8 +20,14 @@ export class MyGeneralComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
+    
+    this.authService.studentObservable.subscribe((newStudent) => {
+      if (newStudent) {
+        this.student = newStudent;
+      }
+    });
+
     this.authService.fetchCourses().subscribe((courses: Course[]) => {
-      // this.allCourses = courses;
       this.coreCourses = courses.filter(course => course.type === 'g_core');
       this.electiveCourses = courses.filter(course => course.type === 'g_elective');
     });
