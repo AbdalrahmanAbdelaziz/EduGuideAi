@@ -19,6 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     StudentPageComponent,
     AdminPageComponent,
     ProfileComponent,
+    MyCoursesComponent,
   ],
   imports: [
     BrowserModule,

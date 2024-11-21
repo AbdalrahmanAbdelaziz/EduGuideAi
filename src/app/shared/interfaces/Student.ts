@@ -9,5 +9,6 @@ export class Student{
     level?: string;  
     department?: string; 
     gpa?: number;  
+    hours?: number;
     token?: string;
 }

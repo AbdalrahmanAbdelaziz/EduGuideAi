@@ -11,6 +11,7 @@ import { RegisterAdminComponent } from './pages/register-admin/register-admin.co
 import { StudentPageComponent } from './pages/student-page/student-page.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 
 const routes: Routes = [
   { path: '', component:LandComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'student-page', component: StudentPageComponent},
   { path: 'admin-page', component: AdminPageComponent},
   { path: 'profile', component: ProfileComponent},
+  { path: 'my-courses', component: MyCoursesComponent},
 ];
 
 @NgModule({
