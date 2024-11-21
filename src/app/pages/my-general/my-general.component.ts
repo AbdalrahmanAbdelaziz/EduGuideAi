@@ -11,7 +11,9 @@ import { UpdateCourse } from '../../shared/interfaces/UpdateCourse';
 })
 export class MyGeneralComponent implements OnInit {
   student!: Student;
-  courses: Course[] = [];
+  allCourses: Course[] = [];
+  coreCourses: Course[] = [];
+  electiveCourses: Course[] = [];
 
   @Output() calculatedHoursEvent = new EventEmitter<number>();
 
@@ -19,27 +21,26 @@ export class MyGeneralComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.fetchCourses().subscribe((courses: Course[]) => {
-      this.courses = courses.map((course) => ({
-        ...course,
-        grade: course.grade || 'none',
-      }));
+      // this.allCourses = courses;
+      this.coreCourses = courses.filter(course => course.type === 'g_core');
+      this.electiveCourses = courses.filter(course => course.type === 'g_elective');
     });
   }
 
   canTakeCourse(course: Course): boolean {
     if (!course.preRequest) return true;
-    const preRequestCourse = this.courses.find((c) => c.code === course.preRequest);
+    const preRequestCourse = this.allCourses.find((c) => c.code === course.preRequest);
     return preRequestCourse?.grade !== 'none' && preRequestCourse?.grade !== 'F';
   }
 
   calculateTotalHours(): number {
-    return this.courses
+    return this.allCourses
       .filter((course) => course.grade !== 'none')
       .reduce((total, course) => total + course.hours, 0);
   }
 
   submitCourses(): void {
-    const updatedCourses: UpdateCourse[] = this.courses.map((course) => ({
+    const updatedCourses: UpdateCourse[] = this.allCourses.map((course) => ({
       code: course.code,
       grade: course.grade || 'none',
     }));
