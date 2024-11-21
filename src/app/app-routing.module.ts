@@ -12,6 +12,9 @@ import { StudentPageComponent } from './pages/student-page/student-page.componen
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
+import { MyGeneralComponent } from './pages/my-general/my-general.component';
+import { MyFacultyComponent } from './pages/my-faculty/my-faculty.component';
+import { MyDepartmentComponent } from './pages/my-department/my-department.component';
 
 const routes: Routes = [
   { path: '', component:LandComponent},
@@ -26,6 +29,9 @@ const routes: Routes = [
   { path: 'admin-page', component: AdminPageComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'my-courses', component: MyCoursesComponent},
+  { path: 'my-general', component: MyGeneralComponent},
+  { path: 'my-faculty', component: MyFacultyComponent},
+  { path: 'my-department', component: MyDepartmentComponent},
 ];
 
 @NgModule({

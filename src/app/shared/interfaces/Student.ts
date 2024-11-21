@@ -1,3 +1,5 @@
+import { Subject } from "./Subject";
+
 export class Student{
     id?: string;
     firstName!: string;
@@ -10,5 +12,7 @@ export class Student{
     department?: string; 
     gpa?: number;  
     hours?: number;
+    completedHours?: number; 
+    courses?: { category: string, subjects: Subject[] }; 
     token?: string;
 }

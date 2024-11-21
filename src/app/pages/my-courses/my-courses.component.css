@@ -58,47 +58,39 @@
     background-color: #d94e2a;
   }
   
-  .menu {
-    display: none;
-    position: absolute;
-    background-color: #555;
-    width: 200px;
-    z-index: 1;
-    border-radius: 5px;
-    top: 100%;
-    left: 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
-    box-sizing: border-box;
-    cursor: pointer;
+  .navbar-spacer {
+    margin-top: 70px;
   }
   
-  .menu-container:hover .menu {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.3s ease, visibility 0s linear 0s;
-    cursor: pointer;
-  }
-  
-  .menu a {
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    cursor: pointer;
-  }
-  
-  .menu a:hover {
-    background-color: #d94e2a;
-  }
-  
-  /* Content Layout */
-  .content {
+  .buttons-container {
     display: flex;
-    margin-top: 80px; /* Adjusted to make space for the navbar */
+    gap: 20px;
+    justify-content: center;
+    margin-top: 100px; /* Adjust spacing from the navbar */
+  }
+  
+  .nav-button {
+    background-color: #d94e2a;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .nav-button:hover {
+    background-color: #c24b22;
+    transform: translateY(-3px);
+  }
+  
+  .nav-button:focus {
+    outline: none;
+  }
+  
+  .nav-button:active {
+    transform: translateY(1px);
   }
   

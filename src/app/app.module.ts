@@ -20,6 +20,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
+import { MyGeneralComponent } from './pages/my-general/my-general.component';
+import { MyFacultyComponent } from './pages/my-faculty/my-faculty.component';
+import { MyDepartmentComponent } from './pages/my-department/my-department.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
     AdminPageComponent,
     ProfileComponent,
     MyCoursesComponent,
+    MyGeneralComponent,
+    MyFacultyComponent,
+    MyDepartmentComponent,
   ],
   imports: [
     BrowserModule,
