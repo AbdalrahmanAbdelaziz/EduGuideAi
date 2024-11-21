@@ -10,24 +10,44 @@ import { Router } from '@angular/router';
 })
 export class MyCoursesComponent implements OnInit{
   student!: Student;
+  
+  features = [
+    {
+      name: 'General Requirements',
+      caption: 'Lexi: Your intelligent assistant, always here to help.',
+      link: '/my-general'
+    },
+    {
+      name: ' Faculty Requirements',
+      caption: 'Your path to knowledge begins right here with us.',
+      link: '/my-faculty'
+    },
+    {
+      name: 'Department Requirements',
+      caption: 'A snapshot of your progress and great achievements.',
+      link: '/my-department'
+    },
+    
 
+  ];
 
   constructor(private authService: AuthService, private router: Router) {
-
     this.authService.studentObservable.subscribe((newStudent) => {
       if (newStudent) {
-        this.student = newStudent; 
-      } 
+        this.student = newStudent;
+      }
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
-   
   }
 
+  navigateTo(link: string) {
+    this.router.navigate([link]);
+  }
 }
+

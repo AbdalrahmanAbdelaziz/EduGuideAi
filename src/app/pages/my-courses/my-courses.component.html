@@ -16,12 +16,16 @@
       <div class="navbar-spacer"></div>
 
 
-      <div class="buttons-container">
-        <button class="nav-button" routerLink="/my-general"> General Requirements</button>
-        <button class="nav-button" routerLink="/my-faculty">Faculty Requirements</button>
-        <button class="nav-button" routerLink="/my-department"> Department Requirements</button>
+   <!-- Main Content Section -->
+   <div class="features-section">
+    <div class="card" *ngFor="let feature of features" (click)="navigateTo(feature.link)">
+      <div class="card-content">
+        <h3 class="card-title">{{ feature.name }}</h3>
+        <p class="card-caption">{{ feature.caption }}</p>
       </div>
-
-
     </div>
+  </div>
+</div>
+
+
     
