@@ -96,8 +96,9 @@
     background-color: #d94e2a;
   }
   
-  
+  /* Content Layout */
   .content {
     display: flex;
-    margin-top: 80px; 
+    margin-top: 80px; /* Adjusted to make space for the navbar */
   }
+  
