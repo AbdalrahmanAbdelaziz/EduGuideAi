@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class MyCoursesComponent implements OnInit {
   student!: Student;
   generalHours: number = 0;
+  facultyHours: number = 0;
 
   features = [
     {
@@ -50,6 +51,14 @@ export class MyCoursesComponent implements OnInit {
   }
 
   updateGeneralHours(hours: number) {
-    this.generalHours = hours; // Update general hours when emitted
+    this.generalHours = hours; 
   }
+
+  updateFacultyHours(hours: number) {
+    this.facultyHours = hours;
+  }
+
+  
+
+  
 }

@@ -1,36 +1,36 @@
 <div class="courses-page">
-    <header class="navbar">
-      <div class="app-name" routerLink="/student-page">
-        EduGuideAI
-      </div>
-      <div class="right-button">
-        <li class="menu-container">
-          <a routerLink="/profile" class="menu-trigger">
-            <i class="fas fa-user-circle"></i> {{ student.firstName | titlecase }}
-          </a>
-        </li>
-      </div>
-    </header>
-  
-    <div class="navbar-spacer"></div>
-  
-    <!-- Features Section -->
-    <div class="features-section">
-      <div
-        class="card"
-        *ngFor="let feature of features"
-        (click)="navigateTo(feature.link)"
-      >
-        <div class="card-content">
-          <h3 class="card-title">{{ feature.name }}</h3>
-          <p class="card-caption">{{ feature.caption }}</p>
-          <ng-container *ngIf="feature.name === 'General Requirements'">
-            <p>Calculated Hours: {{ generalHours }}/12</p>
-          </ng-container>
-        </div>
+  <header class="navbar">
+    <div class="app-name" routerLink="/student-page">
+      EduGuideAI
+    </div>
+    <div class="right-button">
+      <li class="menu-container">
+        <a routerLink="/profile" class="menu-trigger">
+          <i class="fas fa-user-circle"></i> {{ student.firstName | titlecase }}
+        </a>
+      </li>
+    </div>
+  </header>
+
+  <div class="navbar-spacer"></div>
+
+  <!-- Features Section -->
+  <div class="features-section">
+    <div
+      class="card"
+      *ngFor="let feature of features"
+      (click)="navigateTo(feature.link)"
+    >
+      <div class="card-content">
+        <h3 class="card-title">{{ feature.name }}</h3>
+        <p class="card-caption">{{ feature.caption }}</p>
+        <ng-container *ngIf="feature.name === 'General Requirements'">
+          <p>Calculated Hours: {{ generalHours }}/12</p>
+        </ng-container>
+        <ng-container *ngIf="feature.name === 'Faculty Requirements'">
+          <p>Calculated Hours: {{ facultyHours }}/72</p>
+        </ng-container>
       </div>
     </div>
-  
-  
   </div>
-  
+</div>

@@ -16,6 +16,7 @@ export class MyFacultyComponent implements OnInit{
   allCourses: Course[] = [];
   coreCourses: Course[] = [];
   electiveCourses: Course[] = [];
+  facultyHours: number = 0;
 
   @Output() calculatedHoursEvent = new EventEmitter<number>();
 
@@ -30,8 +31,8 @@ export class MyFacultyComponent implements OnInit{
     });
 
     this.authService.fetchCourses().subscribe((courses: Course[]) => {
-      this.coreCourses = courses.filter(course => course.type === 'f_core');
-      this.electiveCourses = courses.filter(course => course.type === 'f_elective');
+      this.coreCourses = courses.filter(course => course.type === 'g_core');
+      this.electiveCourses = courses.filter(course => course.type === 'g_elective');
     });
   }
 
@@ -41,12 +42,13 @@ export class MyFacultyComponent implements OnInit{
     return preRequestCourse?.grade !== 'none' && preRequestCourse?.grade !== 'F';
   }
 
-  calculateTotalHours(): number {
+  calculateFacultyHours(): number {
     return this.allCourses
-      .filter((course) => course.grade !== 'none')
+      .filter(course => course.grade !== 'none')
       .reduce((total, course) => total + course.hours, 0);
   }
 
+ 
   submitCourses(): void {
     const updatedCourses: UpdateCourse[] = this.allCourses.map((course) => ({
       code: course.code,
@@ -54,9 +56,8 @@ export class MyFacultyComponent implements OnInit{
     }));
 
     this.authService.updateGeneralCourses(updatedCourses).subscribe(() => {
-      const calculatedHours = this.calculateTotalHours();
-      this.calculatedHoursEvent.emit(calculatedHours); 
+      this.facultyHours = this.calculateFacultyHours();  // Store the calculated hours for faculty
+      this.calculatedHoursEvent.emit(this.facultyHours); // Emit the total hours
     });
   }
 }
-
