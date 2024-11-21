@@ -69,7 +69,7 @@
                         <td>
                             <div class="grade-select-container">
                                 <label for="grade-{{course.code}}">Grade</label>
-                                <select [(ngModel)]="course.grade" class="grade-select" id="grade-{{course.code}}">
+                                <select [(ngModel)]="course.grade" class="grade-select" id="grade-{{course.code}}" [disabled]="isDisabled(course)">
                                     <option *ngFor="let grade of grades" [value]="grade">{{ grade }}</option>
                                 </select>
                             </div>

@@ -38,6 +38,13 @@ export class MyGeneralComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    // Initialization logic if needed
+  }
+
+  isDisabled(course: any):boolean {
+    if(course.preRequest !== 'None'){
+      const prerequisiteCourse = this.coursesTable1.find(c => c.code === course.preRequest) || this.coursesTable2.find(c => c.code === course.preRequest);
+      return prerequisiteCourse ? prerequisiteCourse.grade === 'None' : true;
+    }
+    return false;
   }
 }
