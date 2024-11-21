@@ -1,50 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-import { Student } from '../../shared/interfaces/Student';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Course } from '../../shared/interfaces/Course';
+import { Student } from '../../shared/interfaces/Student';
+import { UpdateCourse } from '../../shared/interfaces/UpdateCourse';
 
 @Component({
   selector: 'app-my-general',
   templateUrl: './my-general.component.html',
   styleUrls: ['./my-general.component.css']
 })
-export class MyGeneralComponent implements OnInit{
-
+export class MyGeneralComponent implements OnInit {
   student!: Student;
-  grades: string[] = ['None','A', 'A+', 'B', 'B+', 'C', 'C+', 'D', 'D+', 'F'];
+  courses: Course[] = [];
 
-  coursesTable1 = [
-    { code: ' HU 111', name: ' English-1', hours: 2, preRequest: 'None', grade: 'None' },
-    { code: ' HU 112', name: 'English-2', hours: 2, preRequest: 'HU 111', grade: 'None' },
-    { code: 'HU 313', name: 'Human Rights', hours: 2, preRequest: 'None', grade: 'None' },
-  ];
+  @Output() calculatedHoursEvent = new EventEmitter<number>();
 
-  coursesTable2 = [
-    { code: 'HU 121', name: ' Fundamentals of Economics', hours: 3, preRequest: 'None', grade: 'None' },
-    { code: 'HU 213', name: ' English-3', hours: 3, preRequest: 'HU 112', grade: 'None' },
-    { code: 'HU 323', name: ' Fundamentals of Accounting', hours: 3, preRequest: 'None', grade: 'None' },
-    { code: 'HU 331', name: 'Communication & Negotiation Skills', hours: 3, preRequest: 'None', grade: 'None' },
-    { code: 'HU 332', name: ' Creative Thinking', hours: 3, preRequest: 'None', grade: 'None' },
-    { code: 'HU 333', name: ' Mass Communication', hours: 3, preRequest: 'None', grade: 'None' },
-    { code: 'HU 334', name: ' Professional Ethics', hours: 3, preRequest: 'None', grade: 'None' },
-  ];
+  constructor(private authService: AuthService) {}
 
-  constructor(private authService: AuthService, private router: Router) {
-    this.authService.studentObservable.subscribe((newStudent) => {
-      if (newStudent) {
-        this.student = newStudent;
-      }
+  ngOnInit(): void {
+    this.authService.fetchCourses().subscribe((courses: Course[]) => {
+      this.courses = courses.map((course) => ({
+        ...course,
+        grade: course.grade || 'none',
+      }));
     });
   }
 
-  ngOnInit(): void {
+  canTakeCourse(course: Course): boolean {
+    if (!course.preRequest) return true;
+    const preRequestCourse = this.courses.find((c) => c.code === course.preRequest);
+    return preRequestCourse?.grade !== 'none' && preRequestCourse?.grade !== 'F';
   }
 
-  isDisabled(course: any):boolean {
-    if(course.preRequest !== 'None'){
-      const prerequisiteCourse = this.coursesTable1.find(c => c.code === course.preRequest) || this.coursesTable2.find(c => c.code === course.preRequest);
-      return prerequisiteCourse ? prerequisiteCourse.grade === 'None' : true;
-    }
-    return false;
+  calculateTotalHours(): number {
+    return this.courses
+      .filter((course) => course.grade !== 'none')
+      .reduce((total, course) => total + course.hours, 0);
+  }
+
+  submitCourses(): void {
+    const updatedCourses: UpdateCourse[] = this.courses.map((course) => ({
+      code: course.code,
+      grade: course.grade || 'none',
+    }));
+
+    this.authService.updateGeneralCourses(updatedCourses).subscribe(() => {
+      const calculatedHours = this.calculateTotalHours();
+      this.calculatedHoursEvent.emit(calculatedHours); // Emit the total hours
+    });
   }
 }

@@ -62,64 +62,34 @@
     margin-top: 70px;
 }
 
-.tables-container {
+
+.course-manager {
+    margin: 20px;
+  }
+  
+  .tables-container {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
     gap: 20px;
-}
-
-.table-section {
-    width: 48%;
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.table-title {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #333;
-    text-align: center;
-}
-
-.course-table {
-    width: 100%;
+  }
+  
+  .course-table {
     border-collapse: collapse;
-}
-
-.course-table th,
-.course-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
-.course-table th {
-    background-color: #333;
-    color: #fff;
-    font-weight: bold;
-}
-
-.grade-select {
     width: 100%;
-    padding: 5px;
-    border-radius: 4px;
+  }
+  
+  .course-table th,
+  .course-table td {
     border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    font-size: 14px;
-}
-
-.grade-select:focus {
-    outline: none;
-    border-color: #007bff;
-}
-
-.course-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.course-table tr:hover {
-    background-color: #d94e2a;
-}
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .course-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .disabled {
+    background-color: #f9c6c6;
+  }
+  

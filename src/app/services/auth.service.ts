@@ -2,12 +2,15 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable, tap } from "rxjs";
 import { ToastrService } from 'ngx-toastr';
-import { ADMIN_REGISTER_URL, FETCH_COURSE_CATEGORIES_URL, FETCH_DEPARTMENT_SUBJECTS_URL, FORGET_PASSWORD_URL, LOGIN_URL, RESET_PASSWORD_URL, STUDENT_REGISTER_URL, UPDATE_STUDENT_COURSES_URL } from "../shared/constants/urls";
+import { ADMIN_REGISTER_URL, FORGET_PASSWORD_URL, GET_GENERAL_COURSE_URL, LOGIN_URL, RESET_PASSWORD_URL, STUDENT_REGISTER_URL, UPDATE_GENERAL_COURSES_URL } from "../shared/constants/urls";
 
 import { UserLogin } from "../shared/interfaces/UserLogin";
 import { Student } from "../shared/interfaces/Student";
 import { Admin } from "../shared/interfaces/Admin";
-import { Subject } from "../shared/interfaces/Subject";
+import { Course } from '../shared/interfaces/Course';
+import { UpdateCourse } from "../shared/interfaces/UpdateCourse";
+
+
 
 const STUDENT_KEY = 'Student';
 const ADMIN_KEY = 'Admin';  
@@ -19,6 +22,7 @@ export class AuthService {
 
     private studentSubject = new BehaviorSubject<Student | null>(this.getStudentFromLocalStorage());
     private adminSubject = new BehaviorSubject<Admin | null>(this.getAdminFromLocalStorage());
+    
 
     public studentObservable: Observable<Student | null>;
     public adminObservable: Observable<Admin | null>;
@@ -141,28 +145,33 @@ export class AuthService {
   }
 
 
-  updateStudentCourses(studentId: string, courses: { category: string, subjects: Subject[] }): Observable<any>  {
-    return this.http.post<any>(UPDATE_STUDENT_COURSES_URL, {studentId, courses}).pipe(
+  fetchCourses(): Observable<Course[]> {
+    return this.http.get<Course[]>(GET_GENERAL_COURSE_URL).pipe(
+      tap({
+        next: () => console.log('Courses fetched successfully'),
+        error: () => this.toastrService.error('Failed to fetch courses'),
+      })
+    );
+  }
+
+  updateGeneralCourses(courses: UpdateCourse[]): Observable<any> {
+    return this.http.post(UPDATE_GENERAL_COURSES_URL, courses).pipe(
         tap({
-            next: ()=> {
-                this.toastrService.success('Courses updated successfully.');
-            },
-            error: () => {
-                this.toastrService.error('Failed to update courses.');
-            }
+            next: () => this.toastrService.success('Courses updated successfully'),
+            error: () => this.toastrService.error('Failed to update courses'),
         })
     );
   }
 
-  fetchCourseCategories(): Observable<any> {
-    return this.http.get<any>(FETCH_COURSE_CATEGORIES_URL);
+
+
+
   }
 
-  fetchDepartmentSubjects(department: string): Observable<any> {
-    return this.http.get<any>(`${FETCH_DEPARTMENT_SUBJECTS_URL}/${department}`);
-  }
+
+
 
 
   
 
-}
+

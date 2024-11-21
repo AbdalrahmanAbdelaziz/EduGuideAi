@@ -3,7 +3,6 @@
       <div class="app-name" routerLink="/student-page">
         EduGuideAI
       </div>
-  
       <div class="right-button">
         <li class="menu-container">
           <a routerLink="/profile" class="menu-trigger">
@@ -12,20 +11,29 @@
         </li>
       </div>
     </header>
-    
-      <div class="navbar-spacer"></div>
-
-
-   <!-- Main Content Section -->
-   <div class="features-section">
-    <div class="card" *ngFor="let feature of features" (click)="navigateTo(feature.link)">
-      <div class="card-content">
-        <h3 class="card-title">{{ feature.name }}</h3>
-        <p class="card-caption">{{ feature.caption }}</p>
+  
+    <div class="navbar-spacer"></div>
+  
+    <!-- Features Section -->
+    <div class="features-section">
+      <div
+        class="card"
+        *ngFor="let feature of features"
+        (click)="navigateTo(feature.link)"
+      >
+        <div class="card-content">
+          <h3 class="card-title">{{ feature.name }}</h3>
+          <p class="card-caption">{{ feature.caption }}</p>
+          <ng-container *ngIf="feature.name === 'General Requirements'">
+            <p>Calculated Hours: {{ generalHours }}/12</p>
+          </ng-container>
+        </div>
       </div>
     </div>
+  
+    <!-- General Requirements Section -->
+    <app-my-general
+      (calculatedHoursEvent)="updateGeneralHours($event)"
+    ></app-my-general>
   </div>
-</div>
-
-
-    
+  

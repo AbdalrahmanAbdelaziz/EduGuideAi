@@ -1,4 +1,4 @@
-import { Subject } from "./Subject";
+import { Course } from "./Course";
 
 export class Student{
     id?: string;
@@ -13,6 +13,6 @@ export class Student{
     gpa?: number;  
     hours?: number;
     completedHours?: number; 
-    courses?: { category: string, subjects: Subject[] }; 
+    courses?: { category: string, subjects: Course[] }; 
     token?: string;
 }

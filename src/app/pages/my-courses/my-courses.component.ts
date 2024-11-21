@@ -6,11 +6,12 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-my-courses',
   templateUrl: './my-courses.component.html',
-  styleUrl: './my-courses.component.css'
+  styleUrls: ['./my-courses.component.css']
 })
-export class MyCoursesComponent implements OnInit{
+export class MyCoursesComponent implements OnInit {
   student!: Student;
-  
+  generalHours: number = 0;
+
   features = [
     {
       name: 'General Requirements',
@@ -18,7 +19,7 @@ export class MyCoursesComponent implements OnInit{
       link: '/my-general'
     },
     {
-      name: ' Faculty Requirements',
+      name: 'Faculty Requirements',
       caption: 'Your path to knowledge begins right here with us.',
       link: '/my-faculty'
     },
@@ -26,9 +27,7 @@ export class MyCoursesComponent implements OnInit{
       name: 'Department Requirements',
       caption: 'A snapshot of your progress and great achievements.',
       link: '/my-department'
-    },
-    
-
+    }
   ];
 
   constructor(private authService: AuthService, private router: Router) {
@@ -49,5 +48,8 @@ export class MyCoursesComponent implements OnInit{
   navigateTo(link: string) {
     this.router.navigate([link]);
   }
-}
 
+  updateGeneralHours(hours: number) {
+    this.generalHours = hours; // Update general hours when emitted
+  }
+}

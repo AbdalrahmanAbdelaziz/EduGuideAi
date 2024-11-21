@@ -1,9 +1,8 @@
-export interface Subject {
+export interface Course {
     code: string;
     name: string;
     hours: number;
     preRequest?: string; 
-    total?: number; 
     grade?: string; 
     completed?: boolean; 
 }
