@@ -224,17 +224,6 @@ export class AuthService {
   }
 
 
-//   fetchDepartmentCourses(department: string): Observable<Course[]> {
-//     return this.http.get<Course[]>(`${GET_DEPARTMENT_COURSES_URL}/${department}`).pipe(
-//         tap({
-//             error: (error) => {
-//                 this.toastrService.error(`Failed to fetch ${department} courses`);
-//             }
-//         })
-//     );
-// }
-
-
 
   
 
