@@ -24,18 +24,11 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = this.route.snapshot.queryParams['token'];
-    if (!this.token) {
-      this.toastr.error('Invalid or missing token.');
-      this.router.navigate(['/login']);
-    }
 
-    this.resetPasswordForm = this.formBuilder.group(
-      {
-        newPassword: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', [Validators.required]]
-      },
-      { validator: this.passwordMatchValidator }
-    );
+    this.resetPasswordForm = this.formBuilder.group({
+      newPassword: ['', Validators.required],
+      confirmPassword: ['', [Validators.required]]
+    }, { validator: this.passwordMatchValidator });
   }
 
   get fc() {
@@ -51,10 +44,7 @@ export class ResetPasswordComponent implements OnInit {
   submit(): void {
     this.isSubmitted = true;
 
-    if (this.resetPasswordForm.invalid) {
-      this.toastr.error('Please fix the errors in the form.');
-      return;
-    }
+    if (this.resetPasswordForm.invalid) return;
 
     const newPassword = this.fc['newPassword'].value;
 
@@ -64,7 +54,7 @@ export class ResetPasswordComponent implements OnInit {
         this.router.navigate(['/login']);
       },
       error: () => {
-        this.toastr.error('Password reset failed. Please check the token or try again.');
+        this.toastr.error('Password reset failed.');
       }
     });
   }
