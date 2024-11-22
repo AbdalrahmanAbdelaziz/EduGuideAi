@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable, tap } from "rxjs";
 import { ToastrService } from 'ngx-toastr';
 import { ADMIN_REGISTER_URL, FORGET_PASSWORD_URL, GET_DEPARTMENT_COURSES_URL, GET_COURSE_URL, LOGIN_URL, RESET_PASSWORD_URL, STUDENT_REGISTER_URL, UPDATE_DEPARTMENT_COURSES_URL, UPDATE_FACULTY_COURSES_URL, UPDATE_GENERAL_COURSES_URL } from "../shared/constants/urls";
@@ -86,35 +86,32 @@ export class AuthService {
         return this.http.post<any>(FORGET_PASSWORD_URL, { email }).pipe(
           tap({
             next: () => {
-              this.toastrService.success(
-                'Password reset link has been sent to your email.'
-              );
+              this.toastrService.success('Password reset link has been sent to your email.');
             },
             error: () => {
-              this.toastrService.error(
-                'Failed to send reset link. Check your email and try again.'
-              );
-            }
-          })
-        );
-      }
-
-   
-      resetPassword(token: string, newPassword: string): Observable<any> {
-        return this.http.post<any>(RESET_PASSWORD_URL, { token, newPassword }).pipe(
-          tap({
-            next: () => {
-              this.toastrService.success('Password has been reset successfully.');
-            },
-            error: () => {
-              this.toastrService.error(
-                'Password reset failed. Please try again.'
-              );
+              this.toastrService.error('Failed to send reset link. Check your email and try again.');
             }
           })
         );
       }
     
+      resetPassword(token: string, newPassword: string): Observable<any> {
+        const headers = new HttpHeaders({
+          Authorization: `Bearer ${token}` // Pass token in Authorization header
+        });
+    
+        return this.http.post<any>(RESET_PASSWORD_URL, { newPassword }, { headers }).pipe(
+          tap({
+            next: () => {
+              this.toastrService.success('Password has been reset successfully.');
+            },
+            error: (error) => {
+              console.error('Reset Password Error:', error);
+              this.toastrService.error('Password reset failed. Please try again.');
+            }
+          })
+        );
+      }
 
 
    register(studentRegister: Student): Observable<Student> {

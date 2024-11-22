@@ -33,7 +33,10 @@ export class ForgetPasswordComponent implements OnInit {
   submit(): void {
     this.isSubmitted = true;
 
-    if (this.forgetPasswordForm.invalid) return;
+    if (this.forgetPasswordForm.invalid) {
+      this.toastr.error('Please provide a valid email.');
+      return;
+    }
 
     const email = this.fc['email'].value;
     this.authService.forgetPassword(email).subscribe({
@@ -42,7 +45,7 @@ export class ForgetPasswordComponent implements OnInit {
         this.router.navigate(['/login']);
       },
       error: () => {
-        this.toastr.error('Failed to send reset link.');
+        this.toastr.error('Failed to send reset link. Try again.');
       }
     });
   }
