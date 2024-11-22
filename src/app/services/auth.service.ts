@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable, tap } from "rxjs";
 import { ToastrService } from 'ngx-toastr';
-import { ADMIN_REGISTER_URL, FORGET_PASSWORD_URL, GET_DEPARTMENT_COURSES_URL, GET_COURSE_URL, LOGIN_URL, RESET_PASSWORD_URL, STUDENT_REGISTER_URL, UPDATE_DEPARTMENT_COURSES_URL, UPDATE_FACULTY_COURSES_URL, UPDATE_GENERAL_COURSES_URL } from "../shared/constants/urls";
+import { ADMIN_REGISTER_URL, FORGET_PASSWORD_URL, GET_AI_CORE_COURSE_URL, GET_AI_ELECTIVE_COURSE_URL, GET_CS_CORE_COURSE_URL, GET_CS_ELECTIVE_COURSE_URL, GET_F_CORE_COURSE_URL, GET_F_ELECTIVE_COURSE_URL, GET_G_CORE_COURSE_URL, GET_G_ELECTIVE_COURSE_URL, GET_IS_CORE_COURSE_URL, GET_IS_ELECTIVE_COURSE_URL, GET_IT_CORE_COURSE_URL, GET_IT_ELECTIVE_COURSE_URL, LOGIN_URL, RESET_PASSWORD_URL, STUDENT_REGISTER_URL, UPDATE_DEPARTMENT_COURSES_URL, UPDATE_FACULTY_COURSES_URL, UPDATE_GENERAL_COURSES_URL } from "../shared/constants/urls";
 
 import { UserLogin } from "../shared/interfaces/UserLogin";
 import { Student } from "../shared/interfaces/Student";
@@ -143,8 +143,35 @@ export class AuthService {
   }
 
 
-  fetchCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(GET_COURSE_URL).pipe(
+  fetchGeneralCoreCourses(): Observable<Course[]> {
+    return this.http.get<Course[]>(GET_G_CORE_COURSE_URL).pipe(
+      tap({
+        next: () => console.log('Courses fetched successfully'),
+        error: () => this.toastrService.error('Failed to fetch courses'),
+      })
+    );
+  }
+
+  fetchGeneralElectiveCourses(): Observable<Course[]> {
+    return this.http.get<Course[]>(GET_G_ELECTIVE_COURSE_URL).pipe(
+      tap({
+        next: () => console.log('Courses fetched successfully'),
+        error: () => this.toastrService.error('Failed to fetch courses'),
+      })
+    );
+  }
+
+  fetchFacultyCoreCourses(): Observable<Course[]> {
+    return this.http.get<Course[]>(GET_F_CORE_COURSE_URL).pipe(
+      tap({
+        next: () => console.log('Courses fetched successfully'),
+        error: () => this.toastrService.error('Failed to fetch courses'),
+      })
+    );
+  }
+
+  fetchFacultyElectiveCourses(): Observable<Course[]> {
+    return this.http.get<Course[]>(GET_F_ELECTIVE_COURSE_URL).pipe(
       tap({
         next: () => console.log('Courses fetched successfully'),
         error: () => this.toastrService.error('Failed to fetch courses'),
@@ -153,15 +180,59 @@ export class AuthService {
   }
 
 
-  fetchDepartmentCourses(department: string): Observable<Course[]> {
-    return this.http.get<Course[]>(`${GET_DEPARTMENT_COURSES_URL}/${department}`).pipe(
-        tap({
-            error: (error) => {
-                this.toastrService.error(`Failed to fetch ${department} courses`);
-            }
-        })
+
+
+  private fetchCourses(url: string, courseType: string): Observable<Course[]> {
+    return this.http.get<Course[]>(url).pipe(
+      tap({
+        next: () => console.log(`Fetched ${courseType} courses successfully.`),
+        error: () => this.toastrService.error(`Failed to fetch ${courseType} courses`),
+      })
     );
-}
+  }
+
+  fetchCSCoreCourses(): Observable<Course[]> {
+    return this.fetchCourses(GET_CS_CORE_COURSE_URL, 'CS Core');
+  }
+
+  fetchCSElectiveCourses(): Observable<Course[]> {
+    return this.fetchCourses(GET_CS_ELECTIVE_COURSE_URL, 'CS Elective');
+  }
+
+  fetchISCoreCourses(): Observable<Course[]> {
+    return this.fetchCourses(GET_IS_CORE_COURSE_URL, 'IS Core');
+  }
+
+  fetchISElectiveCourses(): Observable<Course[]> {
+    return this.fetchCourses(GET_IS_ELECTIVE_COURSE_URL, 'IS Elective');
+  }
+
+  fetchITCoreCourses(): Observable<Course[]> {
+    return this.fetchCourses(GET_IT_CORE_COURSE_URL, 'IT Core');
+  }
+
+  fetchITElectiveCourses(): Observable<Course[]> {
+    return this.fetchCourses(GET_IT_ELECTIVE_COURSE_URL, 'IT Elective');
+  }
+
+  fetchAICoreCourses(): Observable<Course[]> {
+    return this.fetchCourses(GET_AI_CORE_COURSE_URL, 'AI Core');
+  }
+
+  fetchAIElectiveCourses(): Observable<Course[]> {
+    return this.fetchCourses(GET_AI_ELECTIVE_COURSE_URL, 'AI Elective');
+  }
+
+
+//   fetchDepartmentCourses(department: string): Observable<Course[]> {
+//     return this.http.get<Course[]>(`${GET_DEPARTMENT_COURSES_URL}/${department}`).pipe(
+//         tap({
+//             error: (error) => {
+//                 this.toastrService.error(`Failed to fetch ${department} courses`);
+//             }
+//         })
+//     );
+// }
 
 
 

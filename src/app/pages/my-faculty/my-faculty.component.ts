@@ -30,11 +30,18 @@ export class MyFacultyComponent implements OnInit{
       }
     });
 
-    this.authService.fetchCourses().subscribe((courses: Course[]) => {
-      this.coreCourses = courses.filter(course => course.type === 'g_core');
-      this.electiveCourses = courses.filter(course => course.type === 'g_elective');
+    this.authService.fetchFacultyCoreCourses().subscribe((courses: Course[]) => {
+      this.coreCourses = courses.filter(course => course.type === 'f_core');
     });
+
+
+    this.authService.fetchFacultyElectiveCourses().subscribe((courses: Course[]) => {
+      this.electiveCourses = courses.filter(course => course.type === 'f_elective');
+    });
+  
   }
+
+  
 
   canTakeCourse(course: Course): boolean {
     if (!course.preRequest) return true;

@@ -27,8 +27,11 @@ export class MyGeneralComponent implements OnInit {
       }
     });
 
-    this.authService.fetchCourses().subscribe((courses: Course[]) => {
+    this.authService.fetchGeneralCoreCourses().subscribe((courses: Course[]) => {
       this.coreCourses = courses.filter(course => course.type === 'g_core');
+    });
+
+    this.authService.fetchGeneralElectiveCourses().subscribe((courses: Course[]) => {
       this.electiveCourses = courses.filter(course => course.type === 'g_elective');
     });
   }

@@ -18,7 +18,9 @@ export class MyDepartmentComponent implements OnInit {
 
   @Output() calculatedHoursEvent = new EventEmitter<number>();
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+  ) {}
 
   ngOnInit(): void {
     this.authService.studentObservable.subscribe((newStudent) => {
@@ -38,38 +40,44 @@ export class MyDepartmentComponent implements OnInit {
   fetchDepartmentCourses(): void {
     if (!this.selectedDepartment) return;
 
-    let courseTypes: string[] = [];
-
-    // Determine the course types based on the selected department
+    // Fetch courses for the selected department using the CourseService
     switch (this.selectedDepartment) {
       case 'CS':
-        courseTypes = ['cs_core', 'cs_elective'];
+        this.fetchCoursesByType('CS Core', 'CS Elective');
         break;
       case 'IS':
-        courseTypes = ['is_core', 'is_elective'];
+        this.fetchCoursesByType('IS Core', 'IS Elective');
         break;
       case 'AI':
-        courseTypes = ['ai_core', 'ai_elective'];
+        this.fetchCoursesByType('AI Core', 'AI Elective');
         break;
       case 'IT':
-        courseTypes = ['it_core', 'it_elective'];
+        this.fetchCoursesByType('IT Core', 'IT Elective');
         break;
       default:
         console.error('Invalid department selected');
         return;
     }
+  }
 
-    // Fetch courses for the selected department and type
-    this.authService.fetchDepartmentCourses(this.selectedDepartment).subscribe(
-      (courses: Course[]) => {
-        // Filter courses based on the course type
-        this.coreCourses = courses.filter(course => courseTypes.includes(course.type || ''));
-        this.electiveCourses = courses.filter(course => courseTypes.includes(course.type || ''));
+  private fetchCoursesByType(coreType: string, electiveType: string): void {
+    this.authService.fetchCSCoreCourses().subscribe({
+      next: (coreCourses) => {
+        this.coreCourses = coreCourses.filter((course) => course.type === coreType);
       },
-      (error) => {
-        console.error('Failed to fetch courses for department:', this.selectedDepartment);
-      }
-    );
+      error: () => {
+        console.error(`Failed to fetch ${coreType} courses`);
+      },
+    });
+
+    this.authService.fetchCSElectiveCourses().subscribe({
+      next: (electiveCourses) => {
+        this.electiveCourses = electiveCourses.filter((course) => course.type === electiveType);
+      },
+      error: () => {
+        console.error(`Failed to fetch ${electiveType} courses`);
+      },
+    });
   }
 
   // Check if the student can take the course based on prerequisites
