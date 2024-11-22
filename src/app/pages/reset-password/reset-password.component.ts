@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
 
@@ -22,12 +22,12 @@ export class ResetPasswordComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Use bracket notation to access 'email' from state
+    // Ensure you are passing the email correctly from the previous page/navigation
     this.email = this.router.getCurrentNavigation()?.extras.state?.['email'] || '';
 
     this.resetPasswordForm = this.formBuilder.group(
       {
-        newPassword: ['', Validators.required],
+        newPassword: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', [Validators.required]]
       },
       { validator: this.passwordMatchValidator }
@@ -46,15 +46,17 @@ export class ResetPasswordComponent implements OnInit {
 
   submit(): void {
     this.isSubmitted = true;
-
+  
     if (this.resetPasswordForm.invalid) {
       this.toastr.error('Please fill in the form correctly.');
       return;
     }
-
+  
     const newPassword = this.fc['newPassword'].value;
-
-    this.authService.resetPassword(this.email, newPassword).subscribe({
+    const confirmPassword = this.fc['confirmPassword'].value;
+  
+    // Send email, newPassword, and confirmPassword to backend
+    this.authService.resetPassword(this.email, newPassword, confirmPassword).subscribe({
       next: () => {
         this.toastr.success('Password reset successfully!');
         this.router.navigate(['/login']);

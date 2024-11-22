@@ -95,17 +95,8 @@ export class AuthService {
         );
       }
     
-      resetPassword(email: string, newPassword: string): Observable<any> {
-        return this.http.post<any>(RESET_PASSWORD_URL, { email, newPassword }).pipe(
-          tap({
-            next: () => {
-              this.toastrService.success('Password has been reset successfully.');
-            },
-            error: () => {
-              this.toastrService.error('Password reset failed. Please try again.');
-            }
-          })
-        );
+      resetPassword(email: string, newPassword: string, confirmPassword: string): Observable<any> {
+        return this.http.post<any>(RESET_PASSWORD_URL, { email, password: newPassword, confirm: confirmPassword });
       }
     
 
