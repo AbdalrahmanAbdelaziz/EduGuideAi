@@ -12,18 +12,18 @@ import { AuthService } from '../../services/auth.service';
 export class ResetPasswordComponent implements OnInit {
   resetPasswordForm!: FormGroup;
   isSubmitted = false;
-  token = '';
+  email: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
-    this.token = this.route.snapshot.queryParams['token'] || '';
+    // Use bracket notation to access 'email' from state
+    this.email = this.router.getCurrentNavigation()?.extras.state?.['email'] || '';
 
     this.resetPasswordForm = this.formBuilder.group(
       {
@@ -52,12 +52,9 @@ export class ResetPasswordComponent implements OnInit {
       return;
     }
 
-    const payload = {
-      token: this.token,
-      newPassword: this.fc['newPassword'].value
-    };
+    const newPassword = this.fc['newPassword'].value;
 
-    this.authService.resetPassword(payload).subscribe({
+    this.authService.resetPassword(this.email, newPassword).subscribe({
       next: () => {
         this.toastr.success('Password reset successfully!');
         this.router.navigate(['/login']);

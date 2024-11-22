@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
 
@@ -16,8 +15,7 @@ export class ForgetPasswordComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private toastr: ToastrService,
-    private router: Router
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +41,6 @@ export class ForgetPasswordComponent implements OnInit {
     this.authService.forgetPassword(email).subscribe({
       next: () => {
         this.toastr.success('Reset link sent to your email.');
-        this.router.navigate(['/login']);
       },
       error: () => {
         this.toastr.error('Failed to send reset link. Try again later.');

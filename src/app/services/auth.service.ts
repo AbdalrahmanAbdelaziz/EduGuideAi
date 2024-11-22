@@ -86,24 +86,28 @@ export class AuthService {
         return this.http.post<any>(FORGET_PASSWORD_URL, { email }).pipe(
           tap({
             next: () => {
-              this.toastrService.success(
-                'Password reset link has been sent to your email.'
-              );
+              this.toastrService.success('Password reset link has been sent to your email.');
             },
             error: () => {
-              this.toastrService.error(
-                'Failed to send reset link. Check your email and try again.'
-              );
+              this.toastrService.error('Failed to send reset link. Check your email and try again.');
             }
           })
         );
       }
-
-   
-      resetPassword(data: { token: string; newPassword: string }) {
-        return this.http.post('https://eduguideai.runasp.net/api/auth/reset-password', data);
+    
+      resetPassword(email: string, newPassword: string): Observable<any> {
+        return this.http.post<any>(RESET_PASSWORD_URL, { email, newPassword }).pipe(
+          tap({
+            next: () => {
+              this.toastrService.success('Password has been reset successfully.');
+            },
+            error: () => {
+              this.toastrService.error('Password reset failed. Please try again.');
+            }
+          })
+        );
       }
-      
+    
 
 
    register(studentRegister: Student): Observable<Student> {
