@@ -46,17 +46,17 @@ export class ResetPasswordComponent implements OnInit {
 
   submit(): void {
     this.isSubmitted = true;
-  
+
     if (this.resetPasswordForm.invalid) {
       this.toastr.error('Please fill in the form correctly.');
       return;
     }
-  
+
     const payload = {
       token: this.token,
       newPassword: this.fc['newPassword'].value
     };
-  
+
     this.authService.resetPassword(payload).subscribe({
       next: () => {
         this.toastr.success('Password reset successfully!');
@@ -67,5 +67,4 @@ export class ResetPasswordComponent implements OnInit {
       }
     });
   }
-  
 }
