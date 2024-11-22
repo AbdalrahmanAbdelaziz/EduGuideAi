@@ -100,21 +100,10 @@ export class AuthService {
       }
 
    
-      resetPassword(token: string, newPassword: string): Observable<any> {
-        return this.http.post<any>(RESET_PASSWORD_URL, { token, newPassword }).pipe(
-          tap({
-            next: () => {
-              this.toastrService.success('Password has been reset successfully.');
-            },
-            error: () => {
-              this.toastrService.error(
-                'Password reset failed. Please try again.'
-              );
-            }
-          })
-        );
+      resetPassword(data: { token: string; newPassword: string }) {
+        return this.http.post('https://eduguideai.runasp.net/api/auth/reset-password', data);
       }
-    
+      
 
 
    register(studentRegister: Student): Observable<Student> {
