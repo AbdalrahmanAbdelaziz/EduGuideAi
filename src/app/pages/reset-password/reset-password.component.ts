@@ -23,12 +23,15 @@ export class ResetPasswordComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.token = this.route.snapshot.queryParams['token'];
+    this.token = this.route.snapshot.queryParams['token'] || '';
 
-    this.resetPasswordForm = this.formBuilder.group({
-      newPassword: ['', Validators.required],
-      confirmPassword: ['', [Validators.required]]
-    }, { validator: this.passwordMatchValidator });
+    this.resetPasswordForm = this.formBuilder.group(
+      {
+        newPassword: ['', Validators.required],
+        confirmPassword: ['', [Validators.required]]
+      },
+      { validator: this.passwordMatchValidator }
+    );
   }
 
   get fc() {
@@ -44,7 +47,10 @@ export class ResetPasswordComponent implements OnInit {
   submit(): void {
     this.isSubmitted = true;
 
-    if (this.resetPasswordForm.invalid) return;
+    if (this.resetPasswordForm.invalid) {
+      this.toastr.error('Please fill in the form correctly.');
+      return;
+    }
 
     const newPassword = this.fc['newPassword'].value;
 
@@ -54,7 +60,7 @@ export class ResetPasswordComponent implements OnInit {
         this.router.navigate(['/login']);
       },
       error: () => {
-        this.toastr.error('Password reset failed.');
+        this.toastr.error('Password reset failed. Try again later.');
       }
     });
   }
