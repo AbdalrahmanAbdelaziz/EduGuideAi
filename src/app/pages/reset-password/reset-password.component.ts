@@ -26,7 +26,7 @@ export class ResetPasswordComponent implements OnInit {
     this.token = this.route.snapshot.queryParams['token'];
 
     this.resetPasswordForm = this.formBuilder.group({
-      newPassword: ['', [Validators.required, Validators.minLength(6)]],
+      newPassword: ['', Validators.required],
       confirmPassword: ['', [Validators.required]]
     }, { validator: this.passwordMatchValidator });
   }
