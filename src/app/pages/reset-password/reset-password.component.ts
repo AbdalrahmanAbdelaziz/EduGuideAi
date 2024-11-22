@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-reset-password',
@@ -10,33 +10,31 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
+
   resetPasswordForm!: FormGroup;
   isSubmitted = false;
-  email: string = '';
+  token = '';
+  email = '';
 
   constructor(
-    private formBuilder: FormBuilder,
     private authService: AuthService,
+    private formBuilder: FormBuilder,
+    private activatedRoute: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
-    // Ensure you are passing the email correctly from the previous page/navigation
-    this.email = this.router.getCurrentNavigation()?.extras.state?.['email'] || '';
-
-    this.resetPasswordForm = this.formBuilder.group(
-      {
-        newPassword: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', [Validators.required]]
-      },
-      { validator: this.passwordMatchValidator }
-    );
+    this.token = this.activatedRoute.snapshot.queryParams['token'];
+    this.email = this.activatedRoute.snapshot.queryParams['email'] || '';
+  
+    this.resetPasswordForm = this.formBuilder.group({
+      email: [{ value: this.email, disabled: true }], 
+      newPassword: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
+    }, { validator: this.passwordMatchValidator });
   }
-
-  get fc() {
-    return this.resetPasswordForm.controls;
-  }
+  
 
   passwordMatchValidator(formGroup: FormGroup): null | { notMatching: true } {
     return formGroup.get('newPassword')?.value === formGroup.get('confirmPassword')?.value
@@ -44,25 +42,25 @@ export class ResetPasswordComponent implements OnInit {
       : { notMatching: true };
   }
 
+  get fc() {
+    return this.resetPasswordForm.controls;
+  }
+
   submit(): void {
     this.isSubmitted = true;
-  
-    if (this.resetPasswordForm.invalid) {
-      this.toastr.error('Please fill in the form correctly.');
-      return;
-    }
-  
+
+    if (this.resetPasswordForm.invalid) return;
+
     const newPassword = this.fc['newPassword'].value;
-    const confirmPassword = this.fc['confirmPassword'].value;
-  
-    // Send email, newPassword, and confirmPassword to backend
-    this.authService.resetPassword(this.email, newPassword, confirmPassword).subscribe({
+
+    this.authService.resetPassword(this.token, newPassword).subscribe({
       next: () => {
-        this.toastr.success('Password reset successfully!');
+        this.toastr.success('Password has been reset successfully');
         this.router.navigate(['/login']);
       },
-      error: () => {
-        this.toastr.error('Password reset failed. Try again later.');
+      error: (err) => {
+        this.toastr.error('Error resetting password');
+        console.error(err);
       }
     });
   }
