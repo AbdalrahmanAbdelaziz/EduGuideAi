@@ -83,7 +83,7 @@ export class AuthService {
 
 
     forgetPassword(email: string): Observable<any> {
-        return this.http.post<any>(FORGET_PASSWORD_URL, { email }).pipe(
+        return this.http.post<any>(FORGET_PASSWORD_URL, { email }, { responseType: 'text' as 'json' }).pipe(
           tap({
             next: () => {
               this.toastrService.success('Password reset link has been sent to your email.');
@@ -94,6 +94,7 @@ export class AuthService {
           })
         );
       }
+      
     
       resetPassword(email: string, newPassword: string): Observable<any> {
         return this.http.post<any>(RESET_PASSWORD_URL, { email, newPassword }).pipe(
