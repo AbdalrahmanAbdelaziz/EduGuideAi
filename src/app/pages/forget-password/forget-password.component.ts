@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
-  styleUrl: './forget-password.component.css'
+  styleUrls: ['./forget-password.component.css']
 })
-export class ForgetPasswordComponent implements OnInit{
-
+export class ForgetPasswordComponent implements OnInit {
   forgetPasswordForm!: FormGroup;
   isSubmitted = false;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router){
-
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.forgetPasswordForm = this.formBuilder.group({
@@ -23,21 +26,24 @@ export class ForgetPasswordComponent implements OnInit{
     });
   }
 
-  get fc(){
+  get fc() {
     return this.forgetPasswordForm.controls;
   }
 
-  submit(){
+  submit(): void {
     this.isSubmitted = true;
-    if(this.forgetPasswordForm.invalid)
-      return;
+
+    if (this.forgetPasswordForm.invalid) return;
 
     const email = this.fc['email'].value;
-    this.authService.forgetPassword(email).subscribe(
-      response => {
-        this.router.navigateByUrl('/login')
+    this.authService.forgetPassword(email).subscribe({
+      next: () => {
+        this.toastr.success('Reset link sent to your email.');
+        this.router.navigate(['/login']);
+      },
+      error: () => {
+        this.toastr.error('Failed to send reset link.');
       }
-    );
+    });
   }
-
 }

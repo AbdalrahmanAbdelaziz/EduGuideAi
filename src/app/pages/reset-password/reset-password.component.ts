@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -10,40 +10,35 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
-
   resetPasswordForm!: FormGroup;
   isSubmitted = false;
   token = '';
-  email = '';
 
   constructor(
-    private authService: AuthService,
     private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute,
+    private authService: AuthService,
+    private route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
-    this.token = this.activatedRoute.snapshot.queryParams['token'];
-    this.email = this.activatedRoute.snapshot.queryParams['email'] || '';
-  
+    this.token = this.route.snapshot.queryParams['token'];
+
     this.resetPasswordForm = this.formBuilder.group({
-      email: [{ value: this.email, disabled: true }], 
-      newPassword: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
+      newPassword: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required]]
     }, { validator: this.passwordMatchValidator });
   }
-  
+
+  get fc() {
+    return this.resetPasswordForm.controls;
+  }
 
   passwordMatchValidator(formGroup: FormGroup): null | { notMatching: true } {
     return formGroup.get('newPassword')?.value === formGroup.get('confirmPassword')?.value
       ? null
       : { notMatching: true };
-  }
-
-  get fc() {
-    return this.resetPasswordForm.controls;
   }
 
   submit(): void {
@@ -55,12 +50,11 @@ export class ResetPasswordComponent implements OnInit {
 
     this.authService.resetPassword(this.token, newPassword).subscribe({
       next: () => {
-        this.toastr.success('Password has been reset successfully');
+        this.toastr.success('Password reset successfully!');
         this.router.navigate(['/login']);
       },
-      error: (err) => {
-        this.toastr.error('Error resetting password');
-        console.error(err);
+      error: () => {
+        this.toastr.error('Password reset failed.');
       }
     });
   }
