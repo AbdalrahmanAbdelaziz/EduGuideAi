@@ -9,6 +9,7 @@ import { Student } from "../shared/interfaces/Student";
 import { Admin } from "../shared/interfaces/Admin";
 import { Course } from '../shared/interfaces/Course';
 import { UpdateCourse } from "../shared/interfaces/UpdateCourse";
+import { ResetPassword } from "../shared/interfaces/ResetPassword";
 
 
 
@@ -96,18 +97,18 @@ export class AuthService {
       }
       
     
-      resetPassword(email: string, newPassword: string): Observable<any> {
-        return this.http.post<any>(RESET_PASSWORD_URL, { email, newPassword }).pipe(
+      resetPassword(payload: ResetPassword): Observable<void> {
+        return this.http.post<void>(RESET_PASSWORD_URL, payload).pipe(
           tap({
-            next: () => {
-              this.toastrService.success('Password has been reset successfully.');
-            },
-            error: () => {
-              this.toastrService.error('Password reset failed. Please try again.');
+            next: () => this.toastrService.success('Password has been reset successfully.'),
+            error: (error) => {
+              console.error('Reset password error:', error);
+              this.toastrService.error('Failed to reset password. Please try again.');
             }
           })
         );
       }
+      
     
 
 

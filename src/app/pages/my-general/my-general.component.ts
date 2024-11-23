@@ -20,7 +20,6 @@ export class MyGeneralComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    
     this.authService.studentObservable.subscribe((newStudent) => {
       if (newStudent) {
         this.student = newStudent;

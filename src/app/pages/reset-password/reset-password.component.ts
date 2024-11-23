@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ResetPassword } from '../../shared/interfaces/ResetPassword';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,8 +14,8 @@ export class ResetPasswordComponent implements OnInit {
 
   resetPasswordForm!: FormGroup;
   isSubmitted = false;
-  token = '';
-  email = '';
+  emailToReset!: string;
+  emailToken!: string;
 
   constructor(
     private authService: AuthService,
@@ -25,21 +26,32 @@ export class ResetPasswordComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.token = this.activatedRoute.snapshot.queryParams['token'];
-    this.email = this.activatedRoute.snapshot.queryParams['email'] || '';
-  
-    this.resetPasswordForm = this.formBuilder.group({
-      email: [{ value: this.email, disabled: true }], 
-      newPassword: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
-    }, { validator: this.passwordMatchValidator });
+    this.parseQueryParams();
+    this.initializeForm();
   }
-  
 
-  passwordMatchValidator(formGroup: FormGroup): null | { notMatching: true } {
-    return formGroup.get('newPassword')?.value === formGroup.get('confirmPassword')?.value
-      ? null
-      : { notMatching: true };
+  private parseQueryParams(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.emailToReset = params['email'] || '';
+      const token = params['code'] || '';
+      this.emailToken = token.replace(/  /g, '+'); // Correct possible formatting issues
+    });
+  }
+
+  private initializeForm(): void {
+    this.resetPasswordForm = this.formBuilder.group(
+      {
+        newPassword: ['', [Validators.required, Validators.minLength(8)]],
+        confirmPassword: ['', [Validators.required]]
+      },
+      { validator: this.passwordMatchValidator }
+    );
+  }
+
+  private passwordMatchValidator(formGroup: FormGroup): null | { notMatching: true } {
+    const newPassword = formGroup.get('newPassword')?.value;
+    const confirmPassword = formGroup.get('confirmPassword')?.value;
+    return newPassword === confirmPassword ? null : { notMatching: true };
   }
 
   get fc() {
@@ -49,18 +61,26 @@ export class ResetPasswordComponent implements OnInit {
   submit(): void {
     this.isSubmitted = true;
 
-    if (this.resetPasswordForm.invalid) return;
+    if (this.resetPasswordForm.invalid) {
+      this.toastr.warning('Please fill out the form correctly.');
+      return;
+    }
 
-    const newPassword = this.fc['newPassword'].value;
+    const resetPasswordPayload: ResetPassword = {
+      email: this.emailToReset,
+      emailToken: this.emailToken,
+      newPassword: this.fc['newPassword'].value,
+      confirmPassword: this.fc['confirmPassword'].value
+    };
 
-    this.authService.resetPassword(this.token, newPassword).subscribe({
+    this.authService.resetPassword(resetPasswordPayload).subscribe({
       next: () => {
-        this.toastr.success('Password has been reset successfully');
+        this.toastr.success('Password has been reset successfully.');
         this.router.navigate(['/login']);
       },
-      error: (err) => {
-        this.toastr.error('Error resetting password');
-        console.error(err);
+      error: (error) => {
+        console.error(error);
+        this.toastr.error('Failed to reset password. Please try again.');
       }
     });
   }
