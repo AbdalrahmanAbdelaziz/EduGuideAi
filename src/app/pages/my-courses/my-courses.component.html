@@ -32,8 +32,10 @@
       *ngFor="let feature of features"
       (click)="navigateTo(feature.link)"
     >
-      <div class="card-content">
+      <div class="card-header">
         <h3 class="card-title">{{ feature.name }}</h3>
+      </div>
+      <div class="card-content">
         <ng-container *ngIf="feature.name === 'General Requirements'">
           <p>Calculated Hours: {{ generalHours }}/12</p>
         </ng-container>
