@@ -56,18 +56,24 @@ export class MyDepartmentComponent implements OnInit {
   }
 
   private fetchCoursesByType(coreType: string, electiveType: string): void {
-    this.authService.fetchCSCoreCourses().subscribe({
+    // Clear existing courses to avoid mixing them up between department changes
+    this.coreCourses = [];
+    this.electiveCourses = [];
+
+    // Fetch Core Courses
+    this.authService.fetchCoreCourses(coreType).subscribe({
       next: (coreCourses) => {
-        this.coreCourses = coreCourses.filter((course) => course.type === coreType);
+        this.coreCourses = coreCourses;
       },
       error: () => {
         console.error(`Failed to fetch ${coreType} courses`);
       },
     });
 
-    this.authService.fetchCSElectiveCourses().subscribe({
+    // Fetch Elective Courses
+    this.authService.fetchElectiveCourses(electiveType).subscribe({
       next: (electiveCourses) => {
-        this.electiveCourses = electiveCourses.filter((course) => course.type === electiveType);
+        this.electiveCourses = electiveCourses;
       },
       error: () => {
         console.error(`Failed to fetch ${electiveType} courses`);

@@ -28,12 +28,12 @@ export class MyFacultyComponent implements OnInit {
       }
     });
 
-    this.authService.fetchFacultyCoreCourses().subscribe((courses: Course[]) => {
-      this.coreCourses = courses.filter(course => course.type === 'f_core');
+    this.authService.fetchFacultyCoreCourses().subscribe((coreCourses) => {
+      this.coreCourses = coreCourses;
     });
 
-    this.authService.fetchFacultyElectiveCourses().subscribe((courses: Course[]) => {
-      this.electiveCourses = courses.filter(course => course.type === 'f_elective');
+    this.authService.fetchFacultyElectiveCourses().subscribe((electiveCourses) => {
+      this.electiveCourses = electiveCourses;
     });
   }
 
