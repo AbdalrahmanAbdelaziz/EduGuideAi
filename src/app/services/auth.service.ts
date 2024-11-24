@@ -41,7 +41,7 @@ export class AuthService {
           next: (response) => {
             console.log('Login successful:', response);
     
-            if (response.role == 'Student') {
+            if (response.role === 'Student') {
               const student = response as Student;
               console.log('Student login detected:', student);
               this.setStudentToLocalStorage(student);
