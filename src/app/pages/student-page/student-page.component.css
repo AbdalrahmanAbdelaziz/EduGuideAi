@@ -69,6 +69,7 @@
   border-radius: 5px;
   transition: background-color 0.3s ease, transform 0.2s ease;
   text-align: left;
+  cursor: pointer;
 }
 
 .side-navbar-link:hover {
