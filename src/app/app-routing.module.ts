@@ -16,6 +16,7 @@ import { MyGeneralComponent } from './pages/my-general/my-general.component';
 import { MyFacultyComponent } from './pages/my-faculty/my-faculty.component';
 import { MyDepartmentComponent } from './pages/my-department/my-department.component';
 
+
 const routes: Routes = [
   { path: '', component:LandComponent},
   { path: 'info', component:InfoComponent},
