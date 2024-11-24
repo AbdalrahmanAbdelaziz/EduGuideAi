@@ -42,13 +42,13 @@ export class AuthService {
             console.log('Login successful:', response);
     
             if (response.data.role === 'Student') {
-              const student = response as Student;
+              const student = response.data as Student;
               console.log('Student login detected:', student);
               this.setStudentToLocalStorage(student);
               this.studentSubject.next(student);
               this.toastrService.success(`Welcome ${student.firstName}!`);
             } else if (response.data.role === 'Admin') {
-              const admin = response as Admin;
+              const admin = response.data as Admin;
               console.log('Admin login detected:', admin);
               this.setAdminToLocalStorage(admin);
               this.adminSubject.next(admin);
