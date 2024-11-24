@@ -6,7 +6,7 @@ html, body {
 
 
 .navbar {
-    background-color: #333; 
+    background-color: #1d3557; 
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -39,7 +39,7 @@ html, body {
 
 button {
     background-color: #FFFFFF; 
-    color: #333;
+    color: #1d3557;
     font-size: 1em;
     padding: 12px 25px;
     border: none;
