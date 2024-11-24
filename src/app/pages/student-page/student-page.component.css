@@ -1,4 +1,3 @@
-/* Navbar */
 .navbar {
   background-color: #1d3557;
   color: #fff;
@@ -11,7 +10,7 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Lighter shadow for subtle effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
 }
 
 .app-name {
@@ -37,10 +36,9 @@
 
 .menu-trigger:hover {
   background-color: #457b9d;
-  transform: translateY(-3px); /* Subtle lift effect */
+  transform: translateY(-3px); 
 }
 
-/* Side Navbar */
 .side-navbar {
   width: 220px;
   background: linear-gradient(to right, #1d3557, #457b9d);
@@ -73,8 +71,8 @@
 }
 
 .side-navbar-link:hover {
-  background-color: #e63946; /* Warm orange for visibility */
-  transform: scale(1.05); /* Slightly enlarges the link on hover */
+  background-color: #e63946; 
+  transform: scale(1.05); 
 }
 
 .side-navbar-link i {
@@ -112,7 +110,7 @@
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* Slightly more intense shadow */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); 
   filter: brightness(1.1);
   color: #ffdbcc;
 }
@@ -143,17 +141,15 @@
   color: #ffdbcc;
 }
 
-/* Hover Effects */
 .card:hover .card-title,
 .card:hover .card-caption {
-  color: #e63946; /* Deep orange for prominence */
+  color: #e63946; 
 }
 
 .card-content:hover {
-  background-color: rgba(0, 0, 0, 0.3); /* Darker background to improve contrast */
+  background-color: rgba(0, 0, 0, 0.3); 
 }
 
-/* Spacing */
 .navbar-spacer {
   margin-top: 80px;
 }
