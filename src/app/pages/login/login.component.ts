@@ -38,22 +38,31 @@ export class LoginComponent implements OnInit {
 
   submit(): void {
     this.isSubmitted = true;
-
-    if(this.loginForm.invalid) {
+  
+    if (this.loginForm.invalid) {
+      console.log('Login form is invalid:', this.loginForm);
       return;
     }
-
+  
+    console.log('Form Submitted:', this.loginForm.value);
+  
     this.authService.login({
       email: this.fc['email'].value,
       password: this.fc['password'].value
     }).subscribe({
       next: (response) => {
+        console.log('Login response:', response);
         const userRole = response.role;
+  
         if (userRole === 'Student') {
+          console.log('Navigating to Student Page');
           this.router.navigateByUrl('/student-page');
         } else if (userRole === 'Admin') {
+          console.log('Navigating to Admin Page');
           this.router.navigateByUrl('/admin-page');
-        } 
+        } else {
+          console.log('Unexpected user role:', userRole);
+        }
       },
       error: (error) => {
         console.error('Login error:', error);

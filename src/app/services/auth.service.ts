@@ -34,28 +34,37 @@ export class AuthService {
     }
 
     login(userLogin: UserLogin): Observable<any> {
-        return this.http.post<any>(LOGIN_URL, userLogin).pipe(
-            tap({
-                next: (response) => {
-                    if(response.role === 'Student') {
-                        const student = response as Student;
-                        this.setStudentToLocalStorage(student);
-                        this.studentSubject.next(student);
-                        this.toastrService.success(`Welcome ${student.firstName}!`);
-                    } 
-                    else if(response.role === 'Admin') {
-                        const admin = response as Admin;
-                        this.setAdminToLocalStorage(admin);
-                        this.adminSubject.next(admin);
-                        this.toastrService.success(`Welcome ${admin.firstName}!`);
-                    }
-                },
-                error: (errorResponse) => {
-                    this.toastrService.error('Login Failed');
-                }
-            })
-        );
+      console.log('Attempting login with data:', userLogin);
+    
+      return this.http.post<any>(LOGIN_URL, userLogin).pipe(
+        tap({
+          next: (response) => {
+            console.log('Login successful:', response);
+    
+            if (response.role === 'Student') {
+              const student = response as Student;
+              console.log('Student login detected:', student);
+              this.setStudentToLocalStorage(student);
+              this.studentSubject.next(student);
+              this.toastrService.success(`Welcome ${student.firstName}!`);
+            } else if (response.role === 'Admin') {
+              const admin = response as Admin;
+              console.log('Admin login detected:', admin);
+              this.setAdminToLocalStorage(admin);
+              this.adminSubject.next(admin);
+              this.toastrService.success(`Welcome ${admin.firstName}!`);
+            } else {
+              console.warn('Unknown user role:', response.role);
+            }
+          },
+          error: (errorResponse) => {
+            console.error('Login failed:', errorResponse);
+            this.toastrService.error('Login Failed');
+          }
+        })
+      );
     }
+    
 
     logout() {
         this.studentSubject.next(null);
