@@ -13,24 +13,24 @@ export const STUDENT_REGISTER_URL = BASE_URL + '/api/student/register';
 export const ADMIN_REGISTER_URL = BASE_URL + '/api/admin/register';
 
 
-export const  POST_G_CORE_COURSE_URL = BASE_URL + '/api/g_core_courses';
-export const  POST_G_ELECTIVE_COURSE_URL = BASE_URL + '/api/g_elective_courses';
+export const  GET_G_CORE_COURSE_URL = BASE_URL + '/api/g_core_courses';
+export const  GET_G_ELECTIVE_COURSE_URL = BASE_URL + '/api/g_elective_courses';
 
 
-export const  POST_F_CORE_COURSE_URL = BASE_URL + '/api/f_core_courses';
-export const  POST_F_ELECTIVE_COURSE_URL = BASE_URL + '/api/f_elective_courses';
+export const  GET_F_CORE_COURSE_URL = BASE_URL + '/api/f_core_courses';
+export const  GET_F_ELECTIVE_COURSE_URL = BASE_URL + '/api/f_elective_courses';
 
-export const  POST_CS_CORE_COURSE_URL = BASE_URL + '/api/cs_core_courses';
-export const  POST_CS_ELECTIVE_COURSE_URL = BASE_URL + '/api/cs_elective_courses';
+export const  GET_CS_CORE_COURSE_URL = BASE_URL + '/api/cs_core_courses';
+export const  GET_CS_ELECTIVE_COURSE_URL = BASE_URL + '/api/cs_elective_courses';
 
-export const  POST_IS_CORE_COURSE_URL = BASE_URL + '/api/is_core_courses';
-export const  POST_IS_ELECTIVE_COURSE_URL = BASE_URL + '/api/is_elective_courses';
+export const  GET_IS_CORE_COURSE_URL = BASE_URL + '/api/is_core_courses';
+export const  GET_IS_ELECTIVE_COURSE_URL = BASE_URL + '/api/is_elective_courses';
 
-export const  POST_IT_CORE_COURSE_URL = BASE_URL + '/api/it_core_courses';
-export const  POST_IT_ELECTIVE_COURSE_URL = BASE_URL + '/api/it_elective_courses';
+export const  GET_IT_CORE_COURSE_URL = BASE_URL + '/api/it_core_courses';
+export const  GET_IT_ELECTIVE_COURSE_URL = BASE_URL + '/api/it_elective_courses';
 
-export const  POST_AI_CORE_COURSE_URL = BASE_URL + '/api/ai_core_courses';
-export const  POST_AI_ELECTIVE_COURSE_URL = BASE_URL + '/api/ai_elective_courses';
+export const  GET_AI_CORE_COURSE_URL = BASE_URL + '/api/ai_core_courses';
+export const  GET_AI_ELECTIVE_COURSE_URL = BASE_URL + '/api/ai_elective_courses';
 
 
 

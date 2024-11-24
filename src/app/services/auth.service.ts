@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable, tap } from "rxjs";
 import { ToastrService } from 'ngx-toastr';
-import { ADMIN_REGISTER_URL, FORGET_PASSWORD_URL,LOGIN_URL, RESET_PASSWORD_URL, STUDENT_REGISTER_URL, UPDATE_DEPARTMENT_COURSES_URL, UPDATE_FACULTY_COURSES_URL, UPDATE_GENERAL_COURSES_URL } from "../shared/constants/urls";
+import { ADMIN_REGISTER_URL, FORGET_PASSWORD_URL, GET_AI_CORE_COURSE_URL, GET_AI_ELECTIVE_COURSE_URL, GET_CS_CORE_COURSE_URL, GET_CS_ELECTIVE_COURSE_URL, GET_F_CORE_COURSE_URL, GET_F_ELECTIVE_COURSE_URL, GET_G_CORE_COURSE_URL, GET_G_ELECTIVE_COURSE_URL, GET_IS_CORE_COURSE_URL, GET_IS_ELECTIVE_COURSE_URL, GET_IT_CORE_COURSE_URL, GET_IT_ELECTIVE_COURSE_URL, LOGIN_URL, RESET_PASSWORD_URL, STUDENT_REGISTER_URL, UPDATE_DEPARTMENT_COURSES_URL, UPDATE_FACULTY_COURSES_URL, UPDATE_GENERAL_COURSES_URL } from "../shared/constants/urls";
 
 import { UserLogin } from "../shared/interfaces/UserLogin";
 import { Student } from "../shared/interfaces/Student";
@@ -24,17 +24,15 @@ export class AuthService {
     private studentSubject = new BehaviorSubject<Student | null>(this.getStudentFromLocalStorage());
     private adminSubject = new BehaviorSubject<Admin | null>(this.getAdminFromLocalStorage());
     private coursesSubject = new BehaviorSubject<Course[]>([]);
+
     
 
     public studentObservable: Observable<Student | null>;
     public adminObservable: Observable<Admin | null>;
-    public coursesObservable: Observable<Course[]>;
 
     constructor(private http: HttpClient, private toastrService: ToastrService) {
         this.studentObservable = this.studentSubject.asObservable();
         this.adminObservable = this.adminSubject.asObservable();
-        this.coursesObservable = this.coursesSubject.asObservable();
-
     }
 
     login(userLogin: UserLogin): Observable<any> {
@@ -162,29 +160,25 @@ export class AuthService {
   }
 
 
-
-  fetchCourses(url: string, courseType: string, body: any): Observable<Course[]> {
-    return this.http.post<Course[]>(url, body).pipe(
+  fetchCourses(url: string, courseType: string): Observable<Course[]> {
+    console.log(`Fetching courses of type: ${courseType} from ${url}`);
+    return this.http.get<Course[]>(url).pipe(
       tap({
         next: (courses: Course[]) => {
           console.log(`${courseType} courses fetched successfully:`, courses);
-  
-          // Process courses if needed
+
           courses.forEach((course) => {
-            // Add a field to indicate whether this is a core or elective course
-            course.type = this.determineCourseType(courseType);
-  
-            // Log the processed course (optional for debugging)
-            console.log(`Processed course:`, course);
-  
-            // Perform additional transformations if necessary
-            course.name = course.name.trim().toUpperCase(); // Example: Standardizing course names
+            console.log(`Course details:
+              Code: ${course.code},
+              Name: ${course.name},
+              Hours: ${course.hours},
+              PreRequest: ${course.preRequest || 'None'},
+              Grade: ${course.grade || 'N/A'},
+              Completed: ${course.completed ? 'Yes' : 'No'},
+              Type: ${course.type}`);
           });
-  
-          // Update the BehaviorSubject with the processed courses
+
           this.coursesSubject.next(courses);
-  
-          // Notify the user of success
           this.toastrService.success(`${courseType} courses loaded successfully.`);
         },
         error: (errorResponse) => {
@@ -194,75 +188,59 @@ export class AuthService {
       })
     );
   }
-  
-  // Utility method to map courseType to the Course type field
-  private determineCourseType(courseType: string): Course['type'] {
-    switch (courseType.toLowerCase()) {
-      case 'general core': return 'g_core';
-      case 'general elective': return 'g_elective';
-      case 'faculty core': return 'f_core';
-      case 'faculty elective': return 'f_elective';
-      case 'cs core': return 'cs_core';
-      case 'cs elective': return 'cs_elective';
-      case 'is core': return 'is_core';
-      case 'is elective': return 'is_elective';
-      case 'ai core': return 'ai_core';
-      case 'ai elective': return 'ai_elective';
-      case 'it core': return 'it_core';
-      case 'it elective': return 'it_elective';
-      default: return undefined;
-    }
+
+  get courses$(): Observable<Course[]> {
+    return this.coursesSubject.asObservable();
   }
-  
-  // Updated Fetch Methods for Different Course Categories
+
+  // Fetch Methods for Different Course Categories
   fetchGeneralCoreCourses(): Observable<Course[]> {
-    return this.fetchCourses('POST_G_CORE_COURSE_URL', 'General Core', { type: 'g_core' });
+    return this.fetchCourses('GET_G_CORE_COURSE_URL', 'General Core');
   }
-  
+
   fetchGeneralElectiveCourses(): Observable<Course[]> {
-    return this.fetchCourses('POST_G_ELECTIVE_COURSE_URL', 'General Elective', { type: 'g_elective' });
+    return this.fetchCourses('GET_G_ELECTIVE_COURSE_URL', 'General Elective');
   }
-  
+
   fetchFacultyCoreCourses(): Observable<Course[]> {
-    return this.fetchCourses('POST_F_CORE_COURSE_URL', 'Faculty Core', { type: 'f_core' });
+    return this.fetchCourses('GET_F_CORE_COURSE_URL', 'Faculty Core');
   }
-  
+
   fetchFacultyElectiveCourses(): Observable<Course[]> {
-    return this.fetchCourses('POST_F_ELECTIVE_COURSE_URL', 'Faculty Elective', { type: 'f_elective' });
+    return this.fetchCourses('GET_F_ELECTIVE_COURSE_URL', 'Faculty Elective');
   }
-  
+
   fetchCSCoreCourses(): Observable<Course[]> {
-    return this.fetchCourses('POST_CS_CORE_COURSE_URL', 'CS Core', { type: 'cs_core' });
+    return this.fetchCourses('GET_CS_CORE_COURSE_URL', 'CS Core');
   }
-  
+
   fetchCSElectiveCourses(): Observable<Course[]> {
-    return this.fetchCourses('POST_CS_ELECTIVE_COURSE_URL', 'CS Elective', { type: 'cs_elective' });
+    return this.fetchCourses('GET_CS_ELECTIVE_COURSE_URL', 'CS Elective');
   }
-  
+
   fetchISCoreCourses(): Observable<Course[]> {
-    return this.fetchCourses('POST_IS_CORE_COURSE_URL', 'IS Core', { type: 'is_core' });
+    return this.fetchCourses('GET_IS_CORE_COURSE_URL', 'IS Core');
   }
-  
+
   fetchISElectiveCourses(): Observable<Course[]> {
-    return this.fetchCourses('POST_IS_ELECTIVE_COURSE_URL', 'IS Elective', { type: 'is_elective' });
+    return this.fetchCourses('GET_IS_ELECTIVE_COURSE_URL', 'IS Elective');
   }
-  
+
   fetchITCoreCourses(): Observable<Course[]> {
-    return this.fetchCourses('POST_IT_CORE_COURSE_URL', 'IT Core', { type: 'it_core' });
+    return this.fetchCourses('GET_IT_CORE_COURSE_URL', 'IT Core');
   }
-  
+
   fetchITElectiveCourses(): Observable<Course[]> {
-    return this.fetchCourses('POST_IT_ELECTIVE_COURSE_URL', 'IT Elective', { type: 'it_elective' });
+    return this.fetchCourses('GET_IT_ELECTIVE_COURSE_URL', 'IT Elective');
   }
-  
+
   fetchAICoreCourses(): Observable<Course[]> {
-    return this.fetchCourses('POST_AI_CORE_COURSE_URL', 'AI Core', { type: 'ai_core' });
+    return this.fetchCourses('GET_AI_CORE_COURSE_URL', 'AI Core');
   }
-  
+
   fetchAIElectiveCourses(): Observable<Course[]> {
-    return this.fetchCourses('POST_AI_ELECTIVE_COURSE_URL', 'AI Elective', { type: 'ai_elective' });
+    return this.fetchCourses('GET_AI_ELECTIVE_COURSE_URL', 'AI Elective');
   }
-  
 
 
 
