@@ -17,10 +17,10 @@
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-content">
-      <h1>Welcome to EduGuideAI</h1>
-      <p>Your guide to smarter learning and achievement tracking.</p>
+      <h1>Welcome, {{ student.firstName | titlecase }}</h1>
+      <p>Track your courses and access your academic transcript.</p>
       <button class="cta-button" (click)="navigateTo('/dashboard')">
-        Get Started
+        View Transcript
       </button>
     </div>
   </section>
