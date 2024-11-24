@@ -37,8 +37,8 @@ export class MyGeneralComponent implements OnInit {
   }
 
   canTakeCourse(course: Course): boolean {
-    if (!course.preRequest) return true;
-    const preRequestCourse = this.allCourses.find((c) => c.code === course.preRequest);
+    if (!course.prerequest) return true;
+    const preRequestCourse = this.allCourses.find((c) => c.code === course.prerequest);
     return preRequestCourse?.grade !== 'none' && preRequestCourse?.grade !== 'F';
   }
 

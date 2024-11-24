@@ -82,8 +82,8 @@ export class MyDepartmentComponent implements OnInit {
   }
 
   canTakeCourse(course: Course): boolean {
-    if (!course.preRequest) return true;
-    const preRequestCourse = this.coreCourses.concat(this.electiveCourses).find((c) => c.code === course.preRequest);
+    if (!course.prerequest) return true;
+    const preRequestCourse = this.coreCourses.concat(this.electiveCourses).find((c) => c.code === course.prerequest);
     return preRequestCourse?.grade !== 'none' && preRequestCourse?.grade !== 'F';
   }
 
