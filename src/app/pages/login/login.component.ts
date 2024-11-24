@@ -51,8 +51,7 @@ export class LoginComponent implements OnInit {
       password: this.fc['password'].value
     }).subscribe({
       next: (response) => {
-        console.log('Login response:', response);
-        const userRole = response.role;
+        const userRole = response.data.role;
   
         if (userRole === 'Student') {
           console.log('Navigating to Student Page');
