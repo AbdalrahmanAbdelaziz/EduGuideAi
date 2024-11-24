@@ -4,7 +4,6 @@
     <div class="app-name" routerLink="/student-page">
       EduGuideAI
     </div>
-
     <div class="right-button">
       <li class="menu-container">
         <a routerLink="/profile" class="menu-trigger">
@@ -27,7 +26,6 @@
           <p>GPA: {{ student.gpa | number: '1.1-2' }}</p>
         </div>
       </div>
-
       <div class="side-navbar-links">
         <a routerLink="/profile" class="side-navbar-link">
           <i class="fas fa-user"></i> Profile
@@ -44,9 +42,7 @@
     <!-- Main Content Section -->
     <div class="features-section">
       <div class="card" *ngFor="let feature of features" (click)="navigateTo(feature.link)">
-        <div class="card-image-container">
-          <img [src]="feature.image" alt="Feature Image" class="card-image" />
-        </div>
+        <img [src]="feature.image" alt="Feature Image" class="card-image" />
         <div class="card-content">
           <h3 class="card-title">{{ feature.name }}</h3>
           <p class="card-caption">{{ feature.caption }}</p>
