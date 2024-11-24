@@ -7,9 +7,8 @@ body {
   }
   
   /* Navbar */
-  /* Navbar Styling */
-.navbar {
-    background-color: #1d3557;  /* Dark Blue */
+  .navbar {
+    background-color: #1d3557;
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -21,7 +20,6 @@ body {
     right: 0;
     z-index: 1000;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;  /* Smooth transition for hover effects */
   }
   
   .app-name {
@@ -30,18 +28,11 @@ body {
     color: #fff;
     letter-spacing: 2px;
     cursor: pointer;
-    text-transform: uppercase; /* Adds a professional touch */
-    transition: color 0.3s ease;
-  }
-  
-  .app-name:hover {
-    color: #457b9d;  /* Lighter blue when hovered */
   }
   
   .right-button {
     display: flex;
     align-items: center;
-    gap: 15px;  /* Spacing between menu items */
   }
   
   .menu-trigger {
@@ -49,29 +40,15 @@ body {
     font-weight: 500;
     color: white;
     text-decoration: none;
-    text-transform: uppercase;  /* Consistency with the app name */
-    padding: 10px 20px;
-    border-radius: 30px;
-    transition: background-color 0.3s ease, transform 0.2s ease;  /* Smooth hover transition */
+    transition: background-color 0.3s ease;
   }
   
   .menu-trigger:hover {
-    background-color: #457b9d;  /* Lighter blue background */
-    transform: scale(1.05);  /* Slightly enlarge the button on hover */
+    background-color: #457b9d;
   }
-  
-  .menu-trigger:active {
-    background-color: #355d77;  /* Darker shade when clicked */
-  }
-  
-  /* Add a border to the navbar to give it a more defined look */
-  .navbar {
-    border-bottom: 2px solid #457b9d;
-  }
-  
-  /* Adjusting Button Styling */
-  button {
-    background-color: #fff;
+
+button {
+    background-color: #FFFFFF; 
     color: #333;
     font-size: 1em;
     padding: 12px 25px;
@@ -82,44 +59,43 @@ body {
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 1px;
-  }
-  
-  button:hover {
-    background-color: #d94e2a;  /* Highlight with a bold orange color */
-    transform: scale(1.05);  /* Slightly enlarge button */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);  /* Add a shadow for hover */
-  }
-  
-  /* Mobile Responsiveness */
-  @media (max-width: 768px) {
+}
+
+button:hover {
+    background-color: #d94e2a; 
+    transform: scale(1.05); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+}
+
+
+@media (max-width: 768px) {
     .navbar {
-      padding: 15px 20px;
-      flex-direction: column;
-      align-items: flex-start;
+        padding: 15px 20px;
+        flex-direction: column;
+        align-items: flex-start;
     }
-  
+
     .app-name {
-      font-size: 1.6em;
-      margin-bottom: 10px;
+        font-size: 1.6em;
+        margin-bottom: 10px;
     }
-  
+
     .right-button {
-      width: 100%;
-      justify-content: space-between;
+        width: 100%;
+        justify-content: space-between;
     }
-  
+
     button {
-      width: 100%;
-      padding: 14px;
-      font-size: 1.1em;
+        width: 100%;
+        padding: 14px;
+        font-size: 1.1em;
     }
-  }
-  
-  /* Navbar Spacer */
-  .navbar-spacer {
+}
+
+.navbar-spacer {
     height: 100px; 
-  }
-  
+}
+
 
 .landing-page {
     font-family: Arial, sans-serif;
