@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Student } from '../../shared/interfaces/Student';
 import { Course } from '../../shared/interfaces/Course';
 import { UpdateCourse } from '../../shared/interfaces/UpdateCourse';
+import { Student } from '../../shared/interfaces/Student';
 
 @Component({
   selector: 'app-my-department',
@@ -18,9 +18,7 @@ export class MyDepartmentComponent implements OnInit {
 
   @Output() calculatedHoursEvent = new EventEmitter<number>();
 
-  constructor(
-    private authService: AuthService,
-  ) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.authService.studentObservable.subscribe((newStudent) => {
@@ -30,17 +28,14 @@ export class MyDepartmentComponent implements OnInit {
     });
   }
 
-  // Department selection handler
   onDepartmentChange(event: any): void {
     this.selectedDepartment = event.target.value;
     this.fetchDepartmentCourses();
   }
 
-  // Fetch department-specific courses based on selected department
   fetchDepartmentCourses(): void {
     if (!this.selectedDepartment) return;
 
-    // Fetch courses for the selected department using the CourseService
     switch (this.selectedDepartment) {
       case 'CS':
         this.fetchCoursesByType('CS Core', 'CS Elective');
@@ -80,22 +75,18 @@ export class MyDepartmentComponent implements OnInit {
     });
   }
 
-  // Check if the student can take the course based on prerequisites
   canTakeCourse(course: Course): boolean {
     if (!course.preRequest) return true;
     const preRequestCourse = this.coreCourses.concat(this.electiveCourses).find((c) => c.code === course.preRequest);
     return preRequestCourse?.grade !== 'none' && preRequestCourse?.grade !== 'F';
   }
 
-  // Calculate total hours for the selected department courses
   calculateDepartmentHours(): number {
     return [...this.coreCourses, ...this.electiveCourses]
       .filter((course) => course.grade !== 'none')
       .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0); // Convert hours to a number
   }
-  
 
-  // Submit selected courses and grades
   submitCourses(): void {
     const updatedCourses: UpdateCourse[] = [...this.coreCourses, ...this.electiveCourses].map((course) => ({
       code: course.code,

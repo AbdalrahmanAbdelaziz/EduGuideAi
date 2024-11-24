@@ -46,7 +46,6 @@ export class MyGeneralComponent implements OnInit {
       .filter((course) => course.grade !== 'none')
       .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0); // Convert hours to a number
   }
-  
 
   submitCourses(): void {
     const updatedCourses: UpdateCourse[] = this.allCourses.map((course) => ({
@@ -54,6 +53,7 @@ export class MyGeneralComponent implements OnInit {
       grade: course.grade || 'none',
     }));
 
+    // Remove the studentId from the payload if it's not expected
     this.authService.updateGeneralCourses(updatedCourses).subscribe(() => {
       const calculatedHours = this.calculateTotalHours();
       this.calculatedHoursEvent.emit(calculatedHours); // Emit the total hours
