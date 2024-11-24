@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable, tap } from "rxjs";
 import { ToastrService } from 'ngx-toastr';
-import { ADMIN_REGISTER_URL, FORGET_PASSWORD_URL, GET_AI_CORE_COURSE_URL, GET_AI_ELECTIVE_COURSE_URL, GET_CS_CORE_COURSE_URL, GET_CS_ELECTIVE_COURSE_URL, GET_F_CORE_COURSE_URL, GET_F_ELECTIVE_COURSE_URL, GET_G_CORE_COURSE_URL, GET_G_ELECTIVE_COURSE_URL, GET_IS_CORE_COURSE_URL, GET_IS_ELECTIVE_COURSE_URL, GET_IT_CORE_COURSE_URL, GET_IT_ELECTIVE_COURSE_URL, LOGIN_URL, RESET_PASSWORD_URL, STUDENT_REGISTER_URL, UPDATE_DEPARTMENT_COURSES_URL, UPDATE_FACULTY_COURSES_URL, UPDATE_GENERAL_COURSES_URL } from "../shared/constants/urls";
+import { ADMIN_REGISTER_URL, FORGET_PASSWORD_URL,LOGIN_URL, RESET_PASSWORD_URL, STUDENT_REGISTER_URL, UPDATE_DEPARTMENT_COURSES_URL, UPDATE_FACULTY_COURSES_URL, UPDATE_GENERAL_COURSES_URL } from "../shared/constants/urls";
 
 import { UserLogin } from "../shared/interfaces/UserLogin";
 import { Student } from "../shared/interfaces/Student";
@@ -160,7 +160,7 @@ export class AuthService {
       })
     );
   }
-  
+
 
 
   fetchCourses(url: string, courseType: string, body: any): Observable<Course[]> {
