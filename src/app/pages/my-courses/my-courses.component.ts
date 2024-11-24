@@ -24,7 +24,7 @@ export class MyCoursesComponent implements OnInit {
       link: '/my-faculty'
     },
     {
-      name: 'Department Requirements',
+      name: 'division Requirements',
       link: '/my-department'
     }
   ];
