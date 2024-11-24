@@ -25,7 +25,7 @@ export class RegisterStudentComponent implements OnInit{
 
         if (password === confirmPassword) {
             const student: Student = { firstName, lastName, email, password };
-            this.authService.register(student).subscribe(
+            this.authService.registerStudent(student).subscribe(
                 response => {
                     this.router.navigateByUrl('/login')
                 }
