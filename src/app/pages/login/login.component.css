@@ -114,7 +114,7 @@ h1 {
 }
 
 .error {
-  color: #e63946;
+  color: red;
   font-size: 13px;
   margin-top: 5px;
   text-align: left;
