@@ -52,7 +52,7 @@ button {
 }
 
 button:hover {
-    background-color: #d94e2a; 
+    background-color: #e63946; 
     transform: scale(1.05); 
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
 }
@@ -126,7 +126,7 @@ button:hover {
 }
 
 .text-section h3 {
-    color: #d94e2a;
+    color: #e63946;
     font-size: 1.1em;
     margin-bottom: 10px;
 }
@@ -149,7 +149,8 @@ button:hover {
 }
 
 .help-button:hover {
-    background-color: #d94e2a;     transform: scale(1.05);
+    background-color: #e63946;     
+    transform: scale(1.05);
 }
 
 .image-section img {
