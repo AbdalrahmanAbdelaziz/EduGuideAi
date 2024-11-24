@@ -56,22 +56,7 @@ button:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
 }
 
-/* Specific button hover effect for the 'help-button' */
-.help-button {
-    background: #1d3557;
-    color: #fff;
-    padding: 15px 35px; 
-    border: none;
-    border-radius: 25px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
 
-.help-button:hover {
-    background-color: #e63946; 
-    transform: scale(1.05);
-}
 
 /* Media query for responsiveness */
 @media (max-width: 768px) {
@@ -158,7 +143,7 @@ button:hover {
 }
 
 .help-button {
-    background: linear-gradient(to right, #1d3557, #457b9d);
+    background: #1d3557;
     color: #fff;
     padding: 15px 35px; 
     border: none;
