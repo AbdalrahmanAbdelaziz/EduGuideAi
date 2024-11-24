@@ -150,7 +150,7 @@ button:hover {
 
 .help-button:hover {
     background: #e63946;     
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
 }
 
 .image-section img {
