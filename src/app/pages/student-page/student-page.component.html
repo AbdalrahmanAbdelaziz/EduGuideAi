@@ -44,7 +44,9 @@
     <!-- Main Content Section -->
     <div class="features-section">
       <div class="card" *ngFor="let feature of features" (click)="navigateTo(feature.link)">
-        <img [src]="feature.image" alt="Feature Image" class="card-image" />
+        <div class="card-image-container">
+          <img [src]="feature.image" alt="Feature Image" class="card-image" />
+        </div>
         <div class="card-content">
           <h3 class="card-title">{{ feature.name }}</h3>
           <p class="card-caption">{{ feature.caption }}</p>

@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-student-page',
   templateUrl: './student-page.component.html',
-  styleUrls: ['./student-page.component.css']
+  styleUrls: ['./student-page.component.css'],
 })
 export class StudentPageComponent implements OnInit {
   student!: Student;
@@ -15,39 +15,38 @@ export class StudentPageComponent implements OnInit {
       name: 'Talk To Lexi',
       caption: 'Lexi: Your intelligent assistant, always here to help.',
       image: 'chatbot.jpg',
-      link: '/chatbot'
+      link: '/chatbot',
     },
     {
       name: 'My Courses',
       caption: 'Your path to knowledge begins right here with us.',
       image: 'about.jpg',
-      link: '/my-courses'
+      link: '/my-courses',
     },
     {
       name: 'Transcript',
       caption: 'A snapshot of your progress and great achievements.',
       image: 't.jpg',
-      link: '/transcript'
+      link: '/transcript',
     },
     {
       name: 'Interactive Roadmap',
       caption: 'Monitor your progress and stay on track effortlessly.',
       image: 'v.jpg',
-      link: '/interactive'
+      link: '/interactive',
     },
     {
       name: 'Search For Internships',
       caption: 'Explore new opportunities, gain experience, and build.',
       image: 'i.webp',
-      link: '/intership'
+      link: '/intership',
     },
     {
-      name: 'Stress Managment',
+      name: 'Stress Management',
       caption: 'Your guide to finding peace amidst the chaos.',
       image: 'st.jpg',
-      link: '/stress'
+      link: '/stress',
     },
-
   ];
 
   constructor(private authService: AuthService, private router: Router) {
