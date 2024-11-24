@@ -50,15 +50,15 @@ button {
 }
 
 button:hover {
-    background-color: #e63946;  /* Hover color */
-    color: #fff;  /* Text color change to white on hover */
-    transform: scale(1.05);  /* Slightly increase size */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Shadow for depth */
+    background-color: #e63946;  
+    color: #fff;  
+    transform: scale(1.05); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
 }
 
 /* Specific button hover effect for the 'help-button' */
 .help-button {
-    background: linear-gradient(to right, #1d3557, #457b9d);
+    background: #1d3557;
     color: #fff;
     padding: 15px 35px; 
     border: none;
@@ -68,9 +68,8 @@ button:hover {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Hover effect for the 'help-button' */
 .help-button:hover {
-    background-color: #e63946; /* Change to red on hover */
+    background-color: #e63946; 
     transform: scale(1.05);
 }
 
