@@ -149,7 +149,7 @@ button:hover {
 }
 
 .help-button:hover {
-    background-color: #e63946;     
+    background: #e63946;     
     transform: scale(1.05);
 }
 
