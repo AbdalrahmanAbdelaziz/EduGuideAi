@@ -55,7 +55,7 @@
   
   h1 {
     font-size: 30px;
-    color: #333;
+    color: #1d3557;
     margin-bottom: 30px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -78,18 +78,18 @@
   }
   
   .field input:focus {
-    border-color: #f4623a; 
+    border-color: #e63946; 
     background-color: #fff; 
   }
   
   .field input:focus + .error {
-    color: #f4623a;
+    color: #e63946;
   }
   
   button {
     width: 100%;
     padding: 16px;
-    background-color: #333;
+    background-color: #1d3557;
     color: white;
     border: none;
     cursor: pointer;
@@ -99,11 +99,11 @@
   }
   
   button:hover {
-    background-color: #e14b24;
+    background-color: #e63946;
   }
   
   .error {
-    color: #d93f3f;
+    color: #e63946;
     font-size: 13px;
     margin-top: 5px;
     text-align: left;
@@ -116,13 +116,13 @@
   }
   
   .signup a {
-    color: #f4623a;
+    color: #e63946;
     text-decoration: none;
     transition: color 0.3s ease;
   }
   
   .signup a:hover {
-    color: #e14b24;
+    color: #e63946;
     text-decoration: underline;
   }
   
