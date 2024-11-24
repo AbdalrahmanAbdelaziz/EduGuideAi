@@ -72,7 +72,7 @@
 }
 
 .side-navbar-link:hover {
-  background-color: #d94e2a; /* Warm orange for visibility */
+  background-color: #e63946; /* Warm orange for visibility */
   transform: scale(1.05); /* Slightly enlarges the link on hover */
 }
 
@@ -145,7 +145,7 @@
 /* Hover Effects */
 .card:hover .card-title,
 .card:hover .card-caption {
-  color: #d94e2a; /* Deep orange for prominence */
+  color: #e63946; /* Deep orange for prominence */
 }
 
 .card-content:hover {
