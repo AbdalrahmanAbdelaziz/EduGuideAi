@@ -15,19 +15,15 @@
   <div class="navbar-spacer"></div>
 
   <!-- Hero Section -->
-  <section 
-  class="hero-section" 
-  [style.backgroundImage]="'url(ff.avif)'"
-  style="background-size: cover; background-position: center center;">
-  <div class="hero-content">
-    <h1>Welcome, {{ student.firstName | titlecase }}</h1>
-    <p>Track your courses and access your academic transcript.</p>
-    <button class="cta-button" (click)="navigateTo('/dashboard')">
-      View Transcript
-    </button>
-  </div>
-</section>
-
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Welcome, {{ student.firstName | titlecase }}</h1>
+      <p>Track your courses and access your academic transcript.</p>
+      <button class="cta-button" (click)="navigateTo('/dashboard')">
+        View Transcript
+      </button>
+    </div>
+  </section>
 
   <!-- Features Section -->
   <div class="features-section">
