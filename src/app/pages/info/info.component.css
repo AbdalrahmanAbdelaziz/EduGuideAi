@@ -6,8 +6,10 @@ body {
     overflow-x: hidden;
   }
   
-  .navbar {
-    background-color: #1d3557;
+  /* Navbar */
+  /* Navbar Styling */
+.navbar {
+    background-color: #1d3557;  /* Dark Blue */
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -19,11 +21,7 @@ body {
     right: 0;
     z-index: 1000;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .navbar:hover {
-    background-color: #457b9d;
+    transition: all 0.3s ease;  /* Smooth transition for hover effects */
   }
   
   .app-name {
@@ -32,17 +30,18 @@ body {
     color: #fff;
     letter-spacing: 2px;
     cursor: pointer;
+    text-transform: uppercase; /* Adds a professional touch */
+    transition: color 0.3s ease;
+  }
+  
+  .app-name:hover {
+    color: #457b9d;  /* Lighter blue when hovered */
   }
   
   .right-button {
     display: flex;
     align-items: center;
-  }
-  
-  .menu-container {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+    gap: 15px;  /* Spacing between menu items */
   }
   
   .menu-trigger {
@@ -50,37 +49,48 @@ body {
     font-weight: 500;
     color: white;
     text-decoration: none;
+    text-transform: uppercase;  /* Consistency with the app name */
     padding: 10px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;  /* Smooth hover transition */
   }
   
   .menu-trigger:hover {
-    background-color: #d94e2a;
-    transform: scale(1.1);
+    background-color: #457b9d;  /* Lighter blue background */
+    transform: scale(1.05);  /* Slightly enlarge the button on hover */
   }
   
+  .menu-trigger:active {
+    background-color: #355d77;  /* Darker shade when clicked */
+  }
+  
+  /* Add a border to the navbar to give it a more defined look */
+  .navbar {
+    border-bottom: 2px solid #457b9d;
+  }
+  
+  /* Adjusting Button Styling */
   button {
-    background-color: #ffffff;
+    background-color: #fff;
     color: #333;
     font-size: 1em;
     padding: 12px 25px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 1px;
   }
   
   button:hover {
-    background-color: #d94e2a;
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: #d94e2a;  /* Highlight with a bold orange color */
+    transform: scale(1.05);  /* Slightly enlarge button */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);  /* Add a shadow for hover */
   }
   
+  /* Mobile Responsiveness */
   @media (max-width: 768px) {
     .navbar {
       padding: 15px 20px;
@@ -105,172 +115,152 @@ body {
     }
   }
   
+  /* Navbar Spacer */
   .navbar-spacer {
-    height: 100px;
+    height: 100px; 
   }
   
-  .landing-page {
+
+.landing-page {
     font-family: Arial, sans-serif;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
-  }
-  
-  .section {
+}
+
+.section {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 40px;
-    padding: 40px 0;
-    max-width: 1200px;
-    margin: 0 auto;
-    transition: all 0.3s ease;
-  }
-  
-  .section:hover {
-    transform: translateY(-10px);
-  }
-  
-  .text-section {
+    gap: 40px; 
+    padding: 40px 0; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.text-section {
     max-width: 60%;
-    animation: fadeInUp 1s ease-out;
-  }
-  
-  .text-section h1,
-  .section h1 {
-    font-size: 2.2em;
+}
+
+.text-section h1,
+.section h1 {
+    font-size: 2.2em; 
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
-  }
-  
-  .text-section h2,
-  .section h2 {
+}
+
+.text-section h2,
+.section h2 {
     font-size: 1.8em;
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
-  }
-  
-  .text-section h3 {
+}
+
+.text-section h3 {
     color: #d94e2a;
     font-size: 1.1em;
     margin-bottom: 10px;
-  }
-  
-  .text-section p {
-    font-size: 1.2em;
+}
+
+.text-section p {
+    font-size: 1.2em; 
     color: #666;
     margin-bottom: 30px;
-  }
-  
-  .help-button {
-    background-color: #333;
+}
+
+.help-button {
+    background-color: #333; 
     color: #fff;
-    padding: 15px 35px;
+    padding: 15px 35px; 
     border: none;
     border-radius: 25px;
     font-size: 1.2em;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .help-button:hover {
-    background-color: #d94e2a;
-    transform: scale(1.05);
-  }
-  
-  .image-section img {
-    width: 500px;
+}
+
+.help-button:hover {
+    background-color: #d94e2a;     transform: scale(1.05);
+}
+
+.image-section img {
+    width: 500px; 
     max-width: 100%;
     height: auto;
-    animation: fadeInRight 1s ease-out;
-  }
-  
-  .mission-section {
-    padding: 60px 0;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .mission-container {
+}
+
+.mission-section {
+    padding: 60px 0; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.mission-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 40px;
-    max-width: 1200px;
+    max-width: 1200px; 
     margin: 0 auto;
     padding: 0 20px;
-  }
-  
-  .mission-image {
+}
+
+.mission-image {
     flex: 1;
     display: flex;
     justify-content: center;
-  }
-  
-  .mission-image img {
+}
+
+.mission-image img {
     max-width: 90%;
     height: auto;
     border-radius: 50%;
-  }
-  
-  .mission-content {
+}
+
+.mission-content {
     flex: 2;
     padding-left: 30px;
-  }
-  
-  .mission-content h2 {
+}
+
+.mission-content h2 {
     font-size: 2.5em;
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
-  }
-  
-  .mission-content p {
+}
+
+.mission-content p {
     font-size: 1.2em;
     color: #666;
     margin-bottom: 30px;
-  }
-  
-  .volunteer-section {
+}
+
+.explore-link {
+    color: #2C3E50;
+    font-size: 1.2em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.explore-link:hover {
+    text-decoration: underline;
+}
+
+.volunteer-section {
     padding: 60px 0;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .volunteer-container {
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.volunteer-container {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 40px;
-    max-width: 1200px;
+    max-width: 1200px; 
     margin: 0 auto;
     padding: 0 20px;
-  }
-  
-  .volunteer-container .image-section {
-    flex: 1;
-  }
-  
-  .volunteer-container .image-section img {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .volunteer-container .text-section {
-    flex: 2;
-    padding-left: 30px;
-  }
-  
-  @keyframes fadeInRight {
-    0% { opacity: 0; transform: translateX(100px); }
-    100% { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(50px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  
+}
