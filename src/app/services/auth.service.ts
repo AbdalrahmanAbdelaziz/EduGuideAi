@@ -23,6 +23,8 @@ export class AuthService {
 
     private studentSubject = new BehaviorSubject<Student | null>(this.getStudentFromLocalStorage());
     private adminSubject = new BehaviorSubject<Admin | null>(this.getAdminFromLocalStorage());
+    private coursesSubject = new BehaviorSubject<Course[]>([]);
+
     
 
     public studentObservable: Observable<Student | null>;
@@ -158,85 +160,88 @@ export class AuthService {
   }
 
 
-  fetchGeneralCoreCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(GET_G_CORE_COURSE_URL).pipe(
+  fetchCourses(url: string, courseType: string): Observable<Course[]> {
+    console.log(`Fetching courses of type: ${courseType} from ${url}`);
+    return this.http.get<Course[]>(url).pipe(
       tap({
-        next: () => console.log('Courses fetched successfully'),
-        error: () => this.toastrService.error('Failed to fetch courses'),
+        next: (courses: Course[]) => {
+          console.log(`${courseType} courses fetched successfully:`, courses);
+
+          courses.forEach((course) => {
+            console.log(`Course details:
+              Code: ${course.code},
+              Name: ${course.name},
+              Hours: ${course.hours},
+              PreRequest: ${course.preRequest || 'None'},
+              Grade: ${course.grade || 'N/A'},
+              Completed: ${course.completed ? 'Yes' : 'No'},
+              Type: ${course.type}`);
+          });
+
+          this.coursesSubject.next(courses);
+          this.toastrService.success(`${courseType} courses loaded successfully.`);
+        },
+        error: (errorResponse) => {
+          console.error(`Failed to fetch ${courseType} courses:`, errorResponse);
+          this.toastrService.error(`Failed to load ${courseType} courses.`);
+        },
       })
     );
+  }
+
+  get courses$(): Observable<Course[]> {
+    return this.coursesSubject.asObservable();
+  }
+
+  // Fetch Methods for Different Course Categories
+  fetchGeneralCoreCourses(): Observable<Course[]> {
+    return this.fetchCourses('GET_G_CORE_COURSE_URL', 'General Core');
   }
 
   fetchGeneralElectiveCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(GET_G_ELECTIVE_COURSE_URL).pipe(
-      tap({
-        next: () => console.log('Courses fetched successfully'),
-        error: () => this.toastrService.error('Failed to fetch courses'),
-      })
-    );
+    return this.fetchCourses('GET_G_ELECTIVE_COURSE_URL', 'General Elective');
   }
 
   fetchFacultyCoreCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(GET_F_CORE_COURSE_URL).pipe(
-      tap({
-        next: () => console.log('Courses fetched successfully'),
-        error: () => this.toastrService.error('Failed to fetch courses'),
-      })
-    );
+    return this.fetchCourses('GET_F_CORE_COURSE_URL', 'Faculty Core');
   }
 
   fetchFacultyElectiveCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(GET_F_ELECTIVE_COURSE_URL).pipe(
-      tap({
-        next: () => console.log('Courses fetched successfully'),
-        error: () => this.toastrService.error('Failed to fetch courses'),
-      })
-    );
-  }
-
-
-
-
-  private fetchCourses(url: string, courseType: string): Observable<Course[]> {
-    return this.http.get<Course[]>(url).pipe(
-      tap({
-        next: () => console.log(`Fetched ${courseType} courses successfully.`),
-        error: () => this.toastrService.error(`Failed to fetch ${courseType} courses`),
-      })
-    );
+    return this.fetchCourses('GET_F_ELECTIVE_COURSE_URL', 'Faculty Elective');
   }
 
   fetchCSCoreCourses(): Observable<Course[]> {
-    return this.fetchCourses(GET_CS_CORE_COURSE_URL, 'CS Core');
+    return this.fetchCourses('GET_CS_CORE_COURSE_URL', 'CS Core');
   }
 
   fetchCSElectiveCourses(): Observable<Course[]> {
-    return this.fetchCourses(GET_CS_ELECTIVE_COURSE_URL, 'CS Elective');
+    return this.fetchCourses('GET_CS_ELECTIVE_COURSE_URL', 'CS Elective');
   }
 
   fetchISCoreCourses(): Observable<Course[]> {
-    return this.fetchCourses(GET_IS_CORE_COURSE_URL, 'IS Core');
+    return this.fetchCourses('GET_IS_CORE_COURSE_URL', 'IS Core');
   }
 
   fetchISElectiveCourses(): Observable<Course[]> {
-    return this.fetchCourses(GET_IS_ELECTIVE_COURSE_URL, 'IS Elective');
+    return this.fetchCourses('GET_IS_ELECTIVE_COURSE_URL', 'IS Elective');
   }
 
   fetchITCoreCourses(): Observable<Course[]> {
-    return this.fetchCourses(GET_IT_CORE_COURSE_URL, 'IT Core');
+    return this.fetchCourses('GET_IT_CORE_COURSE_URL', 'IT Core');
   }
 
   fetchITElectiveCourses(): Observable<Course[]> {
-    return this.fetchCourses(GET_IT_ELECTIVE_COURSE_URL, 'IT Elective');
+    return this.fetchCourses('GET_IT_ELECTIVE_COURSE_URL', 'IT Elective');
   }
 
   fetchAICoreCourses(): Observable<Course[]> {
-    return this.fetchCourses(GET_AI_CORE_COURSE_URL, 'AI Core');
+    return this.fetchCourses('GET_AI_CORE_COURSE_URL', 'AI Core');
   }
 
   fetchAIElectiveCourses(): Observable<Course[]> {
-    return this.fetchCourses(GET_AI_ELECTIVE_COURSE_URL, 'AI Elective');
+    return this.fetchCourses('GET_AI_ELECTIVE_COURSE_URL', 'AI Elective');
   }
+
 
 
 

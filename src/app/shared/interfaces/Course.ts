@@ -1,7 +1,7 @@
 export interface Course {
     code: string;
     name: string;
-    hours: number;
+    hours: string;
     preRequest?: string; 
     grade?: string; 
     completed?: boolean; 
