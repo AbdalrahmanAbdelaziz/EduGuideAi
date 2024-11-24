@@ -50,11 +50,13 @@ body {
 
 /* Hero Section */
 .hero-section {
-  background: linear-gradient(to right, #1d3557, #457b9d);
+  background: url('bg.jpg') no-repeat center center;
+  background-size: cover; /* Ensures the image covers the entire section */
   color: white;
   padding: 100px 50px;
   text-align: center;
 }
+
 
 .hero-content h1 {
   font-size: 3em;
