@@ -14,6 +14,17 @@
 
   <div class="navbar-spacer"></div>
 
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Welcome to EduGuideAI</h1>
+      <p>Your guide to smarter learning and achievement tracking.</p>
+      <button class="cta-button" (click)="navigateTo('/dashboard')">
+        Get Started
+      </button>
+    </div>
+  </section>
+
   <!-- Features Section -->
   <div class="features-section">
     <div
@@ -23,7 +34,6 @@
     >
       <div class="card-content">
         <h3 class="card-title">{{ feature.name }}</h3>
-        <p class="card-caption">{{ feature.caption }}</p>
         <ng-container *ngIf="feature.name === 'General Requirements'">
           <p>Calculated Hours: {{ generalHours }}/12</p>
         </ng-container>
@@ -31,7 +41,7 @@
           <p>Calculated Hours: {{ facultyHours }}/72</p>
         </ng-container>
         <ng-container *ngIf="feature.name === 'Department Requirements'">
-          <p>Calculated Hours: {{ facultyHours }}/60</p>
+          <p>Calculated Hours: {{ departmentHours }}/60</p>
         </ng-container>
       </div>
     </div>

@@ -17,17 +17,14 @@ export class MyCoursesComponent implements OnInit {
   features = [
     {
       name: 'General Requirements',
-      caption: 'Lexi: Your intelligent assistant, always here to help.',
       link: '/my-general'
     },
     {
       name: 'Faculty Requirements',
-      caption: 'Your path to knowledge begins right here with us.',
       link: '/my-faculty'
     },
     {
       name: 'Department Requirements',
-      caption: 'A snapshot of your progress and great achievements.',
       link: '/my-department'
     }
   ];
