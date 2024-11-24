@@ -41,7 +41,7 @@ export class AuthService {
           next: (response) => {
             console.log('Login successful:', response);
     
-            if (response.role === 'Student') {
+            if (response.role == 'Student') {
               const student = response as Student;
               console.log('Student login detected:', student);
               this.setStudentToLocalStorage(student);
@@ -121,20 +121,25 @@ export class AuthService {
     
 
 
-   register(studentRegister: Student): Observable<Student> {
-    return this.http.post<Student>(STUDENT_REGISTER_URL, studentRegister).pipe(
-        tap({
+      register(studentRegister: Student): Observable<Student> {
+        console.log('Attempting registration for student:', studentRegister);
+      
+        return this.http.post<Student>(STUDENT_REGISTER_URL, studentRegister).pipe(
+          tap({
             next: (student) => {
-                this.setStudentToLocalStorage(student);
-                this.studentSubject.next(student);
-                this.toastrService.success('Registration Successful');
+              console.log('Student registered successfully:', student);
+              this.setStudentToLocalStorage(student);
+              this.studentSubject.next(student);
+              this.toastrService.success('Registration Successful');
             },
             error: (errorResponse) => {
-                this.toastrService.error('Registration Failed');
-              }
-        })
-    );
-   }
+              console.error('Registration failed:', errorResponse);
+              this.toastrService.error('Registration Failed');
+            }
+          })
+        );
+      }
+      
 
 
    registerAdmin(adminRegister: Admin): Observable<Admin> { 
