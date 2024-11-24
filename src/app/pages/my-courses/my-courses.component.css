@@ -50,19 +50,15 @@ body {
 
 /* Hero Section */
 .hero-section {
-  height: 100vh; /* Adjust the height as needed */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  /* background: linear-gradient(to right, #1d3557, #457b9d); */
   color: white;
-  padding: 50px;
+  padding: 100px 50px;
+  text-align: center;
 }
 
 .hero-content h1 {
   font-size: 3em;
   font-weight: bold;
-  margin-bottom: 20px;
 }
 
 .hero-content p {
@@ -71,19 +67,21 @@ body {
 }
 
 .cta-button {
-  background-color: #457b9d; /* Button background color */
-  color: white; /* Button text color */
+  background-color: #e63946;
+  color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 15px 30px;
   font-size: 1.2em;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .cta-button:hover {
-  background-color: #1d3557; /* Button hover color */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
+
 /* Features Section */
 .features-section {
   display: grid;
