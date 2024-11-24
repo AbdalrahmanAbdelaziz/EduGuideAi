@@ -133,10 +133,10 @@ export class AuthService {
             tap({
                 next: (courses) => {
                     this.coursesSubject.next(courses);
-                    this.toastrService.success('Courses loaded successfully.');
+                    // this.toastrService.success('Courses loaded successfully.');
                 },
                 error: () => {
-                    this.toastrService.error('Failed to load courses.');
+                    // this.toastrService.error('Failed to load courses.');
                 }
             })
         );
@@ -158,13 +158,7 @@ export class AuthService {
         return this.fetchCourses(GET_F_ELECTIVE_COURSE_URL);
     }
 
-    // fetchDepartmentCoreCourses(): Observable<Course[]> {
-    //     return this.fetchCourses(GET_CS_CORE_COURSE_URL);
-    // }
-
-    // fetchDepartmentElectiveCourses(): Observable<Course[]> {
-    //     return this.fetchCourses(GET_CS_ELECTIVE_COURSE_URL);
-    // }
+  
 
 
 
