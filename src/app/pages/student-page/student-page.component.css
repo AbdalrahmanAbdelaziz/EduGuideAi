@@ -1,12 +1,3 @@
-/* General Styling */
-body {
-  font-family: 'Montserrat', sans-serif;
-  margin: 0;
-  background-color: #f4f4f9;
-  color: #333;
-  overflow-x: hidden;
-}
-
 /* Navbar */
 .navbar {
   background-color: #1d3557;
@@ -20,7 +11,7 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Lighter shadow for subtle effect */
 }
 
 .app-name {
@@ -34,6 +25,19 @@ body {
 .right-button {
   display: flex;
   align-items: center;
+}
+
+.menu-trigger {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-trigger:hover {
+  background-color: #457b9d;
+  transform: translateY(-3px); /* Subtle lift effect */
 }
 
 /* Side Navbar */
@@ -51,30 +55,6 @@ body {
   z-index: 999;
 }
 
-.user-info {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.user-img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
-}
-
-.user-details h3 {
-  margin: 0;
-  font-size: 1.2em;
-  font-weight: bold;
-}
-
-.user-details p {
-  font-size: 0.9em;
-  color: #aaa;
-}
-
 .side-navbar-links {
   display: flex;
   flex-direction: column;
@@ -87,12 +67,13 @@ body {
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
   text-align: left;
 }
 
 .side-navbar-link:hover {
-  background-color: #d94e2a;
+  background-color: #d94e2a; /* Warm orange for visibility */
+  transform: scale(1.05); /* Slightly enlarges the link on hover */
 }
 
 .side-navbar-link i {
@@ -111,7 +92,7 @@ body {
 }
 
 .card {
-  background: linear-gradient(to bottom, #457b9d, #1d3557);
+  background: linear-gradient(to bottom, #1d3557, #457b9d);
   color: white;
   border-radius: 15px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
@@ -130,7 +111,7 @@ body {
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* Slightly more intense shadow */
   filter: brightness(1.1);
   color: #ffdbcc;
 }
@@ -164,11 +145,11 @@ body {
 /* Hover Effects */
 .card:hover .card-title,
 .card:hover .card-caption {
-  color: #d94e2a;
+  color: #d94e2a; /* Deep orange for prominence */
 }
 
 .card-content:hover {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.3); /* Darker background to improve contrast */
 }
 
 /* Spacing */
