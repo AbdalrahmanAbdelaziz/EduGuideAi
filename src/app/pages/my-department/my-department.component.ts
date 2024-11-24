@@ -91,8 +91,9 @@ export class MyDepartmentComponent implements OnInit {
   calculateDepartmentHours(): number {
     return [...this.coreCourses, ...this.electiveCourses]
       .filter((course) => course.grade !== 'none')
-      .reduce((total, course) => total + course.hours, 0);
+      .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0); // Convert hours to a number
   }
+  
 
   // Submit selected courses and grades
   submitCourses(): void {

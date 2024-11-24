@@ -44,8 +44,9 @@ export class MyGeneralComponent implements OnInit {
   calculateTotalHours(): number {
     return this.allCourses
       .filter((course) => course.grade !== 'none')
-      .reduce((total, course) => total + course.hours, 0);
+      .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0); // Convert hours to a number
   }
+  
 
   submitCourses(): void {
     const updatedCourses: UpdateCourse[] = this.allCourses.map((course) => ({
