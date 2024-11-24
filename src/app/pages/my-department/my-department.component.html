@@ -18,6 +18,7 @@
   <div *ngIf="!selectedDepartment">
     <label for="department-select">Select your Department:</label>
     <select id="department-select" (change)="onDepartmentChange($event)">
+      <option>General</option>
       <option value="CS">Computer Science (CS)</option>
       <option value="IS">Information Systems (IS)</option>
       <option value="AI">Artificial Intelligence (AI)</option>
