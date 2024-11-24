@@ -29,11 +29,13 @@ export class AuthService {
 
     public studentObservable: Observable<Student | null>;
     public adminObservable: Observable<Admin | null>;
+    public coursesObservable: Observable<Course[]>;
+
 
     constructor(private http: HttpClient, private toastrService: ToastrService) {
         this.studentObservable = this.studentSubject.asObservable();
         this.adminObservable = this.adminSubject.asObservable();
-    }
+        this.coursesObservable = this.coursesSubject.asObservable();    }
 
     login(userLogin: UserLogin): Observable<any> {
       console.log('Attempting login with data:', userLogin);
@@ -167,17 +169,6 @@ export class AuthService {
         next: (courses: Course[]) => {
           console.log(`${courseType} courses fetched successfully:`, courses);
 
-          courses.forEach((course) => {
-            console.log(`Course details:
-              Code: ${course.code},
-              Name: ${course.name},
-              Hours: ${course.hours},
-              PreRequest: ${course.preRequest || 'None'},
-              Grade: ${course.grade || 'N/A'},
-              Completed: ${course.completed ? 'Yes' : 'No'},
-              Type: ${course.type}`);
-          });
-
           this.coursesSubject.next(courses);
           this.toastrService.success(`${courseType} courses loaded successfully.`);
         },
@@ -195,11 +186,11 @@ export class AuthService {
 
   // Fetch Methods for Different Course Categories
   fetchGeneralCoreCourses(): Observable<Course[]> {
-    return this.fetchCourses('GET_G_CORE_COURSE_URL', 'General Core');
+    return this.fetchCourses(GET_G_CORE_COURSE_URL, 'General Core');
   }
 
   fetchGeneralElectiveCourses(): Observable<Course[]> {
-    return this.fetchCourses('GET_G_ELECTIVE_COURSE_URL', 'General Elective');
+    return this.fetchCourses(GET_G_ELECTIVE_COURSE_URL, 'General Elective');
   }
 
   fetchFacultyCoreCourses(): Observable<Course[]> {
