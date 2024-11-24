@@ -1,9 +1,8 @@
 html, body {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif; 
+    font-family: 'Montserrat', sans-serif; 
 }
-
 
 .navbar {
     background-color: #1d3557; 
@@ -20,7 +19,6 @@ html, body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
     transition: background-color 0.3s ease; 
 }
-
 
 .app-name {
     font-size: 1.8em;
@@ -52,12 +50,31 @@ button {
 }
 
 button:hover {
-    background-color: #e63946; 
-    transform: scale(1.05); 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+    background-color: #e63946;  /* Hover color */
+    color: #fff;  /* Text color change to white on hover */
+    transform: scale(1.05);  /* Slightly increase size */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Shadow for depth */
 }
 
+/* Specific button hover effect for the 'help-button' */
+.help-button {
+    background: linear-gradient(to right, #1d3557, #457b9d);
+    color: #fff;
+    padding: 15px 35px; 
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
+/* Hover effect for the 'help-button' */
+.help-button:hover {
+    background-color: #e63946; /* Change to red on hover */
+    transform: scale(1.05);
+}
+
+/* Media query for responsiveness */
 @media (max-width: 768px) {
     .navbar {
         padding: 15px 20px;
@@ -80,12 +97,16 @@ button:hover {
         padding: 14px;
         font-size: 1.1em;
     }
+
+    .help-button {
+        width: 100%;
+        padding: 16px;
+    }
 }
 
 .navbar-spacer {
     height: 100px; 
 }
-
 
 .landing-page {
     font-family: Arial, sans-serif;
@@ -149,8 +170,7 @@ button:hover {
 }
 
 .help-button:hover {
-    background: #e63946;     
-    /* transform: scale(1.05); */
+    transform: scale(1.05);
 }
 
 .image-section img {
