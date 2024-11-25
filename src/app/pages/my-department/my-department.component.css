@@ -225,11 +225,4 @@ select:focus {
   background-color: #e63946;
 }
 
-.modal-content h2 {
-  font-size: 1.8em;
-}
 
-.modal-footer button {
-  margin-top: 20px;
-  width: 100%;
-}
