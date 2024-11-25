@@ -21,10 +21,10 @@ export class RegisterStudentComponent implements OnInit{
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-        const { firstName, LastName, email, password, confirmPassword } = form.value;
+        const { firstName, lastName, email, password, confirmPassword } = form.value;
 
         if (password === confirmPassword) {
-            const student: Student = { firstName, LastName, email, password };
+            const student: Student = { firstName, lastName, email, password };
             this.authService.registerStudent(student).subscribe(
                 response => {
                     this.router.navigateByUrl('/login')
