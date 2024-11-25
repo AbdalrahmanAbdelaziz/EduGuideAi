@@ -19,7 +19,7 @@ import { TranscriptComponent } from './pages/transcript/transcript.component';
 
 
 const routes: Routes = [
-  { path: '/', component:LandComponent},
+  { path: '', component:LandComponent},
   { path: 'info', component:InfoComponent},
   { path: 'login', component:LoginComponent},
   { path: 'register', component:RegisterComponent},
@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'my-faculty', component: MyFacultyComponent},
   { path: 'my-department', component: MyDepartmentComponent},
   { path: 'transcript', component: TranscriptComponent},
-  { path: '**', redirectTo:'/', pathMatch: 'full'},
+  { path: '**', redirectTo:'', pathMatch: 'full'},
 ];
 
 @NgModule({
