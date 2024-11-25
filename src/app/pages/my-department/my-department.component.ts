@@ -18,8 +18,7 @@ export class MyDepartmentComponent implements OnInit {
 
   @Output() calculatedHoursEvent = new EventEmitter<number>();
 
-  isModalVisible = true;  // Control visibility of the department selection modal
-
+  isModalVisible = true;  
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
@@ -58,11 +57,11 @@ export class MyDepartmentComponent implements OnInit {
   }
 
   private fetchCoursesByType(coreType: string, electiveType: string): void {
-    // Clear existing courses to avoid mixing them up between department changes
+    
     this.coreCourses = [];
     this.electiveCourses = [];
 
-    // Fetch Core Courses
+    
     this.authService.fetchCoreCourses(coreType).subscribe({
       next: (coreCourses) => {
         this.coreCourses = coreCourses;
@@ -72,7 +71,7 @@ export class MyDepartmentComponent implements OnInit {
       },
     });
 
-    // Fetch Elective Courses
+    
     this.authService.fetchElectiveCourses(electiveType).subscribe({
       next: (electiveCourses) => {
         this.electiveCourses = electiveCourses;
@@ -103,7 +102,7 @@ export class MyDepartmentComponent implements OnInit {
 
     this.authService.updateGeneralCourses(updatedCourses).subscribe(() => {
       const departmentHours = this.calculateDepartmentHours();
-      this.calculatedHoursEvent.emit(departmentHours); // Emit the total hours
+      this.calculatedHoursEvent.emit(departmentHours); 
     });
   }
 
