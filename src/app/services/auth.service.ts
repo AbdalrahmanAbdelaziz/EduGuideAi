@@ -244,6 +244,8 @@ export class AuthService {
         return this.updateCourses(UPDATE_DEPARTMENT_COURSES_URL, updatedCourses);
     }
 
+    
+
     private setStudentToLocalStorage(student: Student) {
         localStorage.setItem(STUDENT_KEY, JSON.stringify(student));
     }

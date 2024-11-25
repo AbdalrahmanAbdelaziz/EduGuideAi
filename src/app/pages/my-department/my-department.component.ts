@@ -103,7 +103,7 @@ export class MyDepartmentComponent implements OnInit {
       grade: course.grade || 'none',
     }));
 
-    this.authService.updateGeneralCourses(updatedCourses).subscribe(() => {
+    this.authService.updateDepartmentCourses(updatedCourses).subscribe(() => {
       const departmentHours = this.calculateDepartmentHours();
       this.calculatedHoursEvent.emit(departmentHours); 
     });

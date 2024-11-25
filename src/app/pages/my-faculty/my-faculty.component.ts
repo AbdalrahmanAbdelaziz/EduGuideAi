@@ -61,9 +61,9 @@ export class MyFacultyComponent implements OnInit {
       grade: course.grade || 'none',
     }));
 
-    this.authService.updateGeneralCourses(updatedCourses).subscribe(() => {
-      this.facultyHours = this.calculateFacultyHours();  // Store the calculated hours for faculty
-      this.calculatedHoursEvent.emit(this.facultyHours); // Emit the total hours
+    this.authService.updateFacultyCourses(updatedCourses).subscribe(() => {
+      this.facultyHours = this.calculateFacultyHours();  
+      this.calculatedHoursEvent.emit(this.facultyHours); 
     });
   }
 }
