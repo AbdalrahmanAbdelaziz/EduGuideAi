@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, map, Observable, tap } from "rxjs";
 import { ToastrService } from 'ngx-toastr';
 import {
@@ -126,36 +126,40 @@ export class AuthService {
         );
     }
 
-    fetchCourses(url: string): Observable<Course[]> {
-        return this.http.get<{ data: Course[] }>(url).pipe(
-            map((response) => response.data),
-            tap({
-                next: (courses) => {
-                    this.coursesSubject.next(courses);
-                    // this.toastrService.success('Courses loaded successfully.');
-                },
-                error: () => {
-                    // this.toastrService.error('Failed to load courses.');
-                }
-            })
-        );
-    }
+    // fetchCourses(url: string): Observable<Course[]> {
+    //     return this.http.get<{ data: Course[] }>(url).pipe(
+    //         map((response) => response.data),
+    //         tap({
+    //             next: (courses) => {
+    //                 this.coursesSubject.next(courses);
+    //                 // this.toastrService.success('Courses loaded successfully.');
+    //             },
+    //             error: () => {
+    //                 // this.toastrService.error('Failed to load courses.');
+    //             }
+    //         })
+    //     );
+    // }
 
     fetchGeneralCoreCourses(): Observable<Course[]> {
-        return this.fetchCourses(GET_G_CORE_COURSE_URL);
-    }
+        return this.http.get<Course[]>(GET_G_CORE_COURSE_URL, {
+          headers: this.createAuthorizationHeader() 
+        });
+      }
 
-    fetchGeneralElectiveCourses(): Observable<Course[]> {
-        return this.fetchCourses(GET_G_ELECTIVE_COURSE_URL);
-    }
+      fetchGeneralElectiveCourses(): Observable<Course[]> {
+        return this.http.get<Course[]>(GET_G_ELECTIVE_COURSE_URL, {
+          headers: this.createAuthorizationHeader()
+        });
+      }
 
-    fetchFacultyCoreCourses(): Observable<Course[]> {
-        return this.fetchCourses(GET_F_CORE_COURSE_URL);
-    }
+    // fetchFacultyCoreCourses(): Observable<Course[]> {
+    //     return this.fetchCourses(GET_F_CORE_COURSE_URL);
+    // }
 
-    fetchFacultyElectiveCourses(): Observable<Course[]> {
-        return this.fetchCourses(GET_F_ELECTIVE_COURSE_URL);
-    }
+    // fetchFacultyElectiveCourses(): Observable<Course[]> {
+    //     return this.fetchCourses(GET_F_ELECTIVE_COURSE_URL);
+    // }
 
   
 
@@ -250,6 +254,15 @@ export class AuthService {
         const adminJson = localStorage.getItem(ADMIN_KEY);
         return adminJson ? JSON.parse(adminJson) : null;
     }
+
+
+    private createAuthorizationHeader(): HttpHeaders {
+        const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
+        return new HttpHeaders({
+          'Authorization': token ? `Bearer ${token}` : '',
+          'Content-Type': 'application/json'
+        });
+      }
 
 
     updateProfile(student: Student, profilePic?: File): Observable<any>{
