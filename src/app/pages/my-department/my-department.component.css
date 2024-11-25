@@ -155,7 +155,7 @@ body {
 }
 
 .modal select option:hover {
-  background-color: #e63946; 
+  background: #e63946; 
   color: white; 
 }
 
