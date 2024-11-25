@@ -64,7 +64,10 @@ export class MyDepartmentComponent implements OnInit {
     
     this.authService.fetchCoreCourses(coreType).subscribe({
       next: (coreCourses) => {
-        this.coreCourses = coreCourses;
+        this.coreCourses = coreCourses.map((course) => ({
+          ...course,
+          grade: course.grade || 'none',
+        }));
       },
       error: () => {
         console.error(`Failed to fetch ${coreType} courses`);
@@ -74,7 +77,10 @@ export class MyDepartmentComponent implements OnInit {
     
     this.authService.fetchElectiveCourses(electiveType).subscribe({
       next: (electiveCourses) => {
-        this.electiveCourses = electiveCourses;
+        this.electiveCourses = electiveCourses.map((course) => ({
+          ...course,
+          grade: course.grade || 'none',
+        }));
       },
       error: () => {
         console.error(`Failed to fetch ${electiveType} courses`);
