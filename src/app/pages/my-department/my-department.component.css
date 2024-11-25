@@ -1,131 +1,71 @@
-body {
-  font-family: 'Montserrat', sans-serif;
-  margin: 0;
-  background-color: #f4f4f9;
-  color: #333;
-  overflow-x: hidden;
+/* Basic styling for department modal and page layout */
+.department-page {
+  font-family: Arial, sans-serif;
+  padding: 20px;
 }
 
-.navbar {
-  background-color: #1d3557;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
+.department-modal {
+  background: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.app-name {
-  font-size: 1.8em;
-  font-weight: bold;
-  color: #fff;
-  letter-spacing: 2px;
-  cursor: pointer;
-}
-
-.right-button {
+  width: 100%;
+  height: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
-.menu-trigger {
-  font-size: 1.2em;
-  font-weight: 500;
-  color: white;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
 }
 
-.menu-trigger:hover {
-  background-color: #457b9d;
-}
-
-.course-manager {
-  margin: 100px 20px 20px 20px;
+#department-select {
+  margin-top: 10px;
 }
 
 .tables-container {
   display: flex;
-  justify-content: space-between;
   gap: 20px;
 }
 
 .table-container {
-  width: 48%;
-  padding: 15px;
-  border-radius: 8px;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
 }
 
 .course-table {
-  border-collapse: collapse;
   width: 100%;
-  margin-top: 10px;
+  border-collapse: collapse;
 }
 
 .course-table th,
 .course-table td {
+  padding: 8px;
   border: 1px solid #ddd;
-  padding: 10px;
-  text-align: left;
-}
-
-.course-table th {
-  background-color: #1d3557;
-  color: white;
-  font-weight: bold;
-}
-
-.course-table tr:hover {
-  background-color: #e63946;
-  color: white;
-}
-
-.disabled {
-  background-color: #f9c6c6;
-}
-
-.table-title {
   text-align: center;
-  color: #1d3557;
-  font-weight: bold;
-  margin-bottom: 10px;
+}
+
+.course-table tr.disabled {
+  background-color: #f5f5f5;
 }
 
 .summary {
-  margin-top: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #1d3557;
-  color: white;
-  padding: 15px;
-  border-radius: 8px;
+  margin-top: 20px;
+  text-align: center;
 }
 
-.total-hours {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.submit-button {
-  background-color: #457b9d;
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
   color: white;
-  padding: 12px 24px;
   border: none;
-  cursor: pointer;
-  font-size: 16px;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
-
-.submit-button:hover {
-  background-color: #e63946;
+button:hover {
+  background-color: #45a049;
 }

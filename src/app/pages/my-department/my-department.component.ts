@@ -3,7 +3,6 @@ import { AuthService } from '../../services/auth.service';
 import { Course } from '../../shared/interfaces/Course';
 import { UpdateCourse } from '../../shared/interfaces/UpdateCourse';
 import { Student } from '../../shared/interfaces/Student';
-import { ToastrService } from 'ngx-toastr';  // Import ToastrService
 
 @Component({
   selector: 'app-my-department',
@@ -16,13 +15,11 @@ export class MyDepartmentComponent implements OnInit {
   electiveCourses: Course[] = [];
   selectedDepartment: string | null = null;
   departmentHours: number = 0;
+  isDepartmentSelected: boolean = false;
 
   @Output() calculatedHoursEvent = new EventEmitter<number>();
 
-  constructor(
-    private authService: AuthService,
-    private toastr: ToastrService // Inject ToastrService
-  ) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.authService.studentObservable.subscribe((newStudent) => {
@@ -31,23 +28,30 @@ export class MyDepartmentComponent implements OnInit {
       }
     });
 
-    // Show toaster prompt when the component is first loaded
-    if (!this.selectedDepartment) {
-      this.toastr.info('Please select your department to view available courses.', 'Department Selection', {
-        closeButton: true,
-        timeOut: 10000, // Toast will stay for 10 seconds
-        progressBar: true,
-      });
-    }
+    // Check if the user has already selected a department
+    this.checkDepartmentSelection();
   }
 
   onDepartmentChange(event: any): void {
     this.selectedDepartment = event.target.value;
     this.fetchDepartmentCourses();
+    this.isDepartmentSelected = true; // Mark department as selected
+  }
+
+  private checkDepartmentSelection(): void {
+    const department = localStorage.getItem('selectedDepartment');
+    if (department) {
+      this.selectedDepartment = department;
+      this.isDepartmentSelected = true;
+      this.fetchDepartmentCourses();
+    }
   }
 
   fetchDepartmentCourses(): void {
     if (!this.selectedDepartment) return;
+
+    // Store selected department to persist selection
+    localStorage.setItem('selectedDepartment', this.selectedDepartment);
 
     switch (this.selectedDepartment) {
       case 'CS':
@@ -69,6 +73,7 @@ export class MyDepartmentComponent implements OnInit {
   }
 
   private fetchCoursesByType(coreType: string, electiveType: string): void {
+    // Clear existing courses to avoid mixing them up between department changes
     this.coreCourses = [];
     this.electiveCourses = [];
 
@@ -102,7 +107,7 @@ export class MyDepartmentComponent implements OnInit {
   calculateDepartmentHours(): number {
     return [...this.coreCourses, ...this.electiveCourses]
       .filter((course) => course.grade !== 'none')
-      .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0);
+      .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0); // Convert hours to a number
   }
 
   submitCourses(): void {
