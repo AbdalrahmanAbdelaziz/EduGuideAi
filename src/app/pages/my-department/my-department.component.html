@@ -56,12 +56,11 @@
               <td>{{ course.hours }}</td>
               <td>{{ course.prerequest || 'None' }}</td>
               <td>
-                <label for="grade-{{ course.code }}">Select grade for {{ course.course_Name }}</label>
                 <select
-                  id="grade-{{ course.code }}"
-                  [(ngModel)]="course.grade"
-                  [disabled]="!canTakeCourse(course)"
-                >
+                [(ngModel)]="course.grade"
+                [disabled]="!canTakeCourse(course)"
+                title="Select grade for {{ course.course_Name }}"
+              >
                   <option value="none">None</option>
                   <option value="A+">A+</option>
                   <option value="A">A</option>
