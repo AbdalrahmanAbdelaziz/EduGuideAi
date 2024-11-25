@@ -50,7 +50,7 @@ export class MyFacultyComponent implements OnInit {
   }
 
   calculateFacultyHours(): number {
-    return this.allCourses
+    return [...this.coreCourses, ...this.electiveCourses]
       .filter((course) => course.grade !== 'none' && course.grade !== 'F')
       .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0); 
   }

@@ -63,7 +63,7 @@ export class MyGeneralComponent implements OnInit {
   }
 
   calculateTotalHours(): number {
-    return this.selectedCourses
+    return [...this.coreCourses, ...this.electiveCourses]
       .filter((course) => course.grade !== 'none' && course.grade !== 'F') 
       .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0); 
   }
