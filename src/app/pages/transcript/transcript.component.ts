@@ -19,4 +19,37 @@ export class TranscriptComponent implements OnInit{
     })
       
   }
+
+
+  getCumulativeGrade(): string {
+    const gpa = this.student?.gpa;
+    if(gpa !== undefined) {
+      if( gpa >= 3.4 ){
+        return 'Excellent';
+      }
+
+      else if( gpa >= 2.8 ){
+        return 'Very Good';
+      }
+
+      else if( gpa >= 2.4 ){
+        return 'Good';
+      }
+
+      else if( gpa >= 2 ){
+        return 'Acceptable';
+      }
+
+      else if( gpa >= 1.4 ){
+        return 'Weak';
+      }
+
+      else if( gpa < 1.4 ){
+        return 'Very Weak';
+      }
+    }
+    return 'N/A';
+  }
+
+
 }

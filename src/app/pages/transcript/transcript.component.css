@@ -45,3 +45,42 @@ body {
   .menu-trigger:hover {
     background-color: #457b9d;
   }
+  
+  .navbar-spacer {
+    height: 60px;
+  }
+  
+  .transcript-content {
+    margin: 80px auto 0;
+    width: 80%;
+  }
+  
+  .student-details {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+  
+  .student-details h2 {
+    font-size: 2em;
+    color: #1d3557;
+    margin-bottom: 20px;
+  }
+  
+  .detail-row {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1em;
+  }
+  
+  .detail-label {
+    font-weight: bold;
+  }
+  
+  .detail-value {
+    font-weight: 300;
+  }
+  
