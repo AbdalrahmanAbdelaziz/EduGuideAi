@@ -214,8 +214,8 @@ export class AuthService {
         return this.http.get<{ data: Course[] }>(url).pipe(
           map((response) => response.data),
           tap({
-            next: (courses) => this.toastrService.success('Elective courses loaded successfully.'),
-            error: () => this.toastrService.error('Failed to load elective courses.'),
+            // next: (courses) => this.toastrService.success('Elective courses loaded successfully.'),
+            // error: () => this.toastrService.error('Failed to load elective courses.'),
           })
         );
       }
