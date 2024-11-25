@@ -130,6 +130,7 @@ body {
   background-color: #e63946;
 }
 
+
 /* Modal Styles */
 .modal {
   position: fixed;
@@ -147,7 +148,6 @@ body {
   transition: opacity 0.3s ease;
 }
 
-
 .modal.show {
   opacity: 1;
   pointer-events: auto;
@@ -163,7 +163,6 @@ body {
   animation: fadeIn 0.3s ease;
 }
 
-
 @keyframes fadeIn {
   0% {
     transform: scale(0.9);
@@ -175,21 +174,21 @@ body {
   }
 }
 
-.modal h2 {
+h2 {
   font-size: 1.6em;
   color: #1d3557;
   margin-bottom: 20px;
   text-align: center;
 }
 
-.modal label {
+label {
   font-size: 1.1em;
   color: #333;
   margin-bottom: 10px;
   display: block;
 }
 
-.modal select {
+select {
   width: 100%;
   padding: 10px;
   font-size: 1em;
@@ -204,13 +203,11 @@ select:focus {
   border-color: #457b9d;
 }
 
-
 .modal-footer {
-    text-align: center;
-  
+  text-align: center;
 }
 
-.modal-footer button {
+button {
   background-color: #457b9d;
   color: white;
   padding: 12px 24px;
@@ -221,8 +218,17 @@ select:focus {
   transition: background-color 0.3s ease;
 }
 
-.modal-footer button:hover {
+button:hover {
   background-color: #e63946;
 }
 
+/* Custom spacing and layout adjustments */
+.modal-content h2 {
+  font-size: 1.8em;
+}
+
+.modal-footer button {
+  margin-top: 20px;
+  width: 100%;
+}
 
