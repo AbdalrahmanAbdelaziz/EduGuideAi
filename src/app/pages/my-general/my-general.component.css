@@ -73,7 +73,7 @@ body {
 
 .course-table th,
 .course-table td {
-  border: 1px solid #ddd;
+  border: 1px solid #e63946;
   padding: 10px;
   text-align: left;
 }
@@ -81,6 +81,10 @@ body {
 .course-table th {
   background-color: #f2f2f2;
   font-weight: bold;
+}
+
+.course-table th :hover{
+  color: #e63946;
 }
 
 .disabled {
@@ -95,7 +99,7 @@ body {
 }
 
 button {
-  background-color: #007bff;
+  background-color: #1d3557;
   color: white;
   padding: 12px 24px;
   border: none;
@@ -106,7 +110,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #e63946;
 }
 
 /* Add animations for a professional look */
