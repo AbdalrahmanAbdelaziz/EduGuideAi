@@ -1,6 +1,6 @@
 <div class="department-page">
   <!-- Department Selection Modal -->
-  <div *ngIf="isModalVisible" class="modal">
+  <div *ngIf="isModalVisible" class="modal show">
     <div class="modal-content">
       <h2>Select Your Department</h2>
       <label for="department-select">Department:</label>
@@ -16,7 +16,6 @@
       </div>
     </div>
   </div>
-  
 
   <header class="navbar">
     <div class="app-name" routerLink="/home">
@@ -74,7 +73,6 @@
                   <option value="F">F</option>
                 </select>
               </td>
-              
             </tr>
           </tbody>
         </table>
