@@ -25,6 +25,8 @@ import { MyFacultyComponent } from './pages/my-faculty/my-faculty.component';
 import { MyDepartmentComponent } from './pages/my-department/my-department.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranscriptComponent } from './pages/transcript/transcript.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/auth/AuthInterceptor';
 
 
 @NgModule({
@@ -65,7 +67,9 @@ import { TranscriptComponent } from './pages/transcript/transcript.component';
       newestOnTop: false,
     }),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
