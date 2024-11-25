@@ -26,10 +26,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class MyGeneralComponent implements OnInit {
   student!: Student | null;
-  allCourses: Course[] = [];
   coreCourses: Course[] = [];
   electiveCourses: Course[] = [];
-  selectedCourses: Course[] = [];
   totalHours: number = 0;
 
   @Output() calculatedHoursEvent = new EventEmitter<number>();
@@ -37,10 +35,12 @@ export class MyGeneralComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
+    // Fetch student data
     this.authService.studentObservable.subscribe((student) => {
       this.student = student;
     });
 
+    // Fetch general core courses
     this.authService.fetchGeneralCoreCourses().subscribe((coreCourses) => {
       this.coreCourses = coreCourses.map((course) => ({
         ...course,
@@ -48,6 +48,7 @@ export class MyGeneralComponent implements OnInit {
       }));
     });
 
+    // Fetch general elective courses
     this.authService.fetchGeneralElectiveCourses().subscribe((electiveCourses) => {
       this.electiveCourses = electiveCourses.map((course) => ({
         ...course,
@@ -58,14 +59,14 @@ export class MyGeneralComponent implements OnInit {
 
   canTakeCourse(course: Course): boolean {
     if (!course.prerequest) return true;
-    const preRequestCourse = this.allCourses.find((c) => c.code === course.prerequest);
+    const preRequestCourse = [...this.coreCourses, ...this.electiveCourses].find((c) => c.code === course.prerequest);
     return preRequestCourse?.grade !== 'none' && preRequestCourse?.grade !== 'F';
   }
 
   calculateTotalHours(): number {
     return [...this.coreCourses, ...this.electiveCourses]
-      .filter((course) => course.grade !== 'none' && course.grade !== 'F') 
-      .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0); 
+      .filter((course) => course.grade !== 'none' && course.grade !== 'F')
+      .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0);
   }
 
   submitCourses(): void {
@@ -73,12 +74,11 @@ export class MyGeneralComponent implements OnInit {
       code: course.code,
       grade: course.grade || 'none',
       hours: parseFloat(course.hours),
-
     }));
 
     this.authService.updateCourses(updatedCourses).subscribe(() => {
-      const totalHours = this.calculateTotalHours();
-      this.calculatedHoursEvent.emit(totalHours);
+      this.totalHours = this.calculateTotalHours();
+      this.calculatedHoursEvent.emit(this.totalHours);
     });
   }
 }

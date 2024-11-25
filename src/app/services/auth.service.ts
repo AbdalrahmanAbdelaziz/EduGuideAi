@@ -141,17 +141,36 @@ export class AuthService {
         );
     }
 
-    fetchGeneralCoreCourses(): Observable<Course[]> {
+     fetchGeneralCoreCourses(): Observable<Course[]> {
         return this.http.get<Course[]>(GET_G_CORE_COURSE_URL, {
-          headers: this.createAuthorizationHeader() 
-        });
+          headers: this.createAuthorizationHeader()
+        }).pipe(
+          tap({
+            next: (coreCourses) => {
+              this.coursesSubject.next(coreCourses);
+            },
+            error: () => {
+              this.toastrService.error('Failed to load core courses.');
+            }
+          })
+        );
       }
 
       fetchGeneralElectiveCourses(): Observable<Course[]> {
         return this.http.get<Course[]>(GET_G_ELECTIVE_COURSE_URL, {
           headers: this.createAuthorizationHeader()
-        });
+        }).pipe(
+          tap({
+            next: (electiveCourses) => {
+              this.coursesSubject.next(electiveCourses);
+            },
+            error: () => {
+              this.toastrService.error('Failed to load elective courses.');
+            }
+          })
+        );
       }
+    
 
     fetchFacultyCoreCourses(): Observable<Course[]> {
         return this.fetchCourses(GET_F_CORE_COURSE_URL);
