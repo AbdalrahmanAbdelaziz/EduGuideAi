@@ -51,8 +51,8 @@ export class MyFacultyComponent implements OnInit {
 
   calculateFacultyHours(): number {
     return this.allCourses
-      .filter((course) => course.grade !== 'none')
-      .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0); // Convert hours to a number
+      .filter((course) => course.grade !== 'none' && course.grade !== 'F')
+      .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0); 
   }
 
   submitCourses(): void {

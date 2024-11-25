@@ -57,11 +57,9 @@ export class MyDepartmentComponent implements OnInit {
   }
 
   private fetchCoursesByType(coreType: string, electiveType: string): void {
-    
     this.coreCourses = [];
     this.electiveCourses = [];
 
-    
     this.authService.fetchCoreCourses(coreType).subscribe({
       next: (coreCourses) => {
         this.coreCourses = coreCourses.map((course) => ({
@@ -74,7 +72,6 @@ export class MyDepartmentComponent implements OnInit {
       },
     });
 
-    
     this.authService.fetchElectiveCourses(electiveType).subscribe({
       next: (electiveCourses) => {
         this.electiveCourses = electiveCourses.map((course) => ({
@@ -96,7 +93,7 @@ export class MyDepartmentComponent implements OnInit {
 
   calculateDepartmentHours(): number {
     return [...this.coreCourses, ...this.electiveCourses]
-      .filter((course) => course.grade !== 'none')
+      .filter((course) => course.grade !== 'none' && course.grade !== 'F') // Include only courses with valid grades
       .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0); // Convert hours to a number
   }
 
