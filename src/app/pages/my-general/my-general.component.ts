@@ -5,7 +5,6 @@ import { Student } from '../../shared/interfaces/Student';
 import { UpdateCourse } from '../../shared/interfaces/UpdateCourse';
 import { trigger, transition, style, animate } from '@angular/animations';
 
-
 @Component({
   selector: 'app-my-general',
   templateUrl: './my-general.component.html',
@@ -25,7 +24,6 @@ import { trigger, transition, style, animate } from '@angular/animations';
     ])
   ]
 })
-
 export class MyGeneralComponent implements OnInit {
   student!: Student | null;
   allCourses: Course[] = [];
@@ -44,11 +42,17 @@ export class MyGeneralComponent implements OnInit {
     });
 
     this.authService.fetchGeneralCoreCourses().subscribe((coreCourses) => {
-      this.coreCourses = coreCourses;
+      this.coreCourses = coreCourses.map((course) => ({
+        ...course,
+        grade: course.grade || 'none'
+      }));
     });
 
     this.authService.fetchGeneralElectiveCourses().subscribe((electiveCourses) => {
-      this.electiveCourses = electiveCourses;
+      this.electiveCourses = electiveCourses.map((course) => ({
+        ...course,
+        grade: course.grade || 'none'
+      }));
     });
   }
 
