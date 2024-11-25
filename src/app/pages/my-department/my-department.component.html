@@ -14,8 +14,7 @@
 
   <div class="navbar-spacer"></div>
 
-  <!-- Department Selection Prompt -->
-  <div *ngIf="!selectedDepartment">
+  <div *ngIf="!selectedDepartment" class="department-selection">
     <label for="department-select">Select your Department:</label>
     <select id="department-select" (change)="onDepartmentChange($event)">
       <option>General</option>
@@ -26,7 +25,7 @@
     </select>
   </div>
 
-  <div class="course-manager">
+  <div *ngIf="selectedDepartment" class="course-manager">
     <h2>Available Courses</h2>
     <div class="tables-container">
       <div class="table-container">
@@ -112,9 +111,10 @@
       </div>
     </div>
 
-    <div class="summary">
-      <p>Total Hours: {{ calculateDepartmentHours() }}</p>
-      <button (click)="submitCourses()">Submit</button>
+    <div class="submit-btn-container">
+      <button (click)="submitCourses()" class="submit-btn">
+        Submit Courses
+      </button>
     </div>
   </div>
 </div>

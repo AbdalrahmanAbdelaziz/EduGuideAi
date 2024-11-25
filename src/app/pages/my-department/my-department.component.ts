@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { Course } from '../../shared/interfaces/Course';
 import { UpdateCourse } from '../../shared/interfaces/UpdateCourse';
 import { Student } from '../../shared/interfaces/Student';
+import { ToastrService } from 'ngx-toastr';  // Import ToastrService
 
 @Component({
   selector: 'app-my-department',
@@ -18,7 +19,10 @@ export class MyDepartmentComponent implements OnInit {
 
   @Output() calculatedHoursEvent = new EventEmitter<number>();
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private toastr: ToastrService // Inject ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.authService.studentObservable.subscribe((newStudent) => {
@@ -26,6 +30,15 @@ export class MyDepartmentComponent implements OnInit {
         this.student = newStudent;
       }
     });
+
+    // Show toaster prompt when the component is first loaded
+    if (!this.selectedDepartment) {
+      this.toastr.info('Please select your department to view available courses.', 'Department Selection', {
+        closeButton: true,
+        timeOut: 10000, // Toast will stay for 10 seconds
+        progressBar: true,
+      });
+    }
   }
 
   onDepartmentChange(event: any): void {
@@ -56,7 +69,6 @@ export class MyDepartmentComponent implements OnInit {
   }
 
   private fetchCoursesByType(coreType: string, electiveType: string): void {
-    // Clear existing courses to avoid mixing them up between department changes
     this.coreCourses = [];
     this.electiveCourses = [];
 
@@ -90,7 +102,7 @@ export class MyDepartmentComponent implements OnInit {
   calculateDepartmentHours(): number {
     return [...this.coreCourses, ...this.electiveCourses]
       .filter((course) => course.grade !== 'none')
-      .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0); // Convert hours to a number
+      .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0);
   }
 
   submitCourses(): void {

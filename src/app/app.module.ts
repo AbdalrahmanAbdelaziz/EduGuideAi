@@ -23,6 +23,7 @@ import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 import { MyGeneralComponent } from './pages/my-general/my-general.component';
 import { MyFacultyComponent } from './pages/my-faculty/my-faculty.component';
 import { MyDepartmentComponent } from './pages/my-department/my-department.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,8 @@ import { MyDepartmentComponent } from './pages/my-department/my-department.compo
     FormsModule,
     HttpClientModule,
     CommonModule,
+    CommonModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
