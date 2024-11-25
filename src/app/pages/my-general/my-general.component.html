@@ -15,10 +15,9 @@
   <div class="navbar-spacer"></div>
 
   <div class="course-manager">
-    <h2>Available Courses</h2>
     <div class="tables-container">
       <div class="table-container">
-        <h3>Core Courses</h3>
+        <h3>Compulsory subjects (6 hours, 3 courses)</h3>
         <table class="course-table">
           <thead>
             <tr>
@@ -59,7 +58,7 @@
       </div>
 
       <div class="table-container">
-        <h3>Elective Courses</h3>
+        <h3> Electives Subjects 6 hours</h3>
         <table class="course-table">
           <thead>
             <tr>
@@ -100,7 +99,7 @@
       </div>
     </div>
 
-    <div class="summary">
+    <div class="summary" [@slideIn]>
       <p>Total Hours: {{ calculateTotalHours() }}</p>
       <button (click)="submitCourses()">Submit</button>
     </div>
