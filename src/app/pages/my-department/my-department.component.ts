@@ -15,9 +15,10 @@ export class MyDepartmentComponent implements OnInit {
   electiveCourses: Course[] = [];
   selectedDepartment: string | null = null;
   departmentHours: number = 0;
-  isDepartmentSelected: boolean = false;
 
   @Output() calculatedHoursEvent = new EventEmitter<number>();
+
+  isModalVisible = true;  // Control visibility of the department selection modal
 
   constructor(private authService: AuthService) {}
 
@@ -27,31 +28,15 @@ export class MyDepartmentComponent implements OnInit {
         this.student = newStudent;
       }
     });
-
-    // Check if the user has already selected a department
-    this.checkDepartmentSelection();
   }
 
   onDepartmentChange(event: any): void {
     this.selectedDepartment = event.target.value;
     this.fetchDepartmentCourses();
-    this.isDepartmentSelected = true; // Mark department as selected
-  }
-
-  private checkDepartmentSelection(): void {
-    const department = localStorage.getItem('selectedDepartment');
-    if (department) {
-      this.selectedDepartment = department;
-      this.isDepartmentSelected = true;
-      this.fetchDepartmentCourses();
-    }
   }
 
   fetchDepartmentCourses(): void {
     if (!this.selectedDepartment) return;
-
-    // Store selected department to persist selection
-    localStorage.setItem('selectedDepartment', this.selectedDepartment);
 
     switch (this.selectedDepartment) {
       case 'CS':
@@ -120,5 +105,9 @@ export class MyDepartmentComponent implements OnInit {
       const departmentHours = this.calculateDepartmentHours();
       this.calculatedHoursEvent.emit(departmentHours); // Emit the total hours
     });
+  }
+
+  closeModal(): void {
+    this.isModalVisible = false;
   }
 }

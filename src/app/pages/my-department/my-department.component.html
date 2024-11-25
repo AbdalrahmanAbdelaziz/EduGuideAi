@@ -1,4 +1,23 @@
 <div class="department-page">
+  <!-- Department Selection Modal -->
+  <div *ngIf="isModalVisible" class="modal">
+    <div class="modal-content">
+      <h2>Select Your Department</h2>
+      <label for="department-select">Department:</label>
+      <select id="department-select" (change)="onDepartmentChange($event)">
+        <option value="" disabled selected>Select your department</option>
+        <option value="CS">Computer Science (CS)</option>
+        <option value="IS">Information Systems (IS)</option>
+        <option value="AI">Artificial Intelligence (AI)</option>
+        <option value="IT">Information Technology (IT)</option>
+      </select>
+      <div class="modal-footer">
+        <button (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+  
+
   <header class="navbar">
     <div class="app-name" routerLink="/home">
       EduGuideAI
@@ -14,24 +33,9 @@
 
   <div class="navbar-spacer"></div>
 
-  <!-- Department Selection Modal -->
-  <div *ngIf="!isDepartmentSelected" class="department-modal">
-    <div class="modal-content">
-      <h3>Please select your Department</h3>
-      <label for="department-select">Select your Department</label>
-      <select id="department-select" (change)="onDepartmentChange($event)">
-        <option value="" disabled selected>Select your department</option>
-        <option value="CS">Computer Science (CS)</option>
-        <option value="IS">Information Systems (IS)</option>
-        <option value="AI">Artificial Intelligence (AI)</option>
-        <option value="IT">Information Technology (IT)</option>
-      </select>
-      
-    </div>
-  </div>
-
-  <div *ngIf="isDepartmentSelected" class="course-manager">
-    <h2>Available Courses</h2>
+  <!-- Courses Tables -->
+  <div *ngIf="selectedDepartment && !isModalVisible" class="course-manager">
+    <h2>Available Courses for {{ selectedDepartment }}</h2>
     <div class="tables-container">
       <div class="table-container">
         <h3>Core Courses</h3>
@@ -52,10 +56,11 @@
               <td>{{ course.hours }}</td>
               <td>{{ course.prerequest || 'None' }}</td>
               <td>
+                <label for="grade-{{ course.code }}">Select grade for {{ course.course_Name }}</label>
                 <select
+                  id="grade-{{ course.code }}"
                   [(ngModel)]="course.grade"
                   [disabled]="!canTakeCourse(course)"
-                  title="Select grade for {{ course.course_Name }}"
                 >
                   <option value="none">None</option>
                   <option value="A+">A+</option>
@@ -69,6 +74,7 @@
                   <option value="F">F</option>
                 </select>
               </td>
+              
             </tr>
           </tbody>
         </table>
