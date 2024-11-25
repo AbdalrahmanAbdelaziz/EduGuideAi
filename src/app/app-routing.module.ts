@@ -15,10 +15,11 @@ import { MyCoursesComponent } from './pages/my-courses/my-courses.component';
 import { MyGeneralComponent } from './pages/my-general/my-general.component';
 import { MyFacultyComponent } from './pages/my-faculty/my-faculty.component';
 import { MyDepartmentComponent } from './pages/my-department/my-department.component';
+import { TranscriptComponent } from './pages/transcript/transcript.component';
 
 
 const routes: Routes = [
-  { path: '', component:LandComponent},
+  { path: '/', component:LandComponent},
   { path: 'info', component:InfoComponent},
   { path: 'login', component:LoginComponent},
   { path: 'register', component:RegisterComponent},
@@ -33,6 +34,8 @@ const routes: Routes = [
   { path: 'my-general', component: MyGeneralComponent},
   { path: 'my-faculty', component: MyFacultyComponent},
   { path: 'my-department', component: MyDepartmentComponent},
+  { path: 'transcript', component: TranscriptComponent},
+  { path: '**', redirectTo:'/', pathMatch: 'full'},
 ];
 
 @NgModule({
