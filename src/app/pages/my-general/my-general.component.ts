@@ -72,9 +72,11 @@ export class MyGeneralComponent implements OnInit {
     const updatedCourses: UpdateCourse[] = [...this.coreCourses, ...this.electiveCourses].map((course) => ({
       code: course.code,
       grade: course.grade || 'none',
+      hours: parseFloat(course.hours),
+
     }));
 
-    this.authService.updateGeneralCourses(updatedCourses).subscribe(() => {
+    this.authService.updateCourses(updatedCourses).subscribe(() => {
       const totalHours = this.calculateTotalHours();
       this.calculatedHoursEvent.emit(totalHours);
     });

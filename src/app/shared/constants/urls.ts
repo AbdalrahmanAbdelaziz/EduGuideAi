@@ -33,9 +33,11 @@ export const  GET_AI_CORE_COURSE_URL = BASE_URL + '/api/ai_core_courses';
 export const  GET_AI_ELECTIVE_COURSE_URL = BASE_URL + '/api/ai_elective_courses';
 
 
+export const UPDATE_COURSES_URL = BASE_URL + '/api/courses/update';
+
+
+export const UPDATE_PROFILE_URL = BASE_URL + '/api/student/update';
 
 
 
-export const UPDATE_GENERAL_COURSES_URL = BASE_URL + '/api/courses/general_update'; 
-export const UPDATE_FACULTY_COURSES_URL = BASE_URL + '/api/courses/faculty_update'; 
-export const UPDATE_DEPARTMENT_COURSES_URL = BASE_URL + '/api/courses/department_update';
+

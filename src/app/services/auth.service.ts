@@ -20,9 +20,8 @@ import {
     LOGIN_URL,
     RESET_PASSWORD_URL,
     STUDENT_REGISTER_URL,
-    UPDATE_DEPARTMENT_COURSES_URL,
-    UPDATE_FACULTY_COURSES_URL,
-    UPDATE_GENERAL_COURSES_URL
+    UPDATE_COURSES_URL,
+    UPDATE_PROFILE_URL,
 } from "../shared/constants/urls";
 
 import { UserLogin } from "../shared/interfaces/UserLogin";
@@ -223,25 +222,13 @@ export class AuthService {
 
 
 
-    updateCourses(url: string, updatedCourses: UpdateCourse[]): Observable<any> {
-        return this.http.put<any>(url, updatedCourses).pipe(
+    updateCourses(updateCourses: UpdateCourse[]): Observable<any> {
+        return this.http.put<any>(UPDATE_COURSES_URL, updateCourses).pipe(
             tap({
                 next: () => this.toastrService.success('Courses updated successfully.'),
                 error: () => this.toastrService.error('Failed to update courses.')
             })
         );
-    }
-
-    updateGeneralCourses(updatedCourses: UpdateCourse[]): Observable<any> {
-        return this.updateCourses(UPDATE_GENERAL_COURSES_URL, updatedCourses);
-    }
-
-    updateFacultyCourses(updatedCourses: UpdateCourse[]): Observable<any> {
-        return this.updateCourses(UPDATE_FACULTY_COURSES_URL, updatedCourses);
-    }
-
-    updateDepartmentCourses(updatedCourses: UpdateCourse[]): Observable<any> {
-        return this.updateCourses(UPDATE_DEPARTMENT_COURSES_URL, updatedCourses);
     }
 
     
@@ -263,4 +250,21 @@ export class AuthService {
         const adminJson = localStorage.getItem(ADMIN_KEY);
         return adminJson ? JSON.parse(adminJson) : null;
     }
+
+
+    updateProfile(student: Student, profilePic?: File): Observable<any>{
+        const formData = new FormData();
+        formData.append('firstName', student.firstName);
+        formData.append('lastName', student.lastName);
+        formData.append('email', student.email);
+        formData.append('password', student.password);
+        if(profilePic){
+            formData.append('profilePic', profilePic, profilePic.name);
+        }
+
+        return this.http.put(UPDATE_PROFILE_URL, formData);
+    }
+
+
+   
 }

@@ -33,7 +33,7 @@ export class StudentPageComponent implements OnInit {
       name: 'Interactive Roadmap',
       caption: 'Monitor your progress and stay on track effortlessly.',
       image: 'v.jpg',
-      link: '/interactive',
+      link: '/roadmap',
     },
     {
       name: 'Search For Internships',

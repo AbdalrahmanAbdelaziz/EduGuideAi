@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Student } from '../../shared/interfaces/Student';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -10,13 +11,14 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent  implements OnInit{
 
-
   student!: Student;
-   capitalizeFirstLetter(name: string): string {
-    return name.charAt(0).toUpperCase() + name.slice(1);
-  }
+  newPassword!: string;
+  confirmPassword!: string;
+  profilePicFile!: File;
 
-  constructor(private authService: AuthService, private router: Router) {
+  
+
+  constructor(private authService: AuthService, private router: Router, private toastrService:ToastrService) {
 
     this.authService.studentObservable.subscribe((newStudent) => {
       if (newStudent) {
@@ -28,12 +30,46 @@ export class ProfileComponent  implements OnInit{
   ngOnInit(): void {
   }
 
-  logout() {
-    this.authService.logout();
-    this.router.navigate(['/login']);
-   
+
+  onProfilePicChange(event: any){
+    const file = event.target.files[0];
+    if(file){
+      this.profilePicFile = file;
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.student.profilePic = reader.result as string;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+
+  updateProfile() {
+    if (this.newPassword !== this.confirmPassword) {
+      this.toastrService.error('Passwords do not match');
+      return;
+    }
+  
+    const updateStudent: Student = {
+      ...this.student,
+      password: this.newPassword
+    };
+  
+    this.authService.updateProfile(updateStudent, this.profilePicFile).subscribe(
+      (response) => {
+        this.toastrService.success('Profile updated successfully', 'Success');
+      },
+      (error) => {
+        this.toastrService.error('Failed to update profile', 'Error');
+      }
+    );
+  }
+
   }
 
 
 
-}
+
+
+
+

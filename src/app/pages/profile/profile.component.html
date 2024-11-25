@@ -1,18 +1,81 @@
-<div class="profile-page">
-  <header class="navbar">
-    <div class="app-name" routerLink="/student-page">
-      EduGuideAI
-    </div>
-
-    <div class="right-button">
-      <li class="menu-container">
-        <a routerLink="/profile" class="menu-trigger">
-          <i class="fas fa-user-circle"></i> {{ student.firstName | titlecase }}
-        </a>
-      </li>
-    </div>
-  </header>
-  
-    <div class="navbar-spacer"></div>
+<header class="navbar">
+  <div class="app-name" routerLink="/student-page">
+    EduGuideAI
   </div>
-  
+  <div class="right-button">
+    <li class="menu-container">
+      <a routerLink="/profile" class="menu-trigger">
+        <i class="fas fa-user-circle"></i> {{ student?.firstName | titlecase }}
+      </a>
+    </li>
+  </div>
+</header>
+
+<div class="navbar-spacer"></div>
+
+<div class="profile-container">
+  <div class="profile-header">
+    <div class="profile-pic">
+      <img [src]="student?.profilePic || 'avatar.png'" alt="Profile Picture" />
+      <label for="profilePic" class="upload-label">Change Profile Picture</label>
+      <input type="file" id="profilePic" (change)="onProfilePicChange($event)" />
+    </div>
+    <h2>{{ student?.firstName }} {{ student?.lastName }}</h2>
+    <p>{{ student?.email }}</p>
+  </div>
+
+  <div class="profile-details">
+    <div class="detail-item">
+      <label for="firstName">First Name</label>
+      <input 
+        type="text" 
+        id="firstName" 
+        [(ngModel)]="student.firstName" 
+        placeholder="Enter your first name" 
+        disabled
+      />
+    </div>
+    <div class="detail-item">
+      <label for="lastName">Last Name</label>
+      <input 
+        type="text" 
+        id="lastName" 
+        [(ngModel)]="student.lastName" 
+        placeholder="Enter your last name" 
+        disabled
+      />
+    </div>
+    <div class="detail-item">
+      <label for="email">Email</label>
+      <input 
+        type="email" 
+        id="email" 
+        [(ngModel)]="student.email" 
+        placeholder="Enter your email address" 
+        disabled
+      />
+    </div>
+    <div class="detail-item">
+      <label for="password">New Password</label>
+      <input 
+        type="password" 
+        id="password" 
+        [(ngModel)]="newPassword" 
+        placeholder="Enter a new password" 
+      />
+    </div>
+    <div class="detail-item">
+      <label for="confirmPassword">Confirm New Password</label>
+      <input 
+        type="password" 
+        id="confirmPassword" 
+        [(ngModel)]="confirmPassword" 
+        placeholder="Re-enter your new password" 
+      />
+    </div>
+  </div>
+
+  <div class="profile-actions">
+    <button (click)="updateProfile()">Save Changes</button>
+  </div>
+</div>

@@ -1,5 +1,13 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  background-color: #f4f4f9;
+  color: #333;
+  overflow-x: hidden;
+}
+
 .navbar {
-  background-color: #333;
+  background-color: #1d3557;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -11,33 +19,19 @@
   right: 0;
   z-index: 1000;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
 }
 
 .app-name {
   font-size: 1.8em;
-  font-weight: 700;
+  font-weight: bold;
   color: #fff;
   letter-spacing: 2px;
-  font-family: 'Montserrat', sans-serif;
   cursor: pointer;
-  text-decoration: none;
 }
 
 .right-button {
   display: flex;
-  gap: 20px;
   align-items: center;
-  position: relative;
-  cursor: pointer;
-}
-
-.menu-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-  cursor: pointer;
 }
 
 .menu-trigger {
@@ -45,59 +39,120 @@
   font-weight: 500;
   color: white;
   text-decoration: none;
-  padding: 10px 15px;
-  display: block;
-  width: 200px;
-  text-align: left;
   transition: background-color 0.3s ease;
-  box-sizing: border-box;
-  cursor: pointer;
 }
 
 .menu-trigger:hover {
-  background-color: #d94e2a;
+  background-color: #457b9d;
 }
 
-.menu {
+.navbar-spacer {
+  height: 70px; /* Adjust based on the navbar height */
+}
+
+.profile-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px 30px; /* Equal spacing on left and right */
+  background: linear-gradient(to bottom, #1d3557, #457b9d);
+  color: #fff; /* Text color for readability */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-pic img {
+  width: 150px; /* Increased size */
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  object-fit: cover;
+}
+
+.profile-pic input {
   display: none;
-  position: absolute;
-  background-color: #555;
-  width: 200px;
-  z-index: 1;
-  border-radius: 5px;
-  top: 100%;
-  left: 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
-  box-sizing: border-box;
-  cursor: pointer;
 }
 
-.menu-container:hover .menu {
+.upload-label {
   display: block;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.3s ease, visibility 0s linear 0s;
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #a8dadc;
   cursor: pointer;
+  text-align: center;
 }
 
-.menu a {
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
+h2 {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #f1faee;
+}
+
+p {
+  color: #a8dadc;
+}
+
+.profile-details {
+  margin-bottom: 20px;
+}
+
+.detail-item {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
   display: block;
+  margin-bottom: 5px;
+  color: #f1faee;
+}
+
+input {
   width: 100%;
-  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  border: 1px solid #fff;
+  color: #1d3557;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+input:focus {
+  border-color: #a8dadc;
+  outline: none;
+}
+
+input:disabled {
+  background-color: rgba(255, 255, 255, 0.6); /* Slightly lighter for disabled fields */
+  cursor: not-allowed;
+}
+
+button {
+  background-color: #1d3557;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
   cursor: pointer;
+  margin-right: 15px;
+  transition: background-color 0.3s ease;
 }
 
-.menu a:hover {
-  background-color: #d94e2a;
+button:hover {
+  background-color: #e63946; /* Save button hover effect */
 }
 
-/* Content Layout */
-.content {
+.logout-btn {
+  background-color: #e63946;
+}
+
+.profile-actions {
   display: flex;
-  margin-top: 80px; /* Adjusted to make space for the navbar */
+  justify-content: center;
+  margin-top: 30px;
 }

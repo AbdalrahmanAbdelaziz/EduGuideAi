@@ -26,6 +26,7 @@ import { MyDepartmentComponent } from './pages/my-department/my-department.compo
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranscriptComponent } from './pages/transcript/transcript.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { TranscriptComponent } from './pages/transcript/transcript.component';
     MyFacultyComponent,
     MyDepartmentComponent,
     TranscriptComponent,
+    
   ],
   imports: [
     BrowserModule,

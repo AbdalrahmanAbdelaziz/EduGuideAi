@@ -101,9 +101,10 @@ export class MyDepartmentComponent implements OnInit {
     const updatedCourses: UpdateCourse[] = [...this.coreCourses, ...this.electiveCourses].map((course) => ({
       code: course.code,
       grade: course.grade || 'none',
+      hours: parseFloat(course.hours),
     }));
 
-    this.authService.updateDepartmentCourses(updatedCourses).subscribe(() => {
+    this.authService.updateCourses(updatedCourses).subscribe(() => {
       const departmentHours = this.calculateDepartmentHours();
       this.calculatedHoursEvent.emit(departmentHours); 
     });
