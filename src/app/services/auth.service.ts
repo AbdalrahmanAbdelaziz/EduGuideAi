@@ -185,8 +185,8 @@ export class AuthService {
         return this.http.get<{ data: Course[] }>(url).pipe(
           map((response) => response.data),
           tap({
-            next: (courses) => this.toastrService.success('Core courses loaded successfully.'),
-            error: () => this.toastrService.error('Failed to load core courses.'),
+            // next: (courses) => this.toastrService.success('Core courses loaded successfully.'),
+            // error: () => this.toastrService.error('Failed to load core courses.'),
           })
         );
       }
