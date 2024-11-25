@@ -126,20 +126,20 @@ export class AuthService {
         );
     }
 
-    // fetchCourses(url: string): Observable<Course[]> {
-    //     return this.http.get<{ data: Course[] }>(url).pipe(
-    //         map((response) => response.data),
-    //         tap({
-    //             next: (courses) => {
-    //                 this.coursesSubject.next(courses);
-    //                 // this.toastrService.success('Courses loaded successfully.');
-    //             },
-    //             error: () => {
-    //                 // this.toastrService.error('Failed to load courses.');
-    //             }
-    //         })
-    //     );
-    // }
+    fetchCourses(url: string): Observable<Course[]> {
+        return this.http.get<{ data: Course[] }>(url).pipe(
+            map((response) => response.data),
+            tap({
+                next: (courses) => {
+                    this.coursesSubject.next(courses);
+                    // this.toastrService.success('Courses loaded successfully.');
+                },
+                error: () => {
+                    // this.toastrService.error('Failed to load courses.');
+                }
+            })
+        );
+    }
 
     fetchGeneralCoreCourses(): Observable<Course[]> {
         return this.http.get<Course[]>(GET_G_CORE_COURSE_URL, {
@@ -153,13 +153,13 @@ export class AuthService {
         });
       }
 
-    // fetchFacultyCoreCourses(): Observable<Course[]> {
-    //     return this.fetchCourses(GET_F_CORE_COURSE_URL);
-    // }
+    fetchFacultyCoreCourses(): Observable<Course[]> {
+        return this.fetchCourses(GET_F_CORE_COURSE_URL);
+    }
 
-    // fetchFacultyElectiveCourses(): Observable<Course[]> {
-    //     return this.fetchCourses(GET_F_ELECTIVE_COURSE_URL);
-    // }
+    fetchFacultyElectiveCourses(): Observable<Course[]> {
+        return this.fetchCourses(GET_F_ELECTIVE_COURSE_URL);
+    }
 
   
 
