@@ -69,7 +69,7 @@ export class MyGeneralComponent implements OnInit {
   }
 
   submitCourses(): void {
-    const updatedCourses: UpdateCourse[] = this.selectedCourses.map((course) => ({
+    const updatedCourses: UpdateCourse[] = [...this.coreCourses, ...this.electiveCourses].map((course) => ({
       code: course.code,
       grade: course.grade || 'none',
     }));

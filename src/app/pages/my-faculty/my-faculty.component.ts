@@ -56,7 +56,7 @@ export class MyFacultyComponent implements OnInit {
   }
 
   submitCourses(): void {
-    const updatedCourses: UpdateCourse[] = this.allCourses.map((course) => ({
+    const updatedCourses: UpdateCourse[] = [...this.coreCourses, ...this.electiveCourses].map((course) => ({
       code: course.code,
       grade: course.grade || 'none',
     }));
