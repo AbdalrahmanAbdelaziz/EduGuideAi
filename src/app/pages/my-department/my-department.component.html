@@ -16,7 +16,6 @@
       </div>
     </div>
   </div>
-  
 
   <header class="navbar">
     <div class="app-name" routerLink="/home">
@@ -56,10 +55,10 @@
               <td>{{ course.prerequest || 'None' }}</td>
               <td>
                 <select
-                [(ngModel)]="course.grade"
-                [disabled]="!canTakeCourse(course)"
-                title="Select grade for {{ course.course_Name }}"
-              >
+                  [(ngModel)]="course.grade"
+                  [disabled]="!canTakeCourse(course)"
+                  title="Select grade for {{ course.course_Name }}"
+                >
                   <option value="none">None</option>
                   <option value="A+">A+</option>
                   <option value="A">A</option>
@@ -125,5 +124,4 @@
       <button (click)="submitCourses()">Submit</button>
     </div>
   </div>
-  </div>
-
+</div>
