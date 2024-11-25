@@ -3,7 +3,7 @@ import { Course } from "./Course";
 export class Student{
     id?: string;
     firstName!: string;
-    lastName!: string;
+    LastName!: string;
     email!: string;
     password!: string;
     confirmPassword?: string;

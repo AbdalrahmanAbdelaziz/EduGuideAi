@@ -46,7 +46,6 @@ body {
   background-color: #457b9d;
 }
 
-/* Course Manager styles */
 .course-manager {
   margin: 100px 20px 20px 20px;
 }
@@ -79,12 +78,25 @@ body {
 }
 
 .course-table th {
-  background-color: #f2f2f2;
+  background-color: #1d3557;
+  color: white;
   font-weight: bold;
+}
+
+.course-table tr:hover {
+  background-color: #e63946;
+  color: white;
 }
 
 .disabled {
   background-color: #f9c6c6;
+}
+
+.table-title {
+  text-align: center;
+  color: #1d3557;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .summary {
@@ -92,10 +104,19 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #1d3557;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
 }
 
-button {
-  background-color: #1d3557;
+.total-hours {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.submit-button {
+  background-color: #457b9d;
   color: white;
   padding: 12px 24px;
   border: none;
@@ -105,29 +126,6 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+.submit-button:hover {
   background-color: #e63946;
 }
-
-/* Add animations for a professional look */
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-
