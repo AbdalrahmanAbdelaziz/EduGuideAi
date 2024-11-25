@@ -29,11 +29,17 @@ export class MyFacultyComponent implements OnInit {
     });
 
     this.authService.fetchFacultyCoreCourses().subscribe((coreCourses) => {
-      this.coreCourses = coreCourses;
+      this.coreCourses = coreCourses.map((course) => ({
+        ...course,
+        grade: course.grade || 'none'
+      }));
     });
 
     this.authService.fetchFacultyElectiveCourses().subscribe((electiveCourses) => {
-      this.electiveCourses = electiveCourses;
+      this.electiveCourses = electiveCourses.map((course) => ({
+        ...course,
+        grade: course.grade || 'none'
+      }));
     });
   }
 

@@ -6,7 +6,7 @@
     <div class="right-button">
       <li class="menu-container">
         <a routerLink="/profile" class="menu-trigger">
-          <i class="fas fa-user-circle"></i> {{ student.firstName | titlecase }}
+          <i class="fas fa-user-circle"></i> {{ student?.firstName | titlecase }}
         </a>
       </li>
     </div>
@@ -15,10 +15,10 @@
   <div class="navbar-spacer"></div>
 
   <div class="course-manager">
-    <h2>Available Courses</h2>
     <div class="tables-container">
+      <!-- Core Courses -->
       <div class="table-container">
-        <h3>Core Courses</h3>
+        <h3 class="table-title">Core Courses</h3>
         <table class="course-table">
           <thead>
             <tr>
@@ -58,8 +58,9 @@
         </table>
       </div>
 
+      <!-- Elective Courses -->
       <div class="table-container">
-        <h3>Elective Courses</h3>
+        <h3 class="table-title">Elective Courses</h3>
         <table class="course-table">
           <thead>
             <tr>
@@ -100,9 +101,10 @@
       </div>
     </div>
 
+    <!-- Summary Section -->
     <div class="summary">
-      <p>Total Hours: {{ calculateFacultyHours() }}</p>
-      <button (click)="submitCourses()">Submit</button>
+      <div class="total-hours">Total Hours: {{ calculateFacultyHours() }}</div>
+      <button class="submit-button" (click)="submitCourses()">Submit</button>
     </div>
   </div>
 </div>

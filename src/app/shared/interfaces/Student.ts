@@ -9,7 +9,7 @@ export class Student{
     confirmPassword?: string;
     profilePic?: string;  
     level?: string;  
-    department?: string; 
+    department?: string;
     gpa?: number;  
     hours?: number;
     completedHours?: number; 
