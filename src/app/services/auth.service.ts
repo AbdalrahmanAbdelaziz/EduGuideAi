@@ -219,23 +219,17 @@ export class AuthService {
         );
       }
 
-      updateCourses(updateCourses: UpdateCourse[]): Observable<any> {
-        const formData = new FormData();
-      
-        updateCourses.forEach((course, index) => {
-          formData.append(`courses[${index}][code]`, course.code);
-          formData.append(`courses[${index}][grade]`, course.grade);
-          formData.append(`courses[${index}][hours]`, course.hours.toString());
-        });
-      
-        return this.http.put<any>(UPDATE_COURSES_URL, formData).pipe(
-          tap({
-            next: () => this.toastrService.success('Courses updated successfully.'),
-            error: () => this.toastrService.error('Failed to update courses.')
-          })
+
+
+
+    updateCourses(updateCourses: UpdateCourse[]): Observable<any> {
+        return this.http.put<any>(UPDATE_COURSES_URL, updateCourses).pipe(
+            tap({
+                next: () => this.toastrService.success('Courses updated successfully.'),
+                error: () => this.toastrService.error('Failed to update courses.')
+            })
         );
-      }
-      
+    }
 
     
 
