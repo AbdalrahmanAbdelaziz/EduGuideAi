@@ -57,7 +57,7 @@ export class MyGeneralComponent implements OnInit {
       }
     });
 
-
+    // Fetch general elective courses
     this.authService.fetchGeneralElectiveCourses().subscribe({
       next: (electiveCourses) => {
         if (Array.isArray(electiveCourses)) {
@@ -68,21 +68,10 @@ export class MyGeneralComponent implements OnInit {
         }
       },
       error: (err) => {
-        console.error('Error fetching core courses:', err);
-        this.toastrService.error('Failed to load core courses.');
+        console.error('Error fetching elective courses:', err);
+        this.toastrService.error('Failed to load elective courses.');
       }
     });
-
-
-    
-
-    // Fetch general elective courses
-    // this.authService.fetchGeneralElectiveCourses().subscribe((electiveCourses) => {
-    //   this.electiveCourses = electiveCourses.map((course) => ({
-    //     ...course,
-    //     grade: course.grade || 'none'
-    //   }));
-    // });
   }
 
   canTakeCourse(course: Course): boolean {
