@@ -4,7 +4,6 @@ import { Course } from '../../shared/interfaces/Course';
 import { Student } from '../../shared/interfaces/Student';
 import { UpdateCourse } from '../../shared/interfaces/UpdateCourse';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-my-general',
@@ -27,63 +26,46 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class MyGeneralComponent implements OnInit {
   student!: Student | null;
+  allCourses: Course[] = [];
   coreCourses: Course[] = [];
   electiveCourses: Course[] = [];
+  selectedCourses: Course[] = [];
   totalHours: number = 0;
 
   @Output() calculatedHoursEvent = new EventEmitter<number>();
 
-  constructor(private authService: AuthService, private toastrService: ToastrService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    // Fetch student data
     this.authService.studentObservable.subscribe((student) => {
       this.student = student;
     });
 
-    // Fetch general core courses
-    this.authService.fetchGeneralCoreCourses().subscribe({
-      next: (coreCourses) => {
-        if (Array.isArray(coreCourses)) {
-          this.coreCourses = coreCourses.map((course) => ({
-            ...course,
-            grade: course.grade || 'none'
-          }));
-        }
-      },
-      error: (err) => {
-        console.error('Error fetching core courses:', err);
-        this.toastrService.error('Failed to load core courses.');
-      }
+    this.authService.fetchGeneralCoreCourses().subscribe((coreCourses) => {
+      this.coreCourses = coreCourses.map((course) => ({
+        ...course,
+        grade: course.grade || 'none'
+      }));
     });
 
-    // Fetch general elective courses
-    this.authService.fetchGeneralElectiveCourses().subscribe({
-      next: (electiveCourses) => {
-        if (Array.isArray(electiveCourses)) {
-          this.electiveCourses = electiveCourses.map((course) => ({
-            ...course,
-            grade: course.grade || 'none'
-          }));
-        }
-      },
-      error: (err) => {
-        console.error('Error fetching elective courses:', err);
-        this.toastrService.error('Failed to load elective courses.');
-      }
+    this.authService.fetchGeneralElectiveCourses().subscribe((electiveCourses) => {
+      this.electiveCourses = electiveCourses.map((course) => ({
+        ...course,
+        grade: course.grade || 'none'
+      }));
     });
   }
 
   canTakeCourse(course: Course): boolean {
     if (!course.prerequest) return true;
-    const preRequestCourse = [...this.coreCourses, ...this.electiveCourses].find((c) => c.code === course.prerequest);
+    const preRequestCourse = this.allCourses.find((c) => c.code === course.prerequest);
     return preRequestCourse?.grade !== 'none' && preRequestCourse?.grade !== 'F';
   }
 
   calculateTotalHours(): number {
     return [...this.coreCourses, ...this.electiveCourses]
-      .filter((course) => course.grade !== 'none' && course.grade !== 'F')
-      .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0);
+      .filter((course) => course.grade !== 'none' && course.grade !== 'F') 
+      .reduce((total, course) => total + (parseFloat(course.hours) || 0), 0); 
   }
 
   submitCourses(): void {
@@ -91,11 +73,12 @@ export class MyGeneralComponent implements OnInit {
       code: course.code,
       grade: course.grade || 'none',
       hours: parseFloat(course.hours),
+
     }));
 
     this.authService.updateCourses(updatedCourses).subscribe(() => {
-      this.totalHours = this.calculateTotalHours();
-      this.calculatedHoursEvent.emit(this.totalHours);
+      const totalHours = this.calculateTotalHours();
+      this.calculatedHoursEvent.emit(totalHours);
     });
   }
 }
