@@ -4,6 +4,7 @@ import { Course } from '../../shared/interfaces/Course';
 import { Student } from '../../shared/interfaces/Student';
 import { UpdateCourse } from '../../shared/interfaces/UpdateCourse';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-my-general',
@@ -32,7 +33,7 @@ export class MyGeneralComponent implements OnInit {
 
   @Output() calculatedHoursEvent = new EventEmitter<number>();
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private toastrService: ToastrService) {}
 
   ngOnInit(): void {
     // Fetch student data
@@ -41,20 +42,47 @@ export class MyGeneralComponent implements OnInit {
     });
 
     // Fetch general core courses
-    this.authService.fetchGeneralCoreCourses().subscribe((coreCourses) => {
-      this.coreCourses = coreCourses.map((course) => ({
-        ...course,
-        grade: course.grade || 'none'
-      }));
+    this.authService.fetchGeneralCoreCourses().subscribe({
+      next: (coreCourses) => {
+        if (Array.isArray(coreCourses)) {
+          this.coreCourses = coreCourses.map((course) => ({
+            ...course,
+            grade: course.grade || 'none'
+          }));
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching core courses:', err);
+        this.toastrService.error('Failed to load core courses.');
+      }
     });
 
-    // Fetch general elective courses
-    this.authService.fetchGeneralElectiveCourses().subscribe((electiveCourses) => {
-      this.electiveCourses = electiveCourses.map((course) => ({
-        ...course,
-        grade: course.grade || 'none'
-      }));
+
+    this.authService.fetchGeneralElectiveCourses().subscribe({
+      next: (electiveCourses) => {
+        if (Array.isArray(electiveCourses)) {
+          this.electiveCourses = electiveCourses.map((course) => ({
+            ...course,
+            grade: course.grade || 'none'
+          }));
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching core courses:', err);
+        this.toastrService.error('Failed to load core courses.');
+      }
     });
+
+
+    
+
+    // Fetch general elective courses
+    // this.authService.fetchGeneralElectiveCourses().subscribe((electiveCourses) => {
+    //   this.electiveCourses = electiveCourses.map((course) => ({
+    //     ...course,
+    //     grade: course.grade || 'none'
+    //   }));
+    // });
   }
 
   canTakeCourse(course: Course): boolean {
