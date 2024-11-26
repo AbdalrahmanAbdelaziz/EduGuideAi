@@ -69,19 +69,15 @@ export class ProfileComponent implements OnInit {
         password: this.newPassword
       };
 
-      console.log('Updating profile with data:', updateStudent); // Debug log
       this.authService.updateProfile(updateStudent, this.profilePicFile).subscribe(
         (response) => {
-          console.log('Profile update response:', response); // Debug log
           this.toastrService.success('Profile updated successfully', 'Success');
         },
         (error) => {
-          console.error('Profile update failed:', error); // Error log
           this.toastrService.error('Failed to update profile', 'Error');
         }
       );
     } catch (error) {
-      console.error('Error in updateProfile method:', error); // Error log
       this.toastrService.error('Unexpected error occurred', 'Error');
     }
   }
