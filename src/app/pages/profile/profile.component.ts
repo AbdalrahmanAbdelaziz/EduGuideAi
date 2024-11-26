@@ -36,19 +36,15 @@ export class ProfileComponent implements OnInit {
       const file = event.target.files[0];
       if (file) {
         this.profilePicFile = file;
-        console.log('Profile picture file selected:', file); // Debug log
 
         const reader = new FileReader();
         reader.onload = () => {
           this.student.profilePic = reader.result as string;
-          console.log('Profile picture preview updated'); // Debug log
         };
         reader.readAsDataURL(file);
       } else {
-        console.warn('No file selected'); // Warning log
       }
     } catch (error) {
-      console.error('Error handling profile picture change:', error); // Error log
       this.toastrService.error('Failed to load profile picture', 'Error');
     }
   }
