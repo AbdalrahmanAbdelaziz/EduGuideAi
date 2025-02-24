@@ -71,16 +71,32 @@ body.dark-mode .side-navbar-link:hover {
   padding: 20px 10px;
 }
 
+/* Hide user info when collapsed */
+.side-navbar.collapsed .user-info {
+  display: none;
+}
+
+/* Keep only icons visible when collapsed */
+.side-navbar.collapsed .side-navbar-link span {
+  display: none;
+}
+
+/* Center and adjust icon alignment */
 .side-navbar.collapsed .side-navbar-link i {
-  display: inline-block;
+  display: block;
   text-align: center;
+  font-size: 1.4em; /* Adjust size if needed */
   width: 100%;
 }
 
+/* Reduce padding for collapsed mode */
 .side-navbar.collapsed .side-navbar-link {
-  text-align: center;
-  padding: 10px;
+  padding: 12px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 
 /* Toggle Button */
