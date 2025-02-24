@@ -27,6 +27,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranscriptComponent } from './pages/transcript/transcript.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/auth/AuthInterceptor';
+import { SideNavbarComponent } from './pages/side-navbar/side-navbar.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { AuthInterceptor } from './shared/auth/AuthInterceptor';
     MyFacultyComponent,
     MyDepartmentComponent,
     TranscriptComponent,
+    SideNavbarComponent,
     
   ],
   imports: [

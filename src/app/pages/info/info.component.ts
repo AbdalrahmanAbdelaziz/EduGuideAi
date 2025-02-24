@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { DarkModeService } from '../../services/dark-mode.service';
 
 @Component({
   selector: 'app-info',
@@ -8,7 +9,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 export class InfoComponent implements OnInit {
   sections: HTMLElement[] = [];
 
-  constructor() {}
+  constructor(private darkModeService: DarkModeService) {}
 
   ngOnInit(): void {
     // Collect all sections you want to animate
@@ -33,4 +34,6 @@ export class InfoComponent implements OnInit {
       }
     });
   }
+
+ 
 }

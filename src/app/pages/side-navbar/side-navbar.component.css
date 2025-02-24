@@ -1,0 +1,178 @@
+:root {
+  --background-light: linear-gradient(to right, #1d3557, #457b9d);
+  --background-dark: linear-gradient(to right, #121212, #252525);
+  --text-light: white;
+  --text-dark: #e0e0e0;
+  --hover-light: #e63946;
+  --hover-dark: #333;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: var(--text-dark);
+}
+
+.side-navbar {
+  width: 220px;
+  background: var(--background-light);
+  color: var(--text-light);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 55px;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .side-navbar {
+  background: var(--background-dark);
+  color: var(--text-dark);
+}
+
+.side-navbar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.side-navbar-link {
+  font-size: 1.1em;
+  color: var(--text-light);
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-align: left;
+  cursor: pointer;
+}
+
+body.dark-mode .side-navbar-link {
+  color: var(--text-dark);
+}
+
+.side-navbar-link:hover {
+  background-color: var(--hover-light);
+  transform: scale(1.05);
+}
+
+body.dark-mode .side-navbar-link:hover {
+  background-color: var(--hover-dark);
+}
+
+.side-navbar-link i {
+  margin-right: 10px;
+}
+
+.side-navbar.collapsed {
+  width: 60px;
+  padding: 20px 10px;
+}
+
+.side-navbar.collapsed .side-navbar-link span {
+  display: none;
+}
+
+/* Toggle Button */
+.toggle-btn {
+  position: absolute;
+  top: 10px;
+  right: -15px;
+  background-color: #1A9A63;
+  border: none;
+  color: white;
+  padding: 5px 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.toggle-btn:hover {
+  background-color: #24CC81;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.dark-mode-toggle i {
+  font-size: 1.2em;
+}
+
+body.dark-mode .dark-mode-toggle i {
+  color: #ff9800; /* Sun icon color */
+}
+
+body.light-mode .dark-mode-toggle i {
+  color: #f1c40f; /* Moon icon color */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .side-navbar {
+    display: none; /* Hides the sidebar on smaller screens */
+  }
+
+  /* Navbar */
+  .navbar {
+    padding: 10px 20px;
+    flex-direction: column;
+    margin-top: 100px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    position: static;
+    transform: none;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .nav-links a {
+    padding: 8px 12px;
+  }
+
+  /* Side Navbar */
+  .side-navbar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+    border-radius: 0;
+    padding: 15px;
+  }
+
+  .side-navbar-links {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .side-navbar-link {
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  /* Hide toggle button on mobile */
+  .toggle-btn {
+    display: none;
+  }
+
+  /* Content Layout */
+  .content {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+  }
+}

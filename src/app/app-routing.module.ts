@@ -35,7 +35,8 @@ const routes: Routes = [
   { path: 'my-faculty', component: MyFacultyComponent},
   { path: 'my-department', component: MyDepartmentComponent},
   { path: 'transcript', component: TranscriptComponent},
-  { path: '**', redirectTo:'', pathMatch: 'full'},
+  
+  // { path: '**', redirectTo:'', pathMatch: 'full'},
 ];
 
 @NgModule({

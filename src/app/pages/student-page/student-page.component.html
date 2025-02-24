@@ -17,27 +17,9 @@
 
   <div class="content">
     <!-- Side Navbar -->
-    <div class="side-navbar">
-      <div class="user-info">
-        <img [src]="student.profilePic || 'default-avatar.jpg'" alt="User Image" class="user-img" />
-        <div class="user-details">
-          <h3>{{ student.firstName }} {{ student.lastName }}</h3>
-          <p>{{ student.level }} | {{ student.department }}</p>
-          <p>GPA: {{ student.gpa | number: '1.1-2' }}</p>
-        </div>
-      </div>
-      <div class="side-navbar-links">
-        <a routerLink="/profile" class="side-navbar-link">
-          <i class="fas fa-user"></i> Profile
-        </a>
-        <a routerLink="/settings" class="side-navbar-link">
-          <i class="fas fa-cogs"></i> Settings
-        </a>
-        <a (click)="logout()" class="side-navbar-link">
-          <i class="fas fa-sign-out-alt"></i> Logout
-        </a>
-      </div>
-    </div>
+
+    <app-side-navbar></app-side-navbar>
+   
 
     <!-- Main Content Section -->
     <div class="features-section">

@@ -1,4 +1,4 @@
-const BASE_URL = 'https://eduguideai.runasp.net';
+export const BASE_URL = 'https://eduguideai.runasp.net';
 
 
 export const LOGIN_URL = BASE_URL + '/api/auth/login';             
