@@ -7,14 +7,14 @@
   --hover-dark: #333;
 }
 
-body.dark-mode {
-  background-color: #121212;
+body.dark-mode .side-navbar {
+  background: #1d3557; /* Keeping the same background in dark mode */
   color: var(--text-dark);
 }
 
 .side-navbar {
   width: 220px;
-  background: var(--background-light);
+  background: #1d3557; /* Fixed background color */
   color: var(--text-light);
   padding: 20px;
   border-radius: 10px;
@@ -71,16 +71,24 @@ body.dark-mode .side-navbar-link:hover {
   padding: 20px 10px;
 }
 
-.side-navbar.collapsed .side-navbar-link span {
-  display: none;
+.side-navbar.collapsed .side-navbar-link i {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
 }
+
+.side-navbar.collapsed .side-navbar-link {
+  text-align: center;
+  padding: 10px;
+}
+
 
 /* Toggle Button */
 .toggle-btn {
   position: absolute;
   top: 10px;
   right: -15px;
-  background-color: #1A9A63;
+  background-color: #1d3557;
   border: none;
   color: white;
   padding: 5px 8px;
@@ -90,7 +98,7 @@ body.dark-mode .side-navbar-link:hover {
 }
 
 .toggle-btn:hover {
-  background-color: #24CC81;
+  background-color: #457b9d;
 }
 
 /* Dark Mode Toggle Button */
