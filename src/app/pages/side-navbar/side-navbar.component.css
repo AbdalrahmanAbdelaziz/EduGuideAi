@@ -71,7 +71,7 @@ body.dark-mode .side-navbar-link:hover {
 
 /* Icons in dark mode */
 body.dark-mode .side-navbar-link i {
-  color: black !important; /* Change to black in dark mode */
+  color: black !important; /* Force black icons */
 }
 
 

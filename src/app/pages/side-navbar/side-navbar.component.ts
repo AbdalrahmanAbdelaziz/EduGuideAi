@@ -46,11 +46,6 @@ export class SideNavbarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  // toggleSidebar() {
-  //   this.isCollapsed = !this.isCollapsed;
-  //   localStorage.setItem('sidebarCollapsed', JSON.stringify(this.isCollapsed)); // Save state
-  // }
-
   toggleTheme(): void {
     this.isDarkMode = !this.isDarkMode;
     localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
@@ -61,6 +56,12 @@ export class SideNavbarComponent implements OnInit {
     } else {
       body.classList.remove('dark-mode');
     }
-  }
   
+    // Ensure icons update
+    setTimeout(() => {
+      document.querySelectorAll('.side-navbar-link i').forEach(icon => {
+        (icon as HTMLElement).style.color = this.isDarkMode ? 'black' : 'white'; // ✅ Cast to HTMLElement
+      });
+    }, 100);
+  }
 }
