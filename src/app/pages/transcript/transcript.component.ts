@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../../shared/interfaces/Student';
 import { AuthService } from '../../services/auth.service';
+import { DarkModeService } from '../../services/dark-mode.service';
 
 @Component({
   selector: 'app-transcript',
@@ -10,10 +11,14 @@ import { AuthService } from '../../services/auth.service';
 export class TranscriptComponent implements OnInit{
 
   student!: Student | null;
+  isDarkMode = false;
 
-  constructor(private authservice: AuthService){}
+
+  constructor(private authservice: AuthService, private darkModeService: DarkModeService){}
 
   ngOnInit(): void {
+    this.isDarkMode = this.darkModeService.isDarkMode(); // Check dark mode state
+
     this.authservice.studentObservable.subscribe((student) => {
       this.student = student;
     })
