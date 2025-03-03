@@ -4,6 +4,7 @@ import { Course } from '../../shared/interfaces/Course';
 import { Student } from '../../shared/interfaces/Student';
 import { UpdateCourse } from '../../shared/interfaces/UpdateCourse';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { DarkModeService } from '../../services/dark-mode.service';
 
 @Component({
   selector: 'app-my-general',
@@ -31,12 +32,17 @@ export class MyGeneralComponent implements OnInit {
   electiveCourses: Course[] = [];
   selectedCourses: Course[] = [];
   totalHours: number = 0;
+  isDarkMode = false;
+
 
   @Output() calculatedHoursEvent = new EventEmitter<number>();
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private darkModeService: DarkModeService) {}
 
   ngOnInit(): void {
+
+    this.isDarkMode = this.darkModeService.isDarkMode(); // Check dark mode state
+
     this.authService.studentObservable.subscribe((student) => {
       this.student = student;
     });
