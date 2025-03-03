@@ -2,6 +2,12 @@
 
 
   <div class="side-navbar-links">
+
+    <a routerLink="/student-page" class="side-navbar-link">
+      <i class="fas fa-home"></i>
+      <span *ngIf="!isCollapsed">Home</span>
+    </a>
+
     <a routerLink="/profile" class="side-navbar-link">
       <i class="fas fa-id-card"></i>
       <span *ngIf="!isCollapsed">Profile</span>
