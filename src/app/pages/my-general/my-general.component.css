@@ -160,7 +160,7 @@ body.dark-mode .table-title {
 }
 
 .submit-button {
-  background-color: var(--background-dark);
+  background-color: #e63946;
   color: var(--text-dark);
   padding: 12px 24px;
   border: none;
@@ -171,17 +171,17 @@ body.dark-mode .table-title {
 }
 
 .submit-button:hover {
-  background-color: var(--secondary-color);
+  background-color: #0056b3;
   transform: translateY(-2px);
 }
 
 body.dark-mode .submit-button {
-  background-color: var(--background-light);
+  background-color: #e63946;
   color: var(--text-light);
 }
 
 body.dark-mode .submit-button:hover {
-  background-color: var(--hover-light);
+  background-color: #0056b3;;
 }
 
 /* Responsive Design */
