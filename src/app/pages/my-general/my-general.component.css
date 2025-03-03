@@ -160,7 +160,7 @@ body.dark-mode .table-title {
 }
 
 .submit-button {
-  background-color: #e63946;
+  background-color: green;
   color: var(--text-dark);
   padding: 12px 24px;
   border: none;
@@ -176,7 +176,7 @@ body.dark-mode .table-title {
 }
 
 body.dark-mode .submit-button {
-  background-color: #e63946;
+  background-color: green;
   color: var(--text-light);
 }
 
