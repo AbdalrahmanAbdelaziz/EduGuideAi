@@ -1,16 +1,21 @@
 <div class="bg-img" style="background-image: url('bg.jpg');">
   <div class="overlay"></div>
   <div class="content">
-    <h1>WELCOME BACK!</h1>
+    <!-- Logo -->
+    <img src="logo.png" alt="Logo" class="logo" routerLink="/" />
+
+    <!-- Login Form -->
     <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <!-- Email Field -->
       <div class="field">
-        <span class="fa fa-user"></span>
-        <input type="email" formControlName="email" placeholder="Email" required />
+        <span class="fa fa-envelope"></span>
+        <input type="email" formControlName="email" placeholder="Email Address" required />
         <div *ngIf="isSubmitted && fc['email'].invalid" class="error">
-          Email is required and should be valid.
+          Please enter a valid email address.
         </div>
       </div>
 
+      <!-- Password Field -->
       <div class="field space">
         <span class="fa fa-lock"></span>
         <input
@@ -25,17 +30,20 @@
         </div>
       </div>
 
+      <!-- Submit Button -->
       <div class="field">
         <input type="submit" value="LOGIN" />
       </div>
 
+      <!-- Forgot Password Link -->
       <div class="forgot-password">
         <a routerLink="/forget-password">Forgot Password?</a>
       </div>
     </form>
 
+    <!-- Signup Link -->
     <div class="signup">
-      Don't have an account? <a routerLink="/registerStudent">SignUp Now</a>
+      Don't have an account? <a routerLink="/registerStudent">Sign Up Now</a>
     </div>
   </div>
 </div>

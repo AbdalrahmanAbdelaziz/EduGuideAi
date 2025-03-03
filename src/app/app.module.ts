@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandComponent } from './pages/land/land.component';
@@ -28,6 +28,12 @@ import { TranscriptComponent } from './pages/transcript/transcript.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/auth/AuthInterceptor';
 import { SideNavbarComponent } from './pages/side-navbar/side-navbar.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 
 @NgModule({
@@ -68,6 +74,14 @@ import { SideNavbarComponent } from './pages/side-navbar/side-navbar.component';
       positionClass: 'toast-bottom-right', 
       newestOnTop: false,
     }),
+
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

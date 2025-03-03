@@ -20,6 +20,8 @@
     "@angular/platform-browser": "^18.2.10",
     "@angular/platform-browser-dynamic": "^18.1.0",
     "@angular/router": "^18.2.10",
+    "@ngx-translate/core": "^16.0.4",
+    "@ngx-translate/http-loader": "^16.0.1",
     "aos": "^2.3.4",
     "ionicons": "^7.4.0",
     "ngx-toastr": "^19.0.0",

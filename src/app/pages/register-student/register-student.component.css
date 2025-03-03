@@ -1,145 +1,154 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body, html {
-    height: 100%;
-    width: 100%;
-    font-family: 'Roboto', Arial, sans-serif;
-    overflow: hidden;
-    background-color: #f5f5f5; 
-  }
-  
-  .bg-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4); 
-    z-index: 1;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto', Arial, sans-serif;
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+
+/* Logo */
+.logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Background Image */
+.bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+/* Content Container */
+.content {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 2;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Fields */
+.field {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.field span {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.field input {
+  width: 100%;
+  padding: 14px 14px 14px 45px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.field input:focus {
+  border-color: #007bff; /* Blue focus color */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Submit Button */
+button {
+  width: 100%;
+  padding: 14px;
+  background-color: #007bff; /* Blue button */
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px);
+}
+
+/* Login Link */
+.signup {
+  font-size: 14px;
+  color: #555;
+  margin-top: 20px;
+}
+
+.signup a {
+  color: #007bff; /* Blue link color */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.signup a:hover {
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .content {
-    position: relative;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 40px 40px 50px 40px;
-    border-radius: 15px; 
-    width: 100%;
-    max-width: 420px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    z-index: 2;
-    animation: fadeIn 0.8s ease-out; 
-  }
-  
-  @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  h1 {
-    font-size: 30px;
-    color: #1d3557;
-    margin-bottom: 30px;
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
-  
-  .field {
-    position: relative;
-    margin-bottom: 25px;
-  }
-  
-  .field input {
-    width: 100%;
-    padding: 16px 14px 16px 45px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    outline: none;
-    background-color: #f9f9f9;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-  }
-  
-  .field input:focus {
-    border-color: #e63946; 
-    background-color: #fff; 
-  }
-  
-  .field input:focus + .error {
-    color: #e63946;
-  }
-  
-  button {
-    width: 100%;
-    padding: 16px;
-    background-color: #1d3557;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 10px;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #e63946;
-  }
-  
-  .error {
-    color: red;
-    font-size: 13px;
-    margin-top: 5px;
-    text-align: left;
+    padding: 30px;
+    max-width: 350px;
   }
 
-  .signup {
+  .field input {
     font-size: 14px;
-    color: #555;
-    margin-top: 20px;
   }
-  
-  .signup a {
-    color: #e63946;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .signup a:hover {
-    color: #e63946;
-    text-decoration: underline;
-  }
-  
- 
-  /* Add responsive design for smaller screens */
-  @media (max-width: 768px) {
-    .content {
-      padding: 30px;
-      max-width: 350px;
-    }
-  
-    h1 {
-      font-size: 26px;
-    }
-  
-    .field input {
-      font-size: 14px;
-    }
-  }
-  
+}

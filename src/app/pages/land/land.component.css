@@ -7,50 +7,97 @@
 body, html {
     height: 100%;
     width: 100%;
-    overflow: hidden; 
+    overflow: hidden;
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 .landing-page {
     display: flex;
     flex-direction: column;
-    height: 100%; 
+    height: 100%;
 }
 
-
-.left-button, .right-button {
-    font-size: 16px;
-    background: transparent;
-    border: none;
-    color: white;
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    background-color: transparent; /* Fully transparent */
+}
+/* Logo and App Name */
+.app-name {
+    display: flex;
+    align-items: center;
+    font-size: 1.7em;
+    font-weight: bold;
+    color: #fff;
     cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.app-name:hover {
+    color: #007bff; /* Blue hover color */
+    transform: scale(1.05);
+}
+
+.logo-image {
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Right Buttons */
+.right-button {
+    display: flex;
+    gap: 15px;
 }
 
 .right-button button {
-    margin-left: 15px;
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    font-size: 1em;
 }
 
+.right-button button:hover {
+    background-color: #007bff; /* Blue background on hover */
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* Cover Image */
 .cover-image {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0; 
-    overflow: hidden; 
+    bottom: 0;
+    overflow: hidden;
 }
 
 .full-cover {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
     filter: brightness(50%);
 }
 
+/* Hero Text */
 .hero-text {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2; 
+    z-index: 2;
     text-align: center;
     max-width: 800px;
     width: 100%;
@@ -60,10 +107,10 @@ body, html {
 
 .hero-text h1 {
     font-size: 2.5em;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-weight: bold;
     line-height: 1.2;
-    color: white;
+    color: #fff;
 }
 
 .hero-text p {
@@ -76,8 +123,8 @@ body, html {
 }
 
 .hero-text button {
-    background-color: #e63946;
-    color: white;
+    background-color: #007bff; /* Blue button */
+    color: #fff;
     padding: 12px 30px;
     border: none;
     border-radius: 50px;
@@ -88,63 +135,11 @@ body, html {
 }
 
 .hero-text button:hover {
-    background-color: #1d3557;
+    background-color: #0056b3; /* Darker blue on hover */
     transform: scale(1.1);
 }
 
-.app-name {
-    display: flex;
-    align-items: center; 
-    font-size: 1.7em;
-    font-weight: bold;
-    color: #fff;
-    cursor: pointer;
-    transition: color 0.3s, transform 0.3s; 
-}
-
-.app-name:hover {
-    color: #e63946; 
-    transform: scale(1.05); 
-}
-
-.logo-image {
-    height: 40px; 
-    margin-right: 10px; 
-}
-
-.navbar {
-    top: 0;
-    width: 100%;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
-    font-size: 1rem;
-}
-
-.navbar .left-button, .navbar .right-button {
-    display: flex;
-    gap: 15px;
-}
-
-.navbar button {
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-weight: bold;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: color 0.3s, transform 0.3s;
-    font-size: 1em;
-}
-
-.navbar button:hover {
-    color: #e63946;
-    transform: scale(1.05);
-}
-
-
+/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -156,16 +151,29 @@ body, html {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .app-name {
+        font-size: 1.5em;
+    }
+
+    .right-button button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
     .hero-text h1 {
-        font-size: 2.5em;
+        font-size: 2em;
     }
 
     .hero-text p {
-        font-size: 1.3em;
+        font-size: 1em;
     }
 
     .hero-text button {
-        padding: 12px 25px;
-        font-size: 1em;
+        padding: 10px 25px;
+        font-size: 0.9em;
     }
 }
