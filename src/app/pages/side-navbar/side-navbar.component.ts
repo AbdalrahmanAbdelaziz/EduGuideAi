@@ -52,7 +52,15 @@ export class SideNavbarComponent implements OnInit {
   // }
 
   toggleTheme(): void {
-    this.darkModeService.toggleTheme();
     this.isDarkMode = !this.isDarkMode;
+    localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
+  
+    const body = document.body;
+    if (this.isDarkMode) {
+      body.classList.add('dark-mode');
+    } else {
+      body.classList.remove('dark-mode');
+    }
   }
+  
 }

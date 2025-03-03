@@ -14,8 +14,7 @@ body.dark-mode .side-navbar {
 
 .side-navbar {
   width: 220px;
-  background: #007bff
-  ; /* Fixed background color */
+  background: #007bff; /* Fixed background color */
   color: var(--text-light);
   padding: 20px;
   border-radius: 10px;
@@ -29,8 +28,8 @@ body.dark-mode .side-navbar {
 }
 
 body.dark-mode .side-navbar {
-  background: var(--background-dark);
-  color: var(--text-dark);
+  background: #007bff;
+  color: red;
 }
 
 .side-navbar-links {
@@ -51,21 +50,30 @@ body.dark-mode .side-navbar {
 }
 
 body.dark-mode .side-navbar-link {
-  color: var(--text-dark);
+  color: red;
 }
 
 .side-navbar-link:hover {
-  background-color: var(--hover-light);
+  background-color: #0056b3;
   transform: scale(1.05);
 }
 
 body.dark-mode .side-navbar-link:hover {
-  background-color: var(--hover-dark);
+  background-color: #0056b3;
 }
 
+/* Icons in light mode */
 .side-navbar-link i {
+  color: white; /* White icons in light mode */
   margin-right: 10px;
+  transition: color 0.3s ease; /* Smooth transition for color change */
 }
+
+/* Icons in dark mode */
+body.dark-mode .side-navbar-link i {
+  color: black !important; /* Change to black in dark mode */
+}
+
 
 .side-navbar.collapsed {
   width: 60px;
@@ -96,24 +104,6 @@ body.dark-mode .side-navbar-link:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/* Toggle Button */
-.toggle-btn {
-  position: absolute;
-  top: 10px;
-  right: -15px;
-  background-color: #1d3557;
-  border: none;
-  color: white;
-  padding: 5px 8px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.toggle-btn:hover {
-  background-color: #457b9d;
 }
 
 /* Dark Mode Toggle Button */
