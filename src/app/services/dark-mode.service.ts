@@ -15,6 +15,10 @@ export class DarkModeService {
     this.setTheme(currentTheme);
   }
 
+  isDarkMode(): boolean {
+    return localStorage.getItem(this.themeKey) === 'dark';
+  }
+
   private setTheme(theme: string): void {
     if (theme === 'dark') {
       document.body.classList.add('dark-mode');

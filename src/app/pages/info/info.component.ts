@@ -8,13 +8,15 @@ import { DarkModeService } from '../../services/dark-mode.service';
 })
 export class InfoComponent implements OnInit {
   sections: HTMLElement[] = [];
+  isDarkMode = false;
+  isCollapsed = false;
 
   constructor(private darkModeService: DarkModeService) {}
 
   ngOnInit(): void {
-    // Collect all sections you want to animate
     this.sections = Array.from(document.querySelectorAll('.section'));
     this.checkSectionVisibility();
+    this.isDarkMode = this.darkModeService.isDarkMode(); // Check dark mode state
   }
 
   @HostListener('window:scroll', [])
@@ -26,7 +28,6 @@ export class InfoComponent implements OnInit {
     const windowHeight = window.innerHeight;
     this.sections.forEach((section) => {
       const sectionTop = section.getBoundingClientRect().top;
-
       if (sectionTop <= windowHeight * 0.75) {
         section.classList.add('show');
       } else {
@@ -35,5 +36,8 @@ export class InfoComponent implements OnInit {
     });
   }
 
- 
+  toggleTheme(): void {
+    this.darkModeService.toggleTheme();
+    this.isDarkMode = this.darkModeService.isDarkMode(); // Update dark mode state
+  }
 }

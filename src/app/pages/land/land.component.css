@@ -41,12 +41,13 @@ body, html {
 }
 
 .app-name:hover {
-    color: #007bff; /* Blue hover color */
+    color: #007bff; 
     transform: scale(1.05);
 }
 
 .logo-image {
-    height: 40px;
+    height: 80px;
+    width: 100px;
     margin-right: 10px;
 }
 
@@ -57,21 +58,20 @@ body, html {
 }
 
 .right-button button {
-    background: transparent;
-    border: 2px solid #fff;
+    background: transparent; /* Keep transparent or change to a solid color */
+    border: none; /* Remove the border */
     color: #fff;
     font-weight: bold;
     padding: 10px 20px;
-    border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, transform 0.3s;
     font-size: 1em;
 }
 
 .right-button button:hover {
-    background-color: #007bff; /* Blue background on hover */
-    color: #fff;
-    transform: scale(1.05);
+    color: #007bff; /* Change text color on hover */
+    background-color: transparent; /* Keep background transparent */
+    transform: scale(1.05); /* Optional: Keep the scale effect if desired */
 }
 
 /* Cover Image */
