@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { Course } from '../../shared/interfaces/Course';
 import { UpdateCourse } from '../../shared/interfaces/UpdateCourse';
 import { Student } from '../../shared/interfaces/Student';
+import { DarkModeService } from '../../services/dark-mode.service';
 
 @Component({
   selector: 'app-my-department',
@@ -15,13 +16,18 @@ export class MyDepartmentComponent implements OnInit {
   electiveCourses: Course[] = [];
   selectedDepartment: string | null = null;
   departmentHours: number = 0;
+  isDarkMode = false;
+
 
   @Output() calculatedHoursEvent = new EventEmitter<number>();
 
   isModalVisible = true;  
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private darkModeService: DarkModeService) {}
 
   ngOnInit(): void {
+
+    this.isDarkMode = this.darkModeService.isDarkMode(); // Check dark mode state
+
     this.authService.studentObservable.subscribe((newStudent) => {
       if (newStudent) {
         this.student = newStudent;
