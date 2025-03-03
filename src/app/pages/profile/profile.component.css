@@ -108,7 +108,7 @@ body {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.9);
   border: 1px solid #fff;
-  color: #007bff;
+  color: black;
   padding: 12px;
   border-radius: 6px;
   font-size: 1em;
@@ -146,7 +146,7 @@ body {
 }
 
 .profile-actions button:hover {
-  background-color: #e63946;
+  background-color: #0056b3;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
