@@ -1,58 +1,55 @@
 <div class="courses-page">
-    <header class="navbar">
-      <div class="app-name" routerLink="/student-page">
-        EduGuideAI
-      </div>
-      <div class="right-button">
-        <li class="menu-container">
-          <a routerLink="/profile" class="menu-trigger">
-            <i class="fas fa-user-circle"></i> {{ student?.firstName | titlecase }}
-          </a>
-        </li>
-      </div>
-    </header>
-  
-    <div class="navbar-spacer"></div>
-
-    <div class="transcript-content">
-        <div class="student-details">
-            <h2>STUDENT TRANSCRIPT</h2>
-
-            <div class="detail-row">
-                <span class="detail-label">Student Name: </span>
-                <span class="detail-value">{{ student?.firstName }} {{ student?.lastName }}</span>
-            </div>
-
-            <div class="detail-row">
-                <span class="detail-label">GPA: </span>
-                <span class="detail-value">{{ student?.gpa | number: '1.2-2' }}</span>
-            </div>
-
-            <div class="detail-row">
-                <span class="detail-label">Cumulative Grade: </span>
-                <span class="detail-value">{{ getCumulativeGrade() }}</span>
-            </div>
-
-            <div class="detail-row">
-                <span class="detail-label">Total Completed Hours: </span>
-                <span class="detail-value">{{ student?.completedHours }}</span>
-            </div>
-
-            <div class="detail-row">
-                <span class="detail-label">Level: </span>
-                <span class="detail-value">{{ student?.level }}</span>
-            </div>
-
-            <div class="detail-row">
-                <span class="detail-label">Department:</span>
-                <span class="detail-value">{{ student?.department }}</span>
-            </div>
-
-            
-            </div>
-            
-        </div>
-
-
-
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="app-name" routerLink="/student-page">
+      EduGuideAI
     </div>
+    <div class="right-button">
+      <li class="menu-container">
+        <a routerLink="/profile" class="menu-trigger">
+          <i class="fas fa-user-circle"></i> {{ student?.firstName | titlecase }}
+        </a>
+      </li>
+    </div>
+  </header>
+
+  <!-- Spacer for Navbar -->
+  <div class="navbar-spacer"></div>
+
+  <!-- Transcript Content -->
+  <div class="transcript-content">
+    <div class="student-details">
+      <h2>STUDENT TRANSCRIPT</h2>
+
+      <div class="detail-row">
+        <span class="detail-label">Student Name:</span>
+        <span class="detail-value">{{ student?.firstName }} {{ student?.lastName }}</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">GPA:</span>
+        <span class="detail-value">{{ student?.gpa | number: '1.2-2' }}</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Cumulative Grade:</span>
+        <span class="detail-value">{{ getCumulativeGrade() }}</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Total Completed Hours:</span>
+        <span class="detail-value">{{ student?.completedHours }}</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Level:</span>
+        <span class="detail-value">{{ student?.level }}</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Department:</span>
+        <span class="detail-value">{{ student?.department }}</span>
+      </div>
+    </div>
+  </div>
+</div>
