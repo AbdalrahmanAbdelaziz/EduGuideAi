@@ -3,20 +3,9 @@
     <i class="fas" [ngClass]="isCollapsed ? 'fa-chevron-right' : 'fa-chevron-left'"></i>
   </button>
 
-  <div class="user-info">
-    <img [src]="student.profilePic ? BASE_URL + '/' + student.profilePic : 'default-avatar.jpg'" 
-         alt="User profile picture" class="user-img" />
-    
-    <div class="user-details">
-      <h3><i class="fas fa-user"></i> {{ student.firstName }} {{ student.lastName }}</h3>
-      <p>{{ student.level }} | {{ student.department }}</p>
-      <p>GPA: {{ student.gpa | number: '1.1-2' }}</p>
-    </div>
-  </div>
-
-  <div class="side-navbar-links"> 
+  <div class="side-navbar-links">
     <a routerLink="/profile" class="side-navbar-link">
-      <i class="fas fa-id-card"></i> 
+      <i class="fas fa-id-card"></i>
       <span *ngIf="!isCollapsed">Profile</span>
     </a>
 
@@ -27,7 +16,7 @@
     </a>
 
     <a (click)="logout()" class="side-navbar-link">
-      <i class="fas fa-sign-out-alt"></i> 
+      <i class="fas fa-sign-out-alt"></i>
       <span *ngIf="!isCollapsed">Logout</span>
     </a>
   </div>

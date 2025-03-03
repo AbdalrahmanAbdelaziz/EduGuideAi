@@ -8,52 +8,51 @@ import { DarkModeService } from '../../services/dark-mode.service';
 @Component({
   selector: 'app-side-navbar',
   templateUrl: './side-navbar.component.html',
-  styleUrl: './side-navbar.component.css'
+  styleUrls: ['./side-navbar.component.css']
 })
-export class SideNavbarComponent implements OnInit{
-    student!: Student;
-    // isCollapsed: boolean = true; 
-    BASE_URL = BASE_URL;
-    isCollapsed = false;
-    isDarkMode = false;
+export class SideNavbarComponent implements OnInit {
+  student!: Student;
+  BASE_URL = BASE_URL;
+  isCollapsed = true; // Set to true for collapsed by default
+  isDarkMode = false;
 
-  
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private darkModeService: DarkModeService
+  ) {
+    this.authService.studentObservable.subscribe((newStudent) => {
+      if (newStudent) {
+        this.student = newStudent;
+      }
+    });
+  }
 
-  constructor(private authService: AuthService, private router: Router, private darkModeService: DarkModeService) {
-      this.authService.studentObservable.subscribe((newStudent) => {
-        if (newStudent) {
-          this.student = newStudent;
-        }
-      });
-    }
+  ngOnInit(): void {
+    const savedState = localStorage.getItem('sidebarCollapsed');
+    this.isCollapsed = savedState ? JSON.parse(savedState) : true; // Default to true if no saved state
 
-    ngOnInit(): void {
-        const savedState = localStorage.getItem('sidebarCollapsed');
-        this.isCollapsed = savedState ? JSON.parse(savedState) : true;
+    this.isDarkMode = localStorage.getItem('theme') === 'dark';
 
-        this.isDarkMode = localStorage.getItem('theme') === 'dark';
+    this.authService.studentObservable.subscribe((newUser) => {
+      if (newUser) {
+        this.student = newUser;
+      }
+    });
+  }
 
-        this.authService.studentObservable.subscribe((newUser) => {
-          if(newUser){
-            this.student = newUser;
-          }
-        })
-    }
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 
-    logout() {
-      this.authService.logout();
-      this.router.navigate(['/login']);
-    }
+  toggleSidebar() {
+    this.isCollapsed = !this.isCollapsed;
+    localStorage.setItem('sidebarCollapsed', JSON.stringify(this.isCollapsed)); // Save state
+  }
 
-    toggleSidebar() {
-      this.isCollapsed = !this.isCollapsed;
-      localStorage.setItem('sidebarCollapsed', JSON.stringify(this.isCollapsed)); // Save state
-    }
-
-    toggleTheme(): void {
-      this.darkModeService.toggleTheme();
-      this.isDarkMode = !this.isDarkMode;
-    }
-    
-
+  toggleTheme(): void {
+    this.darkModeService.toggleTheme();
+    this.isDarkMode = !this.isDarkMode;
+  }
 }
