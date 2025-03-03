@@ -29,10 +29,20 @@ export class SideNavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Restore sidebar state
     const savedState = localStorage.getItem('sidebarCollapsed');
-    this.isCollapsed = savedState ? JSON.parse(savedState) : true; // Default to true if no saved state
+    this.isCollapsed = savedState ? JSON.parse(savedState) : true;
 
+    // Restore theme mode
     this.isDarkMode = localStorage.getItem('theme') === 'dark';
+    if (this.isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+
+    // ✅ Ensure icons get the correct color on page load
+    this.updateIconColors();
 
     this.authService.studentObservable.subscribe((newUser) => {
       if (newUser) {
@@ -50,17 +60,21 @@ export class SideNavbarComponent implements OnInit {
     this.isDarkMode = !this.isDarkMode;
     localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
   
-    const body = document.body;
     if (this.isDarkMode) {
-      body.classList.add('dark-mode');
+      document.body.classList.add('dark-mode');
     } else {
-      body.classList.remove('dark-mode');
+      document.body.classList.remove('dark-mode');
     }
-  
-    // Ensure icons update
+
+    // ✅ Ensure icons update immediately
+    this.updateIconColors();
+  }
+
+  // ✅ Function to update icon colors based on theme
+  private updateIconColors(): void {
     setTimeout(() => {
       document.querySelectorAll('.side-navbar-link i').forEach(icon => {
-        (icon as HTMLElement).style.color = this.isDarkMode ? 'black' : 'white'; // ✅ Cast to HTMLElement
+        (icon as HTMLElement).style.color = this.isDarkMode ? 'black' : 'white';
       });
     }, 100);
   }
