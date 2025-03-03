@@ -104,7 +104,7 @@ body {
 }
 
 .cta-button:hover {
-  background-color: #ecf0f1;
+  background-color: #0056b3;
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
@@ -137,7 +137,7 @@ body {
 }
 
 .card-header {
-  background-color: #121212;
+  background-color: #0056b3;
   padding: 20px;
   text-align: center;
   font-size: 1.5em;
