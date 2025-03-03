@@ -3,11 +3,9 @@
     EduGuideAI
   </div>
   <div class="right-button">
-    <li class="menu-container">
       <a routerLink="/profile" class="menu-trigger">
-        <i class="fas fa-user-circle"></i> {{ student?.firstName | titlecase }}
+        <i class="fas fa-user-circle"></i> {{ student.firstName | titlecase }}
       </a>
-    </li>
   </div>
 </header>
 
@@ -15,13 +13,8 @@
 
 <div class="profile-container">
   <div class="profile-header">
-    <div class="profile-pic">
-      <img [src]="student?.profilePic || 'avatar.png'" alt="Profile Picture" />
-      <label for="profilePic" class="upload-label">Change Profile Picture</label>
-      <input type="file" id="profilePic" (change)="onProfilePicChange($event)" />
-    </div>
-    <h2>{{ student?.firstName }} {{ student?.lastName }}</h2>
-    <p>{{ student?.email }}</p>
+    <h2>{{ student.firstName }} {{ student.lastName }}</h2>
+    <p>{{ student.email }}</p>
   </div>
 
   <div class="profile-details">
