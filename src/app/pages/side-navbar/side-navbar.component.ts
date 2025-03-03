@@ -13,7 +13,7 @@ import { DarkModeService } from '../../services/dark-mode.service';
 export class SideNavbarComponent implements OnInit {
   student!: Student;
   BASE_URL = BASE_URL;
-  isCollapsed = true; // Set to true for collapsed by default
+  isCollapsed = true; 
   isDarkMode = false;
 
   constructor(
@@ -46,10 +46,10 @@ export class SideNavbarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  toggleSidebar() {
-    this.isCollapsed = !this.isCollapsed;
-    localStorage.setItem('sidebarCollapsed', JSON.stringify(this.isCollapsed)); // Save state
-  }
+  // toggleSidebar() {
+  //   this.isCollapsed = !this.isCollapsed;
+  //   localStorage.setItem('sidebarCollapsed', JSON.stringify(this.isCollapsed)); // Save state
+  // }
 
   toggleTheme(): void {
     this.darkModeService.toggleTheme();

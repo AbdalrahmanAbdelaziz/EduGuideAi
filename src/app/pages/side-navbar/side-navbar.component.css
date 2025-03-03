@@ -8,13 +8,14 @@
 }
 
 body.dark-mode .side-navbar {
-  background: #1d3557; /* Keeping the same background in dark mode */
+  background: #007bff; /* Keeping the same background in dark mode */
   color: var(--text-dark);
 }
 
 .side-navbar {
   width: 220px;
-  background: #1d3557; /* Fixed background color */
+  background: #007bff
+  ; /* Fixed background color */
   color: var(--text-light);
   padding: 20px;
   border-radius: 10px;
